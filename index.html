@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Bloom - Watch & Download Anime in Hindi & English Dubbed</title>
+    <meta name="description" content="Anime Bloom is your ultimate destination to search, discover and download anime in Hindi and English dubbed. Explore hundreds of series like Jujutsu Kaisen, Frieren, Fire Force and more.">
+    <meta name="keywords" content="anime download, hindi dubbed anime, english dubbed anime, anime bloom, watch anime online, jujutsu kaisen, frieren, fire force">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://anime-bloom.vercel.app/">
+
+    <!-- Open Graph (for WhatsApp, Facebook, Twitter previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anime-bloom.vercel.app/">
+    <meta property="og:title" content="Anime Bloom - Watch & Download Anime in Hindi & English Dubbed">
+    <meta property="og:description" content="Search, discover and download your favourite anime in Hindi and English dubbed. Hundreds of series available on Anime Bloom.">
+    <meta property="og:image" content="https://anime-bloom.vercel.app/favicon.png">
+    <meta property="og:site_name" content="Anime Bloom">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Anime Bloom - Watch & Download Anime in Hindi & English Dubbed">
+    <meta name="twitter:description" content="Search, discover and download your favourite anime in Hindi and English dubbed.">
+    <meta name="twitter:image" content="https://anime-bloom.vercel.app/favicon.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preload" href="/style.css" as="style">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script async src="/gtag.js"></script>
+</head>
+<body class="dark-theme">
+    <div id="splash-screen">
+        <img src="/favicon.png" alt="Anime Bloom Logo" class="splash-logo">
+    </div>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="/" class="logo">
+                    <img src="/favicon.png" alt="Logo" class="header-logo">
+                    Anime<span>Bloom</span>
+                </a>
+                <div class="menu-container">
+                    <button class="menu-btn" id="menu-btn" aria-label="Menu">&#8942;</button>
+                    <ul class="nav-links" id="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/library">Library</a></li>
+                        <li><a href="/schedule">Schedule</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/about#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="hero-slider">
+            <!-- Slides and progress segments will be injected here by main.js -->
+        </section>
+
+        <section class="search-section">
+            <input type="text" id="search-box" placeholder="Search for anime...">
+            <button id="search-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </section>
+
+        <section class="category-section">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="action">Action</button>
+            <button class="category-btn" data-category="adventure">Adventure</button>
+            <button class="category-btn" data-category="romance">Romance</button>
+            <button class="category-btn" data-category="comedy">Comedy</button>
+            <button class="category-btn" data-category="isekai">Isekai</button>
+            <button class="category-btn" data-category="fantasy">Fantasy</button>
+        </section>
+
+        <div id="result-info" class="result-info"></div>
+
+        <section id="anime-container">
+            <!-- Anime cards will be injected here by main.js -->
+        </section>
+
+        <div id="load-more-container" class="load-more-container" style="display: none;">
+            <button id="explore-btn" class="load-more-btn">Explore</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="/" class="logo"><img src="/favicon.png" alt="Logo" class="header-logo">Anime<span>Bloom</span></a>
+                <p>Your ultimate destination for anime discovery. Explore, watch and download your favorite series in high quality.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/about#contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://t.me/Anime_Bloom" target="_blank" title="Telegram">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="social-logo" style="fill:#26A5E4!important"><title>Telegram</title><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Anime Bloom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="Go to top">↑</button>
+
+    <!-- Telegram Join Modal -->
+    <div id="telegram-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="social-logo" style="fill:#26A5E4!important;width:150px;height:150px;"><title>Telegram</title><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </div>
+            <div class="modal-body">
+                <h2>Join Our Community</h2>
+                <p>For more updates join our telegram channel</p>
+                <a href="https://t.me/Anime_Bloom" target="_blank" class="join-btn" id="modal-join-btn">Join Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="/data.js"></script>
+    <script defer src="/config.js"></script>
+    <script defer src="/main.js"></script>
+</body>
+</html>

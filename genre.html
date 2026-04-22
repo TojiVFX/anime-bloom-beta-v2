@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime by Genre | Anime Bloom</title>
+    <meta name="description" content="Explore anime by genre on Anime Bloom. Find the best action, adventure, romance, comedy, isekai and fantasy anime — all in Hindi and English dubbed.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Anime Bloom">
+    <meta property="og:image" content="https://anime-bloom.vercel.app/favicon.png">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script async src="/gtag.js"></script>
+</head>
+<body class="dark-theme">
+    <div id="splash-screen">
+        <img src="/favicon.png" alt="Anime Bloom Logo" class="splash-logo">
+    </div>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="/" class="logo">
+                    <img src="/favicon.png" alt="Logo" class="header-logo">
+                    Anime<span>Bloom</span>
+                </a>
+                <div class="menu-container">
+                    <button class="menu-btn" id="menu-btn" aria-label="Menu">&#8942;</button>
+                    <ul class="nav-links" id="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/library">Library</a></li>
+                        <li><a href="/schedule">Schedule</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/about#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+<script src="https://quge5.com/88/tag.min.js" data-zone="226050" async data-cfasync="false"></script>
+    <main>
+        <section class="top-branding">
+            <h1 class="site-name site-title" id="genre-title"><span>Genre</span> Anime</h1>
+            <p class="greeting-msg" id="genre-description">Exploring the best in this category.</p>
+        </section>
+
+        <div id="result-info" class="result-info"></div>
+
+        <section id="genre-container" class="anime-grid">
+            <!-- Anime cards will be injected here by main.js -->
+        </section>
+
+        <div class="load-more-container">
+            <button onclick="window.location.href='/library.html'" class="load-more-btn">Explore More</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="/" class="logo"><img src="/favicon.png" alt="Logo" class="header-logo">Anime<span>Bloom</span></a>
+                <p>Your ultimate destination for anime discovery. Explore, watch and download your favorite series in high quality.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/about#contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://t.me/Anime_Bloom" target="_blank" title="Telegram">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="social-logo" style="fill:#26A5E4!important"><title>Telegram</title><path fill="#26A5E4" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Anime Bloom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="Go to top">↑</button>
+
+    <script defer src="/data.js"></script>
+    <script defer src="/config.js"></script>
+    <script defer src="/main.js"></script>
+</body>
+</html>

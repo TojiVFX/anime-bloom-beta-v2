@@ -1,1 +1,1 @@
-# anime-bloom-beta-v2
+# anime-bloom-beta

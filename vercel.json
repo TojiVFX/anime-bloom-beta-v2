@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/details", "destination": "/api/details" },
+    { "source": "/api/search", "destination": "/api/search" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/logout", "destination": "/api/logout" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self'" }
+      ]
+    }
+  ]
+}
