@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
     const title    = anime ? `${anime.name} - Anime Bloom` : 'Anime Bloom';
     const desc     = anime
-        ? `Watch and download ${anime.name} ${anime.language} on Anime Bloom. Season ${anime.season}. Genres: ${anime.genres.join(', ')}.`
+        ? `Watch and download ${anime.name} ${anime.language} on Anime Bloom. Season ${anime.season}.${anime.rating ? ` Rating: ${anime.rating}.` : ''} Genres: ${anime.genres.join(', ')}.`
         : 'Your ultimate destination for anime discovery. Search and download anime in Hindi and English dubbed.';
     const image    = anime ? anime.thumbnail : 'https://anime-bloom.vercel.app/favicon.png';
     const pageUrl  = `https://anime-bloom.vercel.app/details?id=${encodeURIComponent(id)}`;
