@@ -74,10 +74,7 @@ function createAnimeCard(anime) {
             <img src="${anime.thumbnail}" alt="${anime.name}" loading="lazy" width="300" height="420">
             <div class="card-overlay">
                 <div class="quick-info">
-                    <span class="quality-badge">${anime.quality || 'HD'}</span>
-                    ${anime.rating ? `<span>${anime.rating}</span>` : ''}
-                    <span>${anime.episodes} Episodes</span>
-                    <span>${anime.releaseYear}</span>
+                    ${anime.quality || 'HD'} • ${anime.episodes} Episodes • ${anime.releaseYear} ${anime.rating ? `• ${anime.rating} Rating` : ''}
                 </div>
             </div>
         </div>
@@ -848,12 +845,11 @@ function loadAnimeDetails() {
             </div>
             <div class="details-info">
                 <h1>${anime.name}</h1>
+                <div class="meta-info">
+                    ${anime.quality || 'HD'} • ${anime.episodes} Episodes • ${anime.releaseYear} ${anime.rating ? `• ${anime.rating} Rating` : ''}
+                </div>
                 <div class="info-item"><strong>Season:</strong> ${anime.season}</div>
-                <div class="info-item"><strong>Quality:</strong> ${anime.quality}</div>
-                <div class="info-item"><strong>Release Year:</strong> ${anime.releaseYear}</div>
-                ${anime.rating ? `<div class="info-item"><strong>Rating:</strong> ${anime.rating}</div>` : ''}
                 <div class="info-item"><strong>Duration:</strong> ${anime.duration}</div>
-                <div class="info-item"><strong>Episodes:</strong> ${anime.episodes}</div>
                 <div class="info-item"><strong>Genres:</strong> ${anime.genres.join(', ')}</div>
                 <div class="info-item"><strong>Language:</strong> ${anime.language}</div>
 

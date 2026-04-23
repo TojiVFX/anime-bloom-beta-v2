@@ -854,22 +854,20 @@ main {
 }
 
 .quick-info {
-    display: flex;
-    gap: 10px;
     font-size: 0.75rem;
     color: var(--secondary-text);
     margin-top: 5px;
+    display: block;
 }
 
-.quick-info span {
-    background: rgba(255,255,255,0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.quality-badge {
+.meta-info {
     color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .section-title {
