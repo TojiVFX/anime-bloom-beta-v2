@@ -75,6 +75,7 @@ function createAnimeCard(anime) {
             <div class="card-overlay">
                 <div class="quick-info">
                     <span class="quality-badge">${anime.quality || 'HD'}</span>
+                    ${anime.rating ? `<span>${anime.rating}</span>` : ''}
                     <span>${anime.episodes} Episodes</span>
                     <span>${anime.releaseYear}</span>
                 </div>
@@ -850,6 +851,7 @@ function loadAnimeDetails() {
                 <div class="info-item"><strong>Season:</strong> ${anime.season}</div>
                 <div class="info-item"><strong>Quality:</strong> ${anime.quality}</div>
                 <div class="info-item"><strong>Release Year:</strong> ${anime.releaseYear}</div>
+                ${anime.rating ? `<div class="info-item"><strong>Rating:</strong> ${anime.rating}</div>` : ''}
                 <div class="info-item"><strong>Duration:</strong> ${anime.duration}</div>
                 <div class="info-item"><strong>Episodes:</strong> ${anime.episodes}</div>
                 <div class="info-item"><strong>Genres:</strong> ${anime.genres.join(', ')}</div>
