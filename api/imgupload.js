@@ -8,9 +8,6 @@ export default async function handler(req, res) {
   if (!source) return res.status(400).json({ error: 'Missing source (base64 image)' });
   if (!key)    return res.status(400).json({ error: 'Missing API key' });
 
-  // Build multipart form for freeimage.host
-  const { FormData, Blob } = await import('node:buffer').catch(() => ({}));
-
   // Use URLSearchParams for simple form encoding — works without native FormData in Node
   const params = new URLSearchParams();
   params.append('key', key);
