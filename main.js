@@ -74,7 +74,7 @@ function createAnimeCard(anime) {
         ? '<span class="rating-badge">&#9733; ' + anime.rating + '</span>'
         : '';
 
-    const qualityText = (anime.quality || 'HD 1080p').replace('HD 1080p', 'HD').replace('HD ', 'HD');
+    const qualityText = anime.quality ? anime.quality.split(' ')[0] : 'HD';
 
     card.innerHTML = [
         '<div class="card-img-container">',
