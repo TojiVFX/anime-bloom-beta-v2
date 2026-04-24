@@ -856,6 +856,7 @@ main {
 .quick-info {
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
     gap: 4px;
     font-size: 0.68rem;
     color: var(--secondary-text);
@@ -874,6 +875,13 @@ main {
 .quality-badge {
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
+    flex-shrink: 0;
+}
+
+.rating-badge {
+    color: #f5c518;
+    border: 1px solid rgba(245,197,24,0.4);
+    flex-shrink: 0;
 }
 
 .rating-badge {
