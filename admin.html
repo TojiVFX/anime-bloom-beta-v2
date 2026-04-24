@@ -573,7 +573,8 @@ function sw(tab){
   document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
   g('tab-'+tab).classList.add('active');
-  g('pane-'+tab).classList.add('active');
+  const paneEl = g('pane-'+tab);
+  if(paneEl) paneEl.classList.add('active');
   g('sidebar').classList.toggle('hidden',tab!=='episodes');
   if(tab==='push') showNewlyAddedPreview();
   if(tab==='preview'){ openPreview(); return; }
