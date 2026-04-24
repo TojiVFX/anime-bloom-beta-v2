@@ -855,21 +855,33 @@ main {
 
 .quick-info {
     display: flex;
-    gap: 10px;
-    font-size: 0.75rem;
+    flex-wrap: nowrap;
+    gap: 4px;
+    font-size: 0.68rem;
     color: var(--secondary-text);
     margin-top: 5px;
+    overflow: hidden;
 }
 
 .quick-info span {
     background: rgba(255,255,255,0.1);
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .quality-badge {
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
+}
+
+.rating-badge {
+    color: #f5c518;
+    border: 1px solid rgba(245,197,24,0.5);
+    display: flex;
+    align-items: center;
+    gap: 2px;
 }
 
 .section-title {
