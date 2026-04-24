@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
       // Step 2: Push updated file
       const body = {
-        message: (commitMsg && commitMsg.length > 5) ? commitMsg : `[AnimeBloom Admin] update ${fileName}`,
+        message: (commitMsg && commitMsg.length > 5) ? commitMsg : `[AnimeBloom Admin] update ${filename}`,
         content: Buffer.from(content, 'utf8').toString('base64'),
         branch: BRANCH,
         ...(sha && { sha })
