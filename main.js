@@ -69,28 +69,35 @@ function createSkeletonCard() {
 function createAnimeCard(anime) {
     const card = document.createElement('div');
     card.className = 'anime-card';
-    card.innerHTML = `
-        <div class="card-img-container">
-            <img src="${anime.thumbnail}" alt="${anime.name}" loading="lazy" width="300" height="420">
-            <div class="card-overlay">
-                <div class="quick-info">
-                    <span class="quality-badge">${anime.quality || 'HD'}</span>
-                    ${anime.rating ? `<span class="rating-badge">&#9733; ${anime.rating}</span>` : ''}
-                    <span>${anime.episodes} Ep</span>
-                    <span>${anime.releaseYear}</span>
-                </div>
-            </div>
-        </div>
-        <div class="card-info">
-            <h3>${anime.name}</h3>
-        </div>
-    `;
-    card.onclick = () => {
-        window.location.href = `/details?id=${anime.id}`;
+
+    const ratingBadge = anime.rating
+        ? '<span class="rating-badge">&#9733; ' + anime.rating + '</span>'
+        : '';
+
+    const qualityText = (anime.quality || 'HD 1080p').replace('HD 1080p', 'HD').replace('HD ', 'HD');
+
+    card.innerHTML = [
+        '<div class="card-img-container">',
+        '  <img src="' + (anime.thumbnail || '') + '" alt="' + (anime.name || '') + '" loading="lazy">',
+        '  <div class="card-overlay">',
+        '    <div class="quick-info">',
+        '      <span class="quality-badge">' + qualityText + '</span>',
+             ratingBadge,
+        '      <span>' + (anime.episodes || 0) + ' Ep</span>',
+        '      <span>' + (anime.releaseYear || '') + '</span>',
+        '    </div>',
+        '  </div>',
+        '</div>',
+        '<div class="card-info">',
+        '  <h3>' + (anime.name || '') + '</h3>',
+        '</div>'
+    ].join('\n');
+
+    card.onclick = function() {
+        window.location.href = '/details?id=' + anime.id;
     };
     return card;
 }
-
 // --- Home Page Logic ---
 function createAnimeRow(title, animes, genre = null) {
     if (animes.length === 0) return null;
