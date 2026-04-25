@@ -911,7 +911,7 @@ async function doPush() {
     addLog('warn', 'Make sure api/push.js is deployed and env vars are set in Vercel.');
     setPushBtnState('error');
     showBanner('error', 'Connection error — is api/push.js deployed?');
-    Object.values(fileMap).forEach(f => setFileStatus(f.statusEl, 'err', '✗ Error'));
+    Object.values(FILE_MAP).forEach(f => setFileStatus(f.statusEl, 'err', '✗ Error'));
     toast('Connection error — see Push to Site tab', 'err');
     setProgress(0);
   }
