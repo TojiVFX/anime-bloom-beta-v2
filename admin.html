@@ -647,13 +647,14 @@ function eRow(ai,en){if(editRow!==null)cxRow(ai,editRow);editRow=en;g(`prev-${en
 function svRow(ai,en){
   const l=g(`inp-${en}`).value.trim();
   if(!l){toast('Empty link','err');return;}
-  const dup=findDupLink(l,ai,en);
-  if(dup){
-    const m=dup.same
-      ?'This link is already used for Episode '+dup.episode+' of this anime. Save anyway?'
-      :'WARNING: This link already exists in "'+dup.name+'" Episode '+dup.episode+'. Likely a mistake. Save anyway?';
-    if(!confirm(m))return;
-  }
+  const dups=findDupLink(l,ai,en);
+if(dups.length){
+  const m=dups.map(d=>d.same
+    ?'Already used for Episode '+d.episode+' of this anime'
+    :'Already in "'+d.name+'" Episode '+d.episode
+  ).join('\n');
+  if(!confirm('Duplicate link detected:\n'+m+'\n\nSave anyway?'))return;
+}
   const ep=DB[ai].downloadLinks.find(e=>e.episode===en);
   if(ep)ep.link=l;
   logChange('EP~EP'+en+' '+DB[ai].name);
@@ -663,20 +664,50 @@ function cxRow(ai,en){editRow=null;g(`prev-${en}`).style.display='block';g(`inp-
 function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
 function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
 function scanAllDupes(){
-  const seen={};const dups=[];
+  const groups={};
   DB.forEach((a,ai)=>{
     (a.downloadLinks||[]).forEach(dl=>{
       if(!dl.link)return;
-      if(seen[dl.link]){
-        dups.push('"'+seen[dl.link].name+'" EP'+seen[dl.link].ep+'\n  same as\n"'+a.name+'" EP'+dl.episode);
-      }else{
-        seen[dl.link]={name:a.name,ep:dl.episode};
-      }
+      if(!groups[dl.link])groups[dl.link]=[];
+      groups[dl.link].push({animeIdx:ai,name:a.name,episode:dl.episode});
     });
   });
-  if(!dups.length){toast('No duplicate links found across all anime!','ok');return;}
-  toast(dups.length+' duplicate(s) found — see alert for details','err');
-  setTimeout(()=>alert('Duplicate links found ('+dups.length+'):\n\n'+dups.join('\n\n')),300);
+  const dups=Object.entries(groups).filter(([,arr])=>arr.length>1);
+  if(!dups.length){toast('No duplicate links found!','ok');return;}
+  const lines=dups.map(([link,entries])=>
+    `<div style="margin-bottom:16px;padding:12px;background:var(--surface2);border:1px solid var(--red-border);border-radius:8px">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px;word-break:break-all">${esc(link.slice(0,80))}...</div>
+      ${entries.map(e=>
+        `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border)">
+          <span class="epnum">EP ${e.episode}</span>
+          <span style="font-size:12px;flex:1">${esc(e.name)}</span>
+          <button class="btn btn-ghost btn-sm" onclick="selA(${e.animeIdx});cm('dupe-modal')" style="padding:2px 8px;font-size:11px">Go →</button>
+        </div>`
+      ).join('')}
+    </div>`
+  ).join('');
+  let modal=g('dupe-modal');
+  if(!modal){
+    modal=document.createElement('div');
+    modal.id='dupe-modal';
+    modal.className='overlay';
+    modal.innerHTML=`<div class="modal" style="max-width:600px">
+      <div class="mh">
+        <span class="mt" id="dupe-modal-title"></span>
+        <button class="xbtn" onclick="cm('dupe-modal')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mb" id="dupe-modal-body" style="max-height:60vh;overflow-y:auto"></div>
+    </div>`;
+    document.body.appendChild(modal);
+  }
+  g('dupe-modal-title').textContent=dups.length+' Duplicate Link Group'+(dups.length>1?'s':'')+' Found';
+  g('dupe-modal-body').innerHTML=lines;
+  om('dupe-modal');
+  toast(dups.length+' duplicate group(s) found','err');
 }
   function bulkAdd(ai){
   const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);
@@ -687,8 +718,13 @@ function scanAllDupes(){
   ls.forEach((lk,i)=>{
     const n=st+i;
     if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}
-    const dup=findDupLink(lk,ai,null);
-    if(dup&&!dup.same)xd.push('EP'+n+': already in "'+dup.name+'" EP'+dup.episode);
+    const dups=findDupLink(lk,ai,null);
+dups.forEach(d=>{
+  const label=d.same
+    ?'EP'+n+': link already used by EP'+d.episode+' of this anime'
+    :'EP'+n+': already in "'+d.name+'" EP'+d.episode;
+  xd.push(label);
+});
     DB[ai].downloadLinks.push({episode:n,link:lk});
     ad++;
   });
@@ -705,7 +741,12 @@ function scanAllDupes(){
 // ── SERIES MODAL ──
 function openAddSM(){g('smei').value='';g('smxt').textContent='Add New Anime';['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;om('smx');}
 function openEditSM(idx){const a=DB[idx];g('smei').value=idx;g('smxt').textContent='Edit Anime Info';g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);}
-function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
+function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;
+if(ei===''){
+  const idExists=DB.find(a=>a.id===sid);
+  if(idExists){toast('ID "'+sid+'" already exists — change the slug','err');return;}
+}
+const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
 function delSeries(idx){if(!confirm(`Delete "${DB[idx].name}" + all episodes?`))return;logChange('A-'+DB[idx].name);DB.splice(idx,1);cidx=null;mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();toast('Deleted','err');}
 
 // ── CONFIG ──
@@ -1347,34 +1388,42 @@ function checkDupNum(ai){
   }
 }
 function findDupLink(link,ai,skipEp){
-  if(!link||link.length<20)return null;
+  if(!link||link.length<5)return[];
+  const results=[];
   for(let i=0;i<DB.length;i++){
     const a=DB[i];if(!a.downloadLinks)continue;
     for(const dl of a.downloadLinks){
-      if(dl.link===link&&!(i===ai&&dl.episode===skipEp))
-        return{animeIdx:i,name:a.name,episode:dl.episode,same:i===ai};
+      if(dl.link===link&&!(i===ai&&dl.episode===skipEp)){
+        results.push({animeIdx:i,name:a.name,episode:dl.episode,same:i===ai});
+      }
     }
   }
-  return null;
+  return results;
 }
 function checkDupLink(ai){
   const link=g('nel')?.value?.trim();
   const warn=g('dup-warn-link');
   const msg=g('dup-warn-link-msg');
-  if(!warn||!msg){return;}
-  if(!link||link.length<20){warn.classList.remove('show');return;}
-  const dup=findDupLink(link,ai,null);
-  if(dup){
-    msg.textContent=dup.same
-      ?'Already used for Episode '+dup.episode+' of this anime — check before adding.'
-      :'WARNING: This link already exists in "'+dup.name+'" Episode '+dup.episode+' — likely a paste mistake!';
+  if(!warn||!msg)return;
+  if(!link||link.length<5){warn.classList.remove('show');return;}
+  const dups=findDupLink(link,ai,null);
+  if(dups.length){
+    const crossAnime=dups.filter(d=>!d.same);
+    const sameAnime=dups.filter(d=>d.same);
+    let text='';
+    if(crossAnime.length){
+      text='WARNING: Used in '+crossAnime.map(d=>'"'+d.name+'" EP'+d.episode).join(', ')+' — likely a paste mistake!';
+    }else{
+      text='Already used for EP'+sameAnime.map(d=>d.episode).join(', ')+' of this anime.';
+    }
+    msg.textContent=text;
     warn.classList.add('show');
-    warn.style.borderColor=dup.same?'rgba(245,166,35,.35)':'rgba(255,59,59,.45)';
-    warn.style.background=dup.same?'rgba(245,166,35,.08)':'rgba(255,59,59,.12)';
-    warn.style.color=dup.same?'var(--amber)':'var(--red)';
+    warn.style.borderColor=crossAnime.length?'rgba(255,59,59,.45)':'rgba(245,166,35,.35)';
+    warn.style.background=crossAnime.length?'rgba(255,59,59,.12)':'rgba(245,166,35,.08)';
+    warn.style.color=crossAnime.length?'var(--red)':'var(--amber)';
   }else{
     warn.classList.remove('show');
-    warn.style.borderColor='';warn.style.background='';warn.style.color='';
+    warn.style.cssText='';
   }
 }
 
