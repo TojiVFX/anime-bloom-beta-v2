@@ -21,13 +21,11 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .upill{display:none;align-items:center;gap:6px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.3);color:var(--amber);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600}
 .upill.show{display:flex}.upill span{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-/* PUSH BUTTON STATES */
 .push-btn{position:relative;overflow:hidden}
 .push-btn.pushing{background:#1a5c2a!important;color:#22e07a!important;pointer-events:none}
 .push-btn.success{background:#0f3d1f!important;color:#22e07a!important;border:1px solid rgba(34,224,122,.4)!important}
 .push-btn.error{background:#3d0f0f!important;color:var(--red)!important;border:1px solid var(--red-border)!important}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--green);width:0;transition:width .3s}
-/* DEPLOY STATUS BANNER */
 .deploy-banner{display:none;align-items:center;gap:10px;padding:0 20px;background:#0f1a10;border-bottom:1px solid rgba(34,224,122,.2);height:36px;flex-shrink:0;font-size:12px}
 .deploy-banner.show{display:flex}.deploy-banner.err{background:#1a0f0f;border-color:rgba(255,59,59,.2)}
 .deploy-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -54,7 +52,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .ltag{background:var(--surface3);color:var(--muted);border-radius:4px;padding:1px 6px;font-size:10px}
 .sdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .da{background:var(--green);box-shadow:0 0 6px var(--green)}.dc{background:var(--muted)}.du{background:var(--amber)}
-.addbtn{margin:12px 14px;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;background:var(--red-dim);color:var(--red);border:1px dashed var(--red-border);border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;transition:all .15s;font-family:'Sora',sans-serif}
+.addbtn{margin:8px 14px 0;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;background:var(--red-dim);color:var(--red);border:1px dashed var(--red-border);border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;transition:all .15s;font-family:'Sora',sans-serif}
 .addbtn:hover{background:rgba(255,59,59,.2)}
 .pane{display:none}.pane.active{display:block}
 .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;gap:14px;color:var(--muted);text-align:center;padding:40px}
@@ -110,20 +108,16 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .nbody{flex:1;min-width:0}.ntitle{font-size:13px;font-weight:600;margin-bottom:5px;line-height:1.4}
 .ndesc{font-size:12px;color:var(--muted);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ndate{font-size:11px;color:var(--muted);margin-top:6px}.nact{display:flex;gap:5px;margin-top:8px}
-/* PUSH PAGE */
 .ppage{padding:32px 28px;max-width:700px}
 .push-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
 .push-card-title{font-size:17px;font-weight:700;margin-bottom:6px}
 .push-card-sub{font-size:12.5px;color:var(--muted);margin-bottom:24px;line-height:1.6}
-.file-checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.file-checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
 .file-row{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:9px}
 .file-icon{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .file-info{flex:1}.file-name{font-size:13px;font-weight:600}.file-desc{font-size:11.5px;color:var(--muted);margin-top:2px}
 .file-status{font-size:12px;font-weight:600;min-width:80px;text-align:right}
-.fs-pending{color:var(--muted)}
-.fs-pushing{color:var(--amber);display:flex;align-items:center;gap:6px;justify-content:flex-end}
-.fs-ok{color:var(--green)}
-.fs-err{color:var(--red)}
+.fs-pending{color:var(--muted)}.fs-pushing{color:var(--amber);display:flex;align-items:center;gap:6px;justify-content:flex-end}.fs-ok{color:var(--green)}.fs-err{color:var(--red)}
 .big-push-btn{width:100%;padding:15px;font-size:15px;font-weight:700;border-radius:10px;border:none;cursor:pointer;font-family:'Sora',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--red);color:#fff;transition:all .15s;position:relative;overflow:hidden}
 .big-push-btn:hover:not(:disabled){background:#e02020;transform:translateY(-1px)}
 .big-push-btn:disabled{opacity:.7;cursor:not-allowed;transform:none}
@@ -141,26 +135,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .step-num{width:24px;height:24px;border-radius:50%;background:var(--blue-dim);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
 .step-text{font-size:12.5px;line-height:1.6;color:var(--text)}
 .step-text code{background:var(--surface3);padding:1px 6px;border-radius:4px;font-family:'Courier New',monospace;font-size:12px;color:var(--amber)}
-.cfg-ok{display:none;align-items:center;gap:8px;padding:10px 14px;background:var(--green-dim);border:1px solid rgba(34,224,122,.25);border-radius:8px;font-size:12.5px;color:var(--green);margin-bottom:16px}
-.cfg-ok.show{display:flex}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}.overlay.show{display:flex}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;width:100%;max-width:560px;max-height:88vh;overflow-y:auto}.modal::-webkit-scrollbar{width:4px}.modal::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px}
 .mh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border)}.mt{font-size:16px;font-weight:700}
 .mb{padding:22px;display:flex;flex-direction:column;gap:15px}.mf{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
 .xbtn{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:5px;display:flex}.xbtn:hover{background:var(--surface2);color:var(--text)}
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:13px;z-index:900;box-shadow:0 6px 24px rgba(0,0,0,.5);transform:translateY(70px);opacity:0;transition:all .22s;pointer-events:none}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:13px;z-index:9000;box-shadow:0 6px 24px rgba(0,0,0,.5);transform:translateY(70px);opacity:0;transition:all .22s;pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1}.tok{border-color:rgba(34,224,122,.35);color:var(--green)}.terr{border-color:var(--red-border);color:var(--red)}
 .flex{display:flex;align-items:center}.gap8{gap:8px}.mla{margin-left:auto}
 .emrow td{text-align:center;padding:32px;color:var(--muted);font-size:12.5px}
 details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;list-style:none;display:flex;align-items:center;gap:6px;user-select:none}
-/* DRAG TO REORDER */
 .iditem{cursor:grab;user-select:none;transition:opacity .15s,background .15s}
 .iditem.dragging{opacity:.4;background:var(--surface3)}
 .iditem.drag-over{background:rgba(124,92,252,.15);border-color:rgba(124,92,252,.4)}
 .drag-handle{color:var(--muted);display:flex;align-items:center;flex-shrink:0;cursor:grab;padding:0 4px 0 0}
 .drag-handle svg{width:12px;height:12px}
-/* STATUS TOGGLE */
 .status-toggle{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:none;transition:all .15s;font-family:"Sora",sans-serif}
 .st-airing{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,224,122,.25)}
 .st-airing:hover{background:rgba(34,224,122,.2)}
@@ -169,9 +159,22 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
 .st-aired{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
 .st-upcoming{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,166,35,.25)}
 .st-upcoming:hover{background:rgba(245,166,35,.2)}
-/* DUPLICATE WARNING */
 .dup-warn{display:none;align-items:center;gap:7px;padding:8px 12px;background:rgba(252,188,92,.1);border:1px solid rgba(252,188,92,.3);border-radius:7px;font-size:12px;color:var(--amber);margin-top:6px}
 .dup-warn.show{display:flex}
+/* PROGRESS BAR IN SIDEBAR */
+.ep-progress-wrap{margin-top:5px;background:var(--surface3);border-radius:3px;height:3px;overflow:hidden}
+.ep-progress-fill{height:100%;border-radius:3px;transition:width .3s}
+.ep-progress-label{font-size:10px;color:var(--muted);margin-top:2px}
+/* BULK DELETE BAR */
+.bulk-bar{display:none;margin-top:12px;padding:10px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;align-items:center;gap:10px}
+.bulk-bar.show{display:flex}
+/* KEYBOARD SHORTCUT PILLS */
+.kbd{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10.5px;color:var(--muted)}
+/* AUTOSAVE INDICATOR */
+#autosave-ind{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(34,224,122,.12);border:1px solid rgba(34,224,122,.3);color:var(--green);padding:5px 14px;border-radius:20px;font-size:11.5px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
+/* JUMP INPUT VALID/INVALID */
+.jump-valid{border-color:rgba(34,224,122,.6)!important}
+.jump-invalid{border-color:rgba(255,59,59,.6)!important}
 </style>
 </head>
 <body>
@@ -180,14 +183,32 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
 <div class="topbar">
   <div class="logo">&#9670; AnimeBloom Admin</div>
   <div class="main-tabs">
-    <button class="mtab active" onclick="sw('episodes')" id="tab-episodes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>Episodes</button>
-    <button class="mtab" onclick="sw('config')" id="tab-config"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Homepage</button>
-    <button class="mtab" onclick="sw('schedule')" id="tab-schedule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule</button>
-    <button class="mtab" onclick="sw('news')" id="tab-news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>News</button>
-    <button class="mtab" onclick="sw('push')" id="tab-push"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>Push to Site</button>
-    <button class="mtab" onclick="sw('preview')" id="tab-preview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Site Preview</button>
+    <button class="mtab active" onclick="sw('episodes')" id="tab-episodes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>Episodes
+    </button>
+    <button class="mtab" onclick="sw('config')" id="tab-config">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Homepage
+    </button>
+    <button class="mtab" onclick="sw('schedule')" id="tab-schedule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule
+    </button>
+    <button class="mtab" onclick="sw('news')" id="tab-news">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>News
+    </button>
+    <button class="mtab" onclick="sw('push')" id="tab-push">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>Push to Site
+    </button>
+    <button class="mtab" onclick="sw('preview')" id="tab-preview">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Site Preview
+    </button>
   </div>
   <div class="tbr">
+    <!-- KEYBOARD SHORTCUTS HINT -->
+    <div style="font-size:10.5px;color:var(--muted);display:flex;gap:6px;align-items:center" title="Keyboard shortcuts">
+      <span class="kbd">Ctrl+S</span><span style="color:var(--muted)">push</span>
+      <span class="kbd">Ctrl+F</span><span style="color:var(--muted)">search</span>
+      <span class="kbd">Ctrl+N</span><span style="color:var(--muted)">add</span>
+    </div>
     <div class="upill" id="upill"><span></span>Unsaved changes</div>
     <button class="btn btn-green btn-sm push-btn" id="quick-push-btn" onclick="doPush()" title="Push all changes to live site">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
@@ -204,77 +225,141 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <span style="margin-left:auto;font-size:11px;color:var(--muted)" id="deploy-time"></span>
 </div>
 
+<!-- AUTOSAVE INDICATOR -->
+<div id="autosave-ind"></div>
+
 <div class="layout">
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sb-head">
-      <div class="sb-top"><span class="sb-lbl">Anime Library</span><span class="cbadge" id="acnt">0</span></div>
-      <div class="sw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" class="si" placeholder="Search anime..." oninput="filterList(this.value)" id="sinput"></div>
+      <div class="sb-top">
+        <span class="sb-lbl">Anime Library</span>
+        <span class="cbadge" id="acnt">0</span>
+      </div>
+      <!-- SEARCH -->
+      <div class="sw">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="si" placeholder="Search anime..." oninput="filterList(this.value)" id="sinput">
+      </div>
+      <!-- JUMP TO ID -->
+      <div class="sw" style="margin-top:8px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+         style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted);pointer-events:none">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        <input type="text" class="si" placeholder="Jump to ID..." id="jump-input"
+         oninput="jumpToId(this.value)"
+         style="font-family:'Courier New',monospace;font-size:11.5px">
+      </div>
     </div>
+
     <div class="alist" id="alist"></div>
-    <button class="addbtn" onclick="scanAllDupes()" style="background:rgba(255,59,59,.06);color:var(--red)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Scan for Duplicate Links</button>
-    <button class="addbtn" onclick="openAddSM()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add New Anime</button>
+
+    <!-- SCAN BUTTONS -->
+    <button class="addbtn" onclick="scanAllDupes()" style="background:rgba(255,59,59,.06);color:var(--red)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>Scan Duplicate Links
+    </button>
+    <button class="addbtn" onclick="scanMissingData()" style="background:rgba(77,166,255,.06);color:var(--blue)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>Scan Missing Data
+    </button>
+    <button class="addbtn" onclick="openAddSM()" style="margin-bottom:12px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>Add New Anime
+    </button>
   </div>
 
   <!-- PANEL -->
   <div class="panel">
-    <!-- EPISODES -->
+
+    <!-- EPISODES PANE -->
     <div class="pane active" id="pane-episodes">
-      <div class="welcome" id="epw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg><h2>Select an anime</h2><p style="font-size:12.5px;color:var(--muted)">Pick from the sidebar or add new</p></div>
+      <div class="welcome" id="epw">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/>
+        </svg>
+        <h2>Select an anime</h2>
+        <p style="font-size:12.5px;color:var(--muted)">Pick from the sidebar or add new</p>
+      </div>
       <div id="epd"></div>
     </div>
 
-    <!-- HOMEPAGE CONFIG -->
+    <!-- HOMEPAGE CONFIG PANE -->
     <div class="pane" id="pane-config">
       <div class="cpage">
-        <div style="margin-bottom:20px"><div style="font-size:18px;font-weight:700">Homepage Config</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Control which anime appear in each section — saved to config.js on push</div></div>
+        <div style="margin-bottom:20px">
+          <div style="font-size:18px;font-weight:700">Homepage Config</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:3px">Control which anime appear in each section — saved to config.js on push</div>
+        </div>
         <div class="cgrid">
-          <div class="ccard"><div class="ccard-h"><div><div class="ccard-t">&#127909; Hero Slider</div><div class="ccard-s">Top banner — 5 to 10 items</div></div><span class="cbadge" id="hcnt">0</span></div><div class="ccard-b"><div class="idlist" id="hlist"></div><div class="idar"><select id="hsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('h')">+ Add</button></div></div></div>
-          <div class="ccard"><div class="ccard-h"><div><div class="ccard-t">&#10024; Newly Added</div><div class="ccard-s">Homepage newly added row</div></div><span class="cbadge" id="ncnt">0</span></div><div class="ccard-b"><div class="idlist" id="nlist"></div><div class="idar"><select id="nsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('n')">+ Add</button></div></div></div>
-          <div class="ccard"><div class="ccard-h"><div><div class="ccard-t">&#11088; Recommended</div><div class="ccard-s">Recommended for you section</div></div><span class="cbadge" id="rcnt">0</span></div><div class="ccard-b"><div class="idlist" id="rlist"></div><div class="idar"><select id="rsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('r')">+ Add</button></div></div></div>
-          <div class="ccard"><div class="ccard-h"><div><div class="ccard-t">&#128293; Trending</div><div class="ccard-s">Library page trending row</div></div><span class="cbadge" id="tcnt">0</span></div><div class="ccard-b"><div class="idlist" id="tlist"></div><div class="idar"><select id="tsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('t')">+ Add</button></div></div></div>
+          <div class="ccard">
+            <div class="ccard-h"><div><div class="ccard-t">&#127909; Hero Slider</div><div class="ccard-s">Top banner — 5 to 10 items</div></div><span class="cbadge" id="hcnt">0</span></div>
+            <div class="ccard-b"><div class="idlist" id="hlist"></div><div class="idar"><select id="hsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('h')">+ Add</button></div></div>
+          </div>
+          <div class="ccard">
+            <div class="ccard-h"><div><div class="ccard-t">&#10024; Newly Added</div><div class="ccard-s">Homepage newly added row</div></div><span class="cbadge" id="ncnt">0</span></div>
+            <div class="ccard-b"><div class="idlist" id="nlist"></div><div class="idar"><select id="nsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('n')">+ Add</button></div></div>
+          </div>
+          <div class="ccard">
+            <div class="ccard-h"><div><div class="ccard-t">&#11088; Recommended</div><div class="ccard-s">Recommended for you section</div></div><span class="cbadge" id="rcnt">0</span></div>
+            <div class="ccard-b"><div class="idlist" id="rlist"></div><div class="idar"><select id="rsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('r')">+ Add</button></div></div>
+          </div>
+          <div class="ccard">
+            <div class="ccard-h"><div><div class="ccard-t">&#128293; Trending</div><div class="ccard-s">Library page trending row</div></div><span class="cbadge" id="tcnt">0</span></div>
+            <div class="ccard-b"><div class="idlist" id="tlist"></div><div class="idar"><select id="tsel"><option value="">— Add anime —</option></select><button class="btn btn-ghost btn-sm" onclick="addL('t')">+ Add</button></div></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SCHEDULE -->
+    <!-- SCHEDULE PANE -->
     <div class="pane" id="pane-schedule">
       <div class="spage">
-        <div class="flex gap8" style="margin-bottom:20px"><div><div style="font-size:18px;font-weight:700">Airing Schedule</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Weekly schedule — saved to schedule-data.js on push</div></div><div class="mla"><button class="btn btn-red btn-sm" onclick="openSM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Entry</button></div></div>
+        <div class="flex gap8" style="margin-bottom:20px">
+          <div><div style="font-size:18px;font-weight:700">Airing Schedule</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Weekly schedule — saved to schedule-data.js on push</div></div>
+          <div class="mla"><button class="btn btn-red btn-sm" onclick="openSM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Entry</button></div>
+        </div>
         <div id="stbl"></div>
       </div>
     </div>
 
-    <!-- NEWS -->
+    <!-- NEWS PANE -->
     <div class="pane" id="pane-news">
       <div class="spage">
-        <div class="flex gap8" style="margin-bottom:20px"><div><div style="font-size:18px;font-weight:700">News & Announcements</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Notices saved inside schedule-data.js on push</div></div><div class="mla"><button class="btn btn-red btn-sm" onclick="openNM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add News</button></div></div>
+        <div class="flex gap8" style="margin-bottom:20px">
+          <div><div style="font-size:18px;font-weight:700">News &amp; Announcements</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Notices saved inside schedule-data.js on push</div></div>
+          <div class="mla"><button class="btn btn-red btn-sm" onclick="openNM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add News</button></div>
+        </div>
         <div id="nlst"></div>
       </div>
     </div>
 
-    <!-- PUSH TO SITE -->
+    <!-- PUSH TO SITE PANE -->
     <div class="pane" id="pane-push">
       <div class="ppage">
         <div style="font-size:22px;font-weight:700;margin-bottom:6px">Push to Site</div>
         <div style="font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7">Make your changes, then click the button below. All 4 files get pushed to GitHub and Vercel auto-deploys your site in about 30 seconds.</div>
 
-        <!-- SETUP GUIDE -->
         <div class="setup-card" id="setup-guide">
           <div class="setup-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Setup — Vercel Environment Variables</div>
           <div class="setup-steps">
             <div class="setup-step"><div class="step-num">1</div><div class="step-text">Go to <strong>github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</strong> → Generate new token. Select scope: <code>repo</code>. Copy the token.</div></div>
-            <div class="setup-step"><div class="step-num">2</div><div class="step-text">Go to <strong>Vercel → Your Project → Settings → Environment Variables</strong> and add all four:<br><br><code>GITHUB_TOKEN</code> = your token<br><code>GITHUB_OWNER</code> = your exact GitHub username<br><code>GITHUB_REPO</code> = your exact repo name<br><code>GITHUB_BRANCH</code> = <code>main</code> or <code>master</code></div></div>
-            <div class="setup-step"><div class="step-num">3</div><div class="step-text">Redeploy once from Vercel dashboard so env vars take effect, then use <strong>Test Connection</strong> below to verify everything is working.</div></div>
+            <div class="setup-step"><div class="step-num">2</div><div class="step-text">Go to <strong>Vercel → Your Project → Settings → Environment Variables</strong> and add:<br><br><code>GITHUB_TOKEN</code> = your token<br><code>GITHUB_OWNER</code> = your exact GitHub username<br><code>GITHUB_REPO</code> = your exact repo name<br><code>GITHUB_BRANCH</code> = <code>main</code> or <code>master</code></div></div>
+            <div class="setup-step"><div class="step-num">3</div><div class="step-text">Redeploy once from Vercel dashboard so env vars take effect, then use <strong>Test Connection</strong> below to verify.</div></div>
           </div>
         </div>
 
-        <!-- FREEIMAGE API KEY SETTINGS -->
+        <!-- FREEIMAGE API KEY -->
         <div style="background:var(--surface);border:1px solid rgba(77,166,255,.18);border-radius:12px;padding:18px 20px;margin-bottom:20px">
           <div style="font-size:14px;font-weight:700;margin-bottom:4px;color:var(--blue)">&#128247; Image Upload Settings</div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6">
-            Get a free API key from <a href="https://freeimage.host/page/api" target="_blank" style="color:var(--blue)">freeimage.host/page/api</a> — sign in → Account Settings → API key. Images are uploaded directly from your browser.
-          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6">Get a free API key from <a href="https://freeimage.host/page/api" target="_blank" style="color:var(--blue)">freeimage.host/page/api</a></div>
           <div style="display:flex;gap:10px;align-items:flex-end">
             <div style="flex:1">
               <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);display:block;margin-bottom:7px">freeimage.host API Key</label>
@@ -284,14 +369,13 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
             <button class="btn btn-ghost btn-sm" onclick="testFreeimgKey()" id="test-img-btn" style="flex-shrink:0;margin-bottom:1px">Test</button>
           </div>
           <div id="freeimg-key-status" style="margin-top:10px;font-size:12px;display:none"></div>
-          <!-- JSON LOG -->
           <div style="margin-top:16px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
               <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">API Response Log</span>
               <button class="btn btn-ghost btn-sm" onclick="g('img-json-log').innerHTML='';g('img-json-log').style.display='none'" style="padding:3px 8px;font-size:11px">Clear</button>
             </div>
             <div id="img-json-log" style="display:none;background:#080910;border:1px solid var(--border);border-radius:8px;padding:14px;max-height:260px;overflow-y:auto;font-family:'Courier New',monospace">
-              <div style="color:var(--muted);font-size:12px">No requests yet — upload an image or click Test to see the response here.</div>
+              <div style="color:var(--muted);font-size:12px">No requests yet.</div>
             </div>
           </div>
         </div>
@@ -310,10 +394,8 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
           <div class="push-card-title">Files that will be updated</div>
           <div class="push-card-sub">All 4 files are pushed in a single operation. Vercel detects the GitHub commit and auto-deploys.</div>
 
-          <!-- NEWLY ADDED AUTO-UPDATE PREVIEW -->
           <div id="newly-added-preview" style="display:none;background:rgba(34,224,122,.07);border:1px solid rgba(34,224,122,.2);border-radius:8px;padding:12px 14px;margin-bottom:14px;color:var(--green)"></div>
 
-          <!-- SELECT ALL ROW -->
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding:0 4px">
             <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:var(--muted);font-weight:500">
               <input type="checkbox" id="chk-all" checked onchange="toggleAllFiles(this.checked)" style="width:auto;accent-color:var(--red)"> Select / Deselect All
@@ -321,31 +403,32 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
             <span style="font-size:11px;color:var(--muted)" id="selected-count">4 files selected</span>
           </div>
           <div class="file-checklist">
-            <label class="file-row" style="cursor:pointer" onclick="toggleFile('chk-data')">
+            <label class="file-row" style="cursor:pointer">
               <input type="checkbox" id="chk-data" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
               <div class="file-icon" style="background:rgba(255,59,59,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
               <div class="file-info"><div class="file-name">data.js</div><div class="file-desc">All anime entries + episode download links</div></div>
               <div class="file-status fs-pending" id="fs-data">—</div>
             </label>
-            <label class="file-row" style="cursor:pointer" onclick="toggleFile('chk-config')">
+            <label class="file-row" style="cursor:pointer">
               <input type="checkbox" id="chk-config" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
               <div class="file-icon" style="background:rgba(77,166,255,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
               <div class="file-info"><div class="file-name">config.js</div><div class="file-desc">Hero slider, newly added, recommended, trending</div></div>
               <div class="file-status fs-pending" id="fs-config">—</div>
             </label>
-            <label class="file-row" style="cursor:pointer" onclick="toggleFile('chk-sched')">
+            <label class="file-row" style="cursor:pointer">
               <input type="checkbox" id="chk-sched" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
               <div class="file-icon" style="background:rgba(245,166,35,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
               <div class="file-info"><div class="file-name">schedule-data.js</div><div class="file-desc">Weekly schedule + news announcements</div></div>
               <div class="file-status fs-pending" id="fs-sched">—</div>
             </label>
-            <label class="file-row" style="cursor:pointer" onclick="toggleFile('chk-meta')">
+            <label class="file-row" style="cursor:pointer">
               <input type="checkbox" id="chk-meta" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
               <div class="file-icon" style="background:rgba(34,224,122,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
               <div class="file-info"><div class="file-name">anime-meta.json</div><div class="file-desc">SEO metadata — auto-generated from data.js</div></div>
               <div class="file-status fs-pending" id="fs-meta">—</div>
             </label>
           </div>
+
           <!-- COMMIT MESSAGE -->
           <div style="margin-bottom:14px">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
@@ -373,12 +456,10 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
           <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6">Save a full snapshot of all your data locally. Restore it anytime if something goes wrong.</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
             <button class="btn btn-ghost btn-sm" onclick="doBackup()">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Backup
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Backup
             </button>
             <label class="btn btn-ghost btn-sm" style="cursor:pointer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Restore from Backup
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Restore from Backup
               <input type="file" accept=".json" onchange="doRestore(event)" style="display:none">
             </label>
             <span style="font-size:11px;color:var(--muted)" id="last-backup-time"></span>
@@ -394,7 +475,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   </div>
 </div>
 
-<!-- SITE PREVIEW OVERLAY (fullscreen) -->
+<!-- SITE PREVIEW OVERLAY -->
 <div id="preview-overlay" style="display:none;position:fixed;inset:0;z-index:300;background:var(--bg);flex-direction:column">
   <div style="height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0">
     <div style="font-size:13px;font-weight:600">Site Preview</div>
@@ -403,21 +484,11 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <span id="preview-url-display" style="font-size:12px;color:var(--muted);font-family:'Courier New',monospace;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
     </div>
     <div style="display:flex;gap:6px;margin-left:auto">
-      <button class="btn btn-ghost btn-sm" onclick="reloadPreview()" title="Reload">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="23,4 23,11 16,11"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 11"/></svg>Reload
-      </button>
-      <button class="btn btn-ghost btn-sm" onclick="openInTab()" title="Open in new tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>New Tab
-      </button>
-      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('mobile')" id="btn-mobile" title="Mobile view">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      </button>
-      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('desktop')" id="btn-desktop" title="Desktop view">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </button>
-      <button class="btn btn-danger btn-sm" onclick="closePreview()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close
-      </button>
+      <button class="btn btn-ghost btn-sm" onclick="reloadPreview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="23,4 23,11 16,11"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 11"/></svg>Reload</button>
+      <button class="btn btn-ghost btn-sm" onclick="openInTab()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>New Tab</button>
+      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('mobile')" id="btn-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></button>
+      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('desktop')" id="btn-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></button>
+      <button class="btn btn-danger btn-sm" onclick="closePreview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
     </div>
   </div>
   <div style="flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1a1a2e;padding:0" id="preview-frame-wrap">
@@ -425,7 +496,8 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   </div>
 </div>
 
-<!-- MODALS (series, schedule, news) -->
+<!-- MODALS -->
+<!-- Add/Edit Anime Modal -->
 <div class="overlay" id="smx"><div class="modal">
   <div class="mh"><span class="mt" id="smxt">Add New Anime</span><button class="xbtn" onclick="cm('smx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="smei">
@@ -443,24 +515,19 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <div class="fg"><label class="fl">Category</label><select id="smcat"><option value="action">Action</option><option value="adventure">Adventure</option><option value="romance">Romance</option><option value="isekai">Isekai</option><option value="comedy">Comedy</option><option value="drama">Drama</option><option value="movie">Movie</option></select></div>
       <div class="fg full"><label class="fl">Genres (comma separated)</label><input type="text" id="smg" placeholder="Action, Fantasy, Adventure"></div>
       <div class="fg full">
-          <label class="fl" style="display:flex;align-items:center;justify-content:space-between">
-            Thumbnail
-            <span id="smth-upload-status" style="font-size:10.5px;color:var(--muted)"></span>
-          </label>
-          <div style="display:flex;gap:8px;align-items:flex-start">
-            <div style="flex:1;display:flex;flex-direction:column;gap:6px">
-              <input type="url" id="smth" placeholder="https://... (paste URL or upload below)" oninput="previewThumb('smth','smth-preview')">
-              <div id="smth-preview" style="display:none;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border);flex-shrink:0">
-                <img id="smth-preview-img" style="width:100%;height:100%;object-fit:cover">
-              </div>
-            </div>
-            <label id="smth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0;margin-top:1px" title="Upload image to freeimage.host">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              <span id="smth-upload-label">Upload</span>
-              <input type="file" accept="image/*" onchange="uploadThumb(event,'smth','smth-upload-btn','smth-upload-label','smth-upload-status','smth-preview','smth-preview-img')" style="display:none">
-            </label>
+        <label class="fl" style="display:flex;align-items:center;justify-content:space-between">Thumbnail<span id="smth-upload-status" style="font-size:10.5px;color:var(--muted)"></span></label>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+            <input type="url" id="smth" placeholder="https://... (paste URL or upload below)" oninput="previewThumb('smth','smth-preview')">
+            <div id="smth-preview" style="display:none;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border);flex-shrink:0"><img id="smth-preview-img" style="width:100%;height:100%;object-fit:cover"></div>
           </div>
+          <label id="smth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0;margin-top:1px" title="Upload image to freeimage.host">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="smth-upload-label">Upload</span>
+            <input type="file" accept="image/*" onchange="uploadThumb(event,'smth','smth-upload-btn','smth-upload-label','smth-upload-status','smth-preview','smth-preview-img')" style="display:none">
+          </label>
         </div>
+      </div>
       <div class="fg full"><label class="fl">Description</label><textarea id="smde" placeholder="Anime description..."></textarea></div>
       <div class="fg"><label class="fl" style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="smrec"> Mark as Recommended</label></div>
     </div>
@@ -468,6 +535,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <div class="mf"><button class="btn btn-ghost" onclick="cm('smx')">Cancel</button><button class="btn btn-red" onclick="saveSeries()">Save Anime</button></div>
 </div></div>
 
+<!-- Schedule Modal -->
 <div class="overlay" id="scmx"><div class="modal" style="max-width:460px">
   <div class="mh"><span class="mt" id="scmxt">Add Schedule Entry</span><button class="xbtn" onclick="cm('scmx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="scei">
@@ -483,28 +551,24 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <div class="mf"><button class="btn btn-ghost" onclick="cm('scmx')">Cancel</button><button class="btn btn-red" onclick="saveSched()">Save Entry</button></div>
 </div></div>
 
+<!-- News Modal -->
 <div class="overlay" id="nmx"><div class="modal" style="max-width:500px">
   <div class="mh"><span class="mt" id="nmxt">Add News</span><button class="xbtn" onclick="cm('nmx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="nei">
     <div class="fg"><label class="fl">Title *</label><input type="text" id="nt" placeholder="e.g. Episode Delay Notice"></div>
     <div class="fg"><label class="fl">Description *</label><textarea id="nd" style="min-height:100px" placeholder="Announcement details..."></textarea></div>
     <div class="fg">
-    <label class="fl" style="display:flex;align-items:center;justify-content:space-between">
-      Thumbnail URL
-      <span id="nth-upload-status" style="font-size:10.5px;color:var(--muted)"></span>
-    </label>
-    <div style="display:flex;gap:8px">
-      <input type="url" id="nth" placeholder="https://... or upload →" style="flex:1" oninput="previewThumb('nth','nth-preview')">
-      <label id="nth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0" title="Upload to freeimage.host">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        <span id="nth-upload-label">Upload</span>
-        <input type="file" accept="image/*" onchange="uploadThumb(event,'nth','nth-upload-btn','nth-upload-label','nth-upload-status','nth-preview','nth-preview-img')" style="display:none">
-      </label>
+      <label class="fl" style="display:flex;align-items:center;justify-content:space-between">Thumbnail URL<span id="nth-upload-status" style="font-size:10.5px;color:var(--muted)"></span></label>
+      <div style="display:flex;gap:8px">
+        <input type="url" id="nth" placeholder="https://... or upload →" style="flex:1" oninput="previewThumb('nth','nth-preview')">
+        <label id="nth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0" title="Upload to freeimage.host">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="nth-upload-label">Upload</span>
+          <input type="file" accept="image/*" onchange="uploadThumb(event,'nth','nth-upload-btn','nth-upload-label','nth-upload-status','nth-preview','nth-preview-img')" style="display:none">
+        </label>
+      </div>
+      <div id="nth-preview" style="display:none;margin-top:6px;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border)"><img id="nth-preview-img" style="width:100%;height:100%;object-fit:cover"></div>
     </div>
-    <div id="nth-preview" style="display:none;margin-top:6px;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
-      <img id="nth-preview-img" style="width:100%;height:100%;object-fit:cover">
-    </div>
-  </div>
     <div class="fg"><label class="fl">Date</label><input type="date" id="ndt"></div>
   </div>
   <div class="mf"><button class="btn btn-ghost" onclick="cm('nmx')">Cancel</button><button class="btn btn-red" onclick="saveNews()">Save News</button></div>
@@ -517,6 +581,9 @@ let DB=[],cfg={h:[],n:[],r:[],t:[]},sched=[],news=[],cidx=null,editRow=null;
 let changelog=[];
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
+// ══════════════════════════════════════════
+// CHANGELOG & COMMIT
+// ══════════════════════════════════════════
 function logChange(msg){
   changelog.push(msg);
   updateCommitPreview();
@@ -540,18 +607,21 @@ function buildCommitMsg(){
   const newsChg=changelog.filter(c=>c.startsWith('NW')).length;
   const cfgChg=changelog.filter(c=>c.startsWith('CF')).length;
   const parts=[];
-  if(epAdded.length) parts.push('Add EP: '+[...new Set(epAdded)].slice(0,3).join(', ')+(epAdded.length>3?` +${epAdded.length-3} more`:''));
-  if(epEdited.length) parts.push('Edit EP: '+[...new Set(epEdited)].slice(0,2).join(', ')+(epEdited.length>2?` +${epEdited.length-2} more`:''));
-  if(epDeleted.length) parts.push('Del EP: '+[...new Set(epDeleted)].slice(0,2).join(', '));
-  if(animeAdded.length) parts.push('Add anime: '+animeAdded.slice(0,2).join(', '));
-  if(animeEdited.length) parts.push('Edit anime: '+animeEdited.slice(0,2).join(', '));
-  if(animeDeleted.length) parts.push('Del anime: '+animeDeleted.slice(0,2).join(', '));
-  if(schedChg) parts.push('Schedule: '+schedChg+' change'+(schedChg>1?'s':''));
-  if(newsChg) parts.push('News: '+newsChg+' change'+(newsChg>1?'s':''));
-  if(cfgChg) parts.push('Homepage config updated');
+  if(epAdded.length)parts.push('Add EP: '+[...new Set(epAdded)].slice(0,3).join(', ')+(epAdded.length>3?` +${epAdded.length-3} more`:''));
+  if(epEdited.length)parts.push('Edit EP: '+[...new Set(epEdited)].slice(0,2).join(', ')+(epEdited.length>2?` +${epEdited.length-2} more`:''));
+  if(epDeleted.length)parts.push('Del EP: '+[...new Set(epDeleted)].slice(0,2).join(', '));
+  if(animeAdded.length)parts.push('Add anime: '+animeAdded.slice(0,2).join(', '));
+  if(animeEdited.length)parts.push('Edit anime: '+animeEdited.slice(0,2).join(', '));
+  if(animeDeleted.length)parts.push('Del anime: '+animeDeleted.slice(0,2).join(', '));
+  if(schedChg)parts.push('Schedule: '+schedChg+' change'+(schedChg>1?'s':''));
+  if(newsChg)parts.push('News: '+newsChg+' change'+(newsChg>1?'s':''));
+  if(cfgChg)parts.push('Homepage config updated');
   return '[AnimeBloom Admin] '+parts.join(' · ');
 }
 
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
 function init(){
   if(typeof animeData!=='undefined') DB=JSON.parse(JSON.stringify(animeData));
   else{toast('data.js not found — open admin.html from your site folder','err');return;}
@@ -562,26 +632,37 @@ function init(){
   if(typeof scheduleData!=='undefined') sched=JSON.parse(JSON.stringify(scheduleData));
   if(typeof newsData!=='undefined') news=JSON.parse(JSON.stringify(newsData));
   rSidebar();rConfig();rSched();rNews();
-  g('smn').addEventListener('input',e=>{if(!g('smei').value) g('smid').value=e.target.value.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();});
+  g('smn').addEventListener('input',e=>{
+    if(!g('smei').value)
+      g('smid').value=e.target.value.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();
+  });
   updateCommitPreview();
   updateBackupTime();
   loadFreeimgKey();
   initPreviewUrl();
+  checkUrlHash();
+  checkAutosaveRestore();
+  startAutosave();
   toast('Loaded '+DB.length+' anime · ready','ok');
 }
 
+// ══════════════════════════════════════════
+// TAB SWITCHING
+// ══════════════════════════════════════════
 function sw(tab){
   document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
   g('tab-'+tab).classList.add('active');
-  const paneEl = g('pane-'+tab);
-  if(paneEl) paneEl.classList.add('active');
+  const paneEl=g('pane-'+tab);
+  if(paneEl)paneEl.classList.add('active');
   g('sidebar').classList.toggle('hidden',tab!=='episodes');
-  if(tab==='push') showNewlyAddedPreview();
-  if(tab==='preview'){ openPreview(); return; }
+  if(tab==='push')showNewlyAddedPreview();
+  if(tab==='preview'){openPreview();return;}
 }
 
-// ── SIDEBAR ──
+// ══════════════════════════════════════════
+// SIDEBAR
+// ══════════════════════════════════════════
 function rSidebar(f=''){
   const lo=f.toLowerCase();
   const fi=DB.map((a,i)=>({a,i})).filter(({a})=>!f||a.name.toLowerCase().includes(lo));
@@ -589,18 +670,75 @@ function rSidebar(f=''){
   if(!fi.length){g('alist').innerHTML='<div style="padding:24px;text-align:center;color:var(--muted);font-size:12px">No results</div>';return;}
   g('alist').innerHTML=fi.map(({a,i})=>{
     const ep=(a.downloadLinks||[]).length;
+    const total=a.episodes||0;
+    const pct=total>0?Math.min(100,Math.round((ep/total)*100)):0;
+    const barColor=pct===100?'var(--green)':pct>50?'var(--amber)':'var(--red)';
     const dc=a.status==='airing'?'da':a.status==='upcoming'?'du':'dc';
     const th=a.thumbnail?`<img class="ath" src="${esc(a.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';
-    return `<div class="aitem${cidx===i?' active':''}" onclick="selA(${i})">${th}<div class="athp" style="${a.thumbnail?'display:none':''}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="ainf"><div class="aname">${esc(a.name)}</div><div class="ameta"><span class="sdot ${dc}"></span><span class="eptag">${ep} ep</span><span class="ltag">${(a.language||'?').split(' ')[0]}</span></div></div></div>`;
+    const progressBar=total>0?`
+      <div class="ep-progress-wrap"><div class="ep-progress-fill" style="width:${pct}%;background:${barColor}"></div></div>
+      <div class="ep-progress-label">${ep}/${total} eps${pct===100?' ✓':''}</div>`:'';
+    return `<div class="aitem${cidx===i?' active':''}" onclick="selA(${i})">${th}
+      <div class="athp" style="${a.thumbnail?'display:none':''}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+      </div>
+      <div class="ainf">
+        <div class="aname">${esc(a.name)}</div>
+        <div class="ameta"><span class="sdot ${dc}"></span><span class="eptag">${ep} ep</span><span class="ltag">${(a.language||'?').split(' ')[0]}</span></div>
+        ${progressBar}
+      </div>
+    </div>`;
   }).join('');
 }
 function filterList(v){rSidebar(v);}
 
-// ── EPISODE DETAIL ──
-function selA(idx){cidx=idx;editRow=null;g('epw').style.display='none';rSidebar(g('sinput').value);rEpD(idx);}
+// ══════════════════════════════════════════
+// JUMP TO ID
+// ══════════════════════════════════════════
+function jumpToId(val){
+  const v=val.trim().toLowerCase();
+  const inp=g('jump-input');
+  if(!v){inp.className='si';return;}
+  const idx=DB.findIndex(a=>a.id.toLowerCase()===v||a.id.toLowerCase().includes(v));
+  if(idx===-1){
+    inp.classList.remove('jump-valid');
+    inp.classList.add('jump-invalid');
+    return;
+  }
+  inp.classList.remove('jump-invalid');
+  inp.classList.add('jump-valid');
+  g('sinput').value='';
+  selA(idx);
+  sw('episodes');
+  setTimeout(()=>{
+    const items=g('alist').querySelectorAll('.aitem');
+    if(items[idx])items[idx].scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+
+function checkUrlHash(){
+  const hash=window.location.hash.slice(1);
+  if(!hash)return;
+  const idx=DB.findIndex(a=>a.id===hash);
+  if(idx!==-1){selA(idx);sw('episodes');}
+}
+
+// ══════════════════════════════════════════
+// SELECT ANIME
+// ══════════════════════════════════════════
+function selA(idx){
+  cidx=idx;editRow=null;
+  window.location.hash=DB[idx].id;
+  g('epw').style.display='none';
+  rSidebar(g('sinput').value);
+  rEpD(idx);
+}
+
+// ══════════════════════════════════════════
+// EPISODE DETAIL
+// ══════════════════════════════════════════
 function rEpD(idx){
   const a=DB[idx];const ep=(a.downloadLinks||[]).length;
-  const statusCycle={airing:'completed',completed:'upcoming',upcoming:'airing',aired:'airing'};
   const statusLabel={airing:'Airing',completed:'Completed',upcoming:'Upcoming',aired:'Aired'};
   const statusCls={airing:'st-airing',completed:'st-completed',upcoming:'st-upcoming',aired:'st-aired'};
   const sb=`<button class="status-toggle ${statusCls[a.status||'airing']}" onclick="quickToggleStatus(${idx})" title="Click to change status">
@@ -610,59 +748,277 @@ function rEpD(idx){
   </button>`;
   const th=a.thumbnail?`<img class="dcov" src="${esc(a.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';
   const genres=(a.genres||[]).map(g2=>`<span class="badge b-gray">${esc(g2)}</span>`).join('');
-  const rows=ep===0?`<tr class="emrow"><td colspan="3">No episodes yet</td></tr>`
+
+  const rows=ep===0
+    ?`<tr class="emrow"><td colspan="4">No episodes yet — add below</td></tr>`
     :(a.downloadLinks||[]).sort((a,b)=>a.episode-b.episode).map(dl=>`<tr id="epr-${dl.episode}">
+      <td style="text-align:center;width:36px">
+        <input type="checkbox" class="ep-chk" data-ep="${dl.episode}"
+         style="width:auto;accent-color:var(--red)" onchange="updateBulkBar(${idx})">
+      </td>
       <td><span class="epnum">EP ${dl.episode}</span></td>
-      <td style="max-width:360px"><span class="eplp" id="prev-${dl.episode}">${esc(dl.link)}</span><input type="text" class="epli" id="inp-${dl.episode}" value="${esc(dl.link)}"></td>
+      <td style="max-width:320px">
+        <span class="eplp" id="prev-${dl.episode}">${esc(dl.link)}</span>
+        <input type="text" class="epli" id="inp-${dl.episode}" value="${esc(dl.link)}">
+      </td>
       <td><div class="ra">
-        <button class="ib ibe" id="be-${dl.episode}" onclick="eRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        <button class="ib ibs" id="bs-${dl.episode}" onclick="svRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></button>
-        <button class="ib ibc" id="bc-${dl.episode}" onclick="cxRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-        <button class="ib ibd" onclick="delEp(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button>
-      </div></td></tr>`).join('');
+        <button class="ib ibe" id="be-${dl.episode}" onclick="eRow(${idx},${dl.episode})" title="Edit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="ib ibs" id="bs-${dl.episode}" onclick="svRow(${idx},${dl.episode})" title="Save">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+        </button>
+        <button class="ib ibc" id="bc-${dl.episode}" onclick="cxRow(${idx},${dl.episode})" title="Cancel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="ib ibd" onclick="delEp(${idx},${dl.episode})" title="Delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>
+        </button>
+      </div></td>
+    </tr>`).join('');
+
   g('epd').innerHTML=`<div class="detail">
-    <div class="dh">${th}<div class="dcovp" style="${a.thumbnail?'display:none':''}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
-      <div><div class="dname">${esc(a.name)}</div><div class="dbadges">${sb}<span class="badge b-blue">${esc(a.language||'')}</span><span class="badge b-gray">S${esc(a.season||'?')}</span>${genres}</div>
-      <div class="dact"><button class="btn btn-ghost btn-sm" onclick="openEditSM(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit Info</button>
-      <button class="btn btn-danger btn-sm" onclick="delSeries(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>Delete</button></div></div></div>
-    <div class="sec"><div class="sech"><span class="seclbl">Download Episodes</span><span class="cbadge">${ep} / ${a.episodes||'?'}</span></div>
-      <div style="overflow-x:auto"><table class="epta"><thead><tr><th width="70">Episode</th><th>Telegram Link</th><th width="120">Actions</th></tr></thead><tbody id="eptb">${rows}</tbody></table></div>
+    <div class="dh">
+      ${th}
+      <div class="dcovp" style="${a.thumbnail?'display:none':''}">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+      </div>
+      <div>
+        <div class="dname">${esc(a.name)}</div>
+        <div class="dbadges">
+          ${sb}
+          <span class="badge b-blue">${esc(a.language||'')}</span>
+          <span class="badge b-gray">S${esc(a.season||'?')}</span>
+          ${genres}
+        </div>
+        <div class="dact">
+          <button class="btn btn-ghost btn-sm" onclick="openEditSM(${idx})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit Info
+          </button>
+          <button class="btn btn-danger btn-sm" onclick="delSeries(${idx})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sech">
+        <span class="seclbl">Download Episodes</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="cbadge">${ep} / ${a.episodes||'?'}</span>
+          <button class="btn btn-ghost btn-sm" onclick="toggleAllEp(true)" title="Select all episodes" style="padding:3px 8px;font-size:11px">Select All</button>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto">
+        <table class="epta">
+          <thead><tr>
+            <th width="36"><input type="checkbox" id="chk-all-ep" onchange="toggleAllEp(this.checked)" style="width:auto;accent-color:var(--red)" title="Select all"></th>
+            <th width="70">Episode</th>
+            <th>Telegram Link</th>
+            <th width="120">Actions</th>
+          </tr></thead>
+          <tbody id="eptb">${rows}</tbody>
+        </table>
+      </div>
+
+      <!-- BULK DELETE BAR -->
+      <div class="bulk-bar" id="bulk-bar">
+        <span id="bulk-count" style="font-size:12.5px;font-weight:600;color:var(--red)">0 selected</span>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" onclick="clearEpSel()">Deselect All</button>
+          <button class="btn btn-danger btn-sm" onclick="bulkDeleteEp(${idx})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>Delete Selected
+          </button>
+        </div>
+      </div>
+
+      <!-- ADD EPISODE FORM -->
       <div class="aef">
         <div class="fg"><label class="fl">Episode #</label><input type="number" id="nen" value="${ep+1}" min="1" oninput="checkDupNum(${idx})"></div>
         <div class="fg"><label class="fl">Telegram Link</label><input type="url" id="nel" placeholder="https://t.me/AnimeBloom_Bot?start=..." oninput="checkDupLink(${idx})"></div>
-        <button class="btn btn-red" onclick="addEp(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add</button>
+        <button class="btn btn-red" onclick="addEp(${idx})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add
+        </button>
       </div>
-      <div class="dup-warn" id="dup-warn-num"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="dup-warn-msg"></span></div>
-      <div class="dup-warn" id="dup-warn-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="dup-warn-link-msg"></span></div>
-      <details style="margin-top:14px"><summary><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>Bulk Add Episodes</summary>
+
+      <div class="dup-warn" id="dup-warn-num">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="dup-warn-msg"></span>
+      </div>
+      <div class="dup-warn" id="dup-warn-link">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="dup-warn-link-msg"></span>
+      </div>
+
+      <!-- BULK ADD -->
+      <details style="margin-top:14px">
+        <summary>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>Bulk Add Episodes
+        </summary>
         <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
           <div class="fg"><label class="fl">Starting Episode #</label><input type="number" id="bst" placeholder="10" style="width:130px" min="1"></div>
           <div class="fg"><label class="fl">Paste links — one per line</label><textarea id="blk" placeholder="https://t.me/AnimeBloom_Bot?start=ABC&#10;https://t.me/AnimeBloom_Bot?start=DEF&#10;..." style="min-height:100px;font-size:12px;font-family:'Courier New',monospace"></textarea></div>
-          <button class="btn btn-ghost btn-sm" onclick="bulkAdd(${idx})" style="align-self:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7,16 3,12 7,8"/><polyline points="17,8 21,12 17,16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>Add All Episodes</button>
+          <button class="btn btn-ghost btn-sm" onclick="bulkAdd(${idx})" style="align-self:flex-start">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7,16 3,12 7,8"/><polyline points="17,8 21,12 17,16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>Add All Episodes
+          </button>
         </div>
       </details>
-    </div></div>`;
+    </div>
+  </div>`;
 }
-function eRow(ai,en){if(editRow!==null)cxRow(ai,editRow);editRow=en;g(`prev-${en}`).style.display='none';g(`inp-${en}`).style.display='block';g(`inp-${en}`).focus();g(`be-${en}`).style.display='none';g(`bs-${en}`).style.display='flex';g(`bc-${en}`).style.display='flex';}
+
+// ══════════════════════════════════════════
+// EPISODE ROW EDIT
+// ══════════════════════════════════════════
+function eRow(ai,en){
+  if(editRow!==null)cxRow(ai,editRow);
+  editRow=en;
+  g(`prev-${en}`).style.display='none';
+  g(`inp-${en}`).style.display='block';
+  g(`inp-${en}`).focus();
+  g(`be-${en}`).style.display='none';
+  g(`bs-${en}`).style.display='flex';
+  g(`bc-${en}`).style.display='flex';
+}
 function svRow(ai,en){
   const l=g(`inp-${en}`).value.trim();
   if(!l){toast('Empty link','err');return;}
   const dups=findDupLink(l,ai,en);
-if(dups.length){
-  const m=dups.map(d=>d.same
-    ?'Already used for Episode '+d.episode+' of this anime'
-    :'Already in "'+d.name+'" Episode '+d.episode
-  ).join('\n');
-  if(!confirm('Duplicate link detected:\n'+m+'\n\nSave anyway?'))return;
-}
+  if(dups.length){
+    const m=dups.map(d=>d.same
+      ?'Already used for Episode '+d.episode+' of this anime'
+      :'Already in "'+d.name+'" Episode '+d.episode
+    ).join('\n');
+    if(!confirm('Duplicate link detected:\n'+m+'\n\nSave anyway?'))return;
+  }
   const ep=DB[ai].downloadLinks.find(e=>e.episode===en);
   if(ep)ep.link=l;
   logChange('EP~EP'+en+' '+DB[ai].name);
-  editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');
+  editRow=null;
+  mu();rEpD(ai);toast(`EP ${en} updated`,'ok');
 }
-function cxRow(ai,en){editRow=null;g(`prev-${en}`).style.display='block';g(`inp-${en}`).style.display='none';g(`be-${en}`).style.display='flex';g(`bs-${en}`).style.display='none';g(`bc-${en}`).style.display='none';}
-function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
-function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
+function cxRow(ai,en){
+  editRow=null;
+  g(`prev-${en}`).style.display='block';
+  g(`inp-${en}`).style.display='none';
+  g(`be-${en}`).style.display='flex';
+  g(`bs-${en}`).style.display='none';
+  g(`bc-${en}`).style.display='none';
+}
+function delEp(ai,en){
+  if(!confirm(`Delete Episode ${en}?`))return;
+  logChange('EP-EP'+en+' '+DB[ai].name);
+  DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);
+  mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');
+}
+function addEp(ai){
+  const n=parseInt(g('nen').value),l=g('nel').value.trim();
+  if(!n||n<1){toast('Enter episode number','err');return;}
+  if(!l){toast('Paste the link','err');return;}
+  if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];
+  if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists — edit it in the table`,'err');return;}
+  DB[ai].downloadLinks.push({episode:n,link:l});
+  DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);
+  logChange('EP+EP'+n+' '+DB[ai].name);
+  mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;
+  rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');
+}
+
+// ══════════════════════════════════════════
+// BULK DELETE EPISODES
+// ══════════════════════════════════════════
+function toggleAllEp(checked){
+  document.querySelectorAll('.ep-chk').forEach(c=>c.checked=checked);
+  if(cidx!==null)updateBulkBar(cidx);
+}
+function updateBulkBar(ai){
+  const checked=document.querySelectorAll('.ep-chk:checked');
+  const bar=g('bulk-bar');
+  const cnt=g('bulk-count');
+  if(!bar)return;
+  if(checked.length>0){
+    bar.classList.add('show');
+    cnt.textContent=checked.length+' episode'+(checked.length>1?'s':'')+' selected';
+  }else{
+    bar.classList.remove('show');
+  }
+  const allChk=g('chk-all-ep');
+  const total=document.querySelectorAll('.ep-chk').length;
+  if(allChk){
+    allChk.indeterminate=checked.length>0&&checked.length<total;
+    allChk.checked=checked.length===total&&total>0;
+  }
+}
+function clearEpSel(){
+  document.querySelectorAll('.ep-chk').forEach(c=>c.checked=false);
+  if(cidx!==null)updateBulkBar(cidx);
+}
+function bulkDeleteEp(ai){
+  const checked=[...document.querySelectorAll('.ep-chk:checked')];
+  if(!checked.length)return;
+  const nums=checked.map(c=>parseInt(c.dataset.ep)).sort((a,b)=>a-b);
+  if(!confirm(`Delete ${nums.length} episode(s)?\nEP: ${nums.join(', ')}`))return;
+  DB[ai].downloadLinks=DB[ai].downloadLinks.filter(dl=>!nums.includes(dl.episode));
+  logChange('EP-'+nums.length+' episodes from '+DB[ai].name);
+  mu();rEpD(ai);rSidebar(g('sinput').value);
+  toast(nums.length+' episodes deleted','ok');
+}
+
+// ══════════════════════════════════════════
+// BULK ADD EPISODES
+// ══════════════════════════════════════════
+function bulkAdd(ai){
+  const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);
+  if(!st||st<1){toast('Enter starting episode','err');return;}
+  if(!ls.length){toast('Paste links','err');return;}
+  if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];
+  let ad=0,sk=0,xd=[];
+  ls.forEach((lk,i)=>{
+    const n=st+i;
+    if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}
+    const dups=findDupLink(lk,ai,null);
+    dups.forEach(d=>{
+      const label=d.same
+        ?'EP'+n+': link already used by EP'+d.episode+' of this anime'
+        :'EP'+n+': already in "'+d.name+'" EP'+d.episode;
+      xd.push(label);
+    });
+    DB[ai].downloadLinks.push({episode:n,link:lk});
+    ad++;
+  });
+  DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);
+  if(ad>0)logChange('EP+'+ad+' episodes for '+DB[ai].name);
+  mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);
+  if(xd.length){
+    toast('Added '+ad+' — '+xd.length+' duplicate(s) found!','err');
+    setTimeout(()=>alert('Duplicate links:\n\n'+xd.join('\n')+'\n\nCheck these carefully.'),300);
+  }else{
+    toast('Added '+ad+(sk?', skipped '+sk+' dupes':''),'ok');
+  }
+}
+
+// ══════════════════════════════════════════
+// DUPLICATE DETECTION — FIXED
+// ══════════════════════════════════════════
+
+// Returns ARRAY of all matches (not just first)
+function findDupLink(link,ai,skipEp){
+  if(!link||link.length<5)return[];
+  const results=[];
+  for(let i=0;i<DB.length;i++){
+    const a=DB[i];if(!a.downloadLinks)continue;
+    for(const dl of a.downloadLinks){
+      if(dl.link===link&&!(i===ai&&dl.episode===skipEp)){
+        results.push({animeIdx:i,name:a.name,episode:dl.episode,same:i===ai});
+      }
+    }
+  }
+  return results;
+}
+
+// Scan all anime for duplicate links — shows modal with Go → buttons
 function scanAllDupes(){
   const groups={};
   DB.forEach((a,ai)=>{
@@ -688,16 +1044,11 @@ function scanAllDupes(){
   ).join('');
   let modal=g('dupe-modal');
   if(!modal){
-    modal=document.createElement('div');
-    modal.id='dupe-modal';
-    modal.className='overlay';
+    modal=document.createElement('div');modal.id='dupe-modal';modal.className='overlay';
     modal.innerHTML=`<div class="modal" style="max-width:600px">
-      <div class="mh">
-        <span class="mt" id="dupe-modal-title"></span>
+      <div class="mh"><span class="mt" id="dupe-modal-title"></span>
         <button class="xbtn" onclick="cm('dupe-modal')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
       <div class="mb" id="dupe-modal-body" style="max-height:60vh;overflow-y:auto"></div>
@@ -709,701 +1060,26 @@ function scanAllDupes(){
   om('dupe-modal');
   toast(dups.length+' duplicate group(s) found','err');
 }
-  function bulkAdd(ai){
-  const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);
-  if(!st||st<1){toast('Enter starting episode','err');return;}
-  if(!ls.length){toast('Paste links','err');return;}
-  if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];
-  let ad=0,sk=0,xd=[];
-  ls.forEach((lk,i)=>{
-    const n=st+i;
-    if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}
-    const dups=findDupLink(lk,ai,null);
-dups.forEach(d=>{
-  const label=d.same
-    ?'EP'+n+': link already used by EP'+d.episode+' of this anime'
-    :'EP'+n+': already in "'+d.name+'" EP'+d.episode;
-  xd.push(label);
-});
-    DB[ai].downloadLinks.push({episode:n,link:lk});
-    ad++;
-  });
-  DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);
-  if(ad>0)logChange('EP+'+ad+' episodes for '+DB[ai].name);
-  mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);
-  if(xd.length){
-    toast('Added '+ad+' — '+xd.length+' cross-anime duplicate(s) found!','err');
-    setTimeout(()=>alert('Cross-anime duplicate links:\n\n'+xd.join('\n')+'\n\nCheck these carefully.'),300);
-  }else{
-    toast('Added '+ad+(sk?', skipped '+sk+' dupes':''),'ok');
-  }
-}
-// ── SERIES MODAL ──
-function openAddSM(){g('smei').value='';g('smxt').textContent='Add New Anime';['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;om('smx');}
-function openEditSM(idx){const a=DB[idx];g('smei').value=idx;g('smxt').textContent='Edit Anime Info';g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);}
-function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;
-if(ei===''){
-  const idExists=DB.find(a=>a.id===sid);
-  if(idExists){toast('ID "'+sid+'" already exists — change the slug','err');return;}
-}
-const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
-function delSeries(idx){if(!confirm(`Delete "${DB[idx].name}" + all episodes?`))return;logChange('A-'+DB[idx].name);DB.splice(idx,1);cidx=null;mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();toast('Deleted','err');}
 
-// ── CONFIG ──
-const CMAP={h:{k:'h',cnt:'hcnt',list:'hlist',sel:'hsel'},n:{k:'n',cnt:'ncnt',list:'nlist',sel:'nsel'},r:{k:'r',cnt:'rcnt',list:'rlist',sel:'rsel'},t:{k:'t',cnt:'tcnt',list:'tlist',sel:'tsel'}};
-function rConfig(){Object.keys(CMAP).forEach(k=>rCList(k));rfCSel();}
-function rCList(k){
-  const ids=cfg[k];const el=g(CMAP[k].list);
-  g(CMAP[k].cnt).textContent=ids.length;
-  if(ids.length===0){el.innerHTML='<div style="color:var(--muted);font-size:12px;padding:8px 0;text-align:center">Empty</div>';return;}
-  el.innerHTML=ids.map((aid,i)=>{
-    const a=DB.find(x=>x.id===aid);
-    return`<div class="iditem" draggable="true" data-key="${k}" data-idx="${i}"
-      ondragstart="dragStart(event,'${k}',${i})"
-      ondragover="dragOver(event)"
-      ondragleave="dragLeave(event)"
-      ondrop="dragDrop(event,'${k}',${i})"
-      ondragend="dragEnd(event)">
-      <div class="drag-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></div>
-      <div style="flex:1;min-width:0"><div class="idname">${esc(a?a.name:aid)}</div><div class="idid">${esc(aid)}</div></div>
-      <button class="iddel" onclick="rmL('${k}',${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>`;
-  }).join('');
-}
-function rfCSel(){['h','n','r','t'].forEach(k=>{const sel=g(CMAP[k].sel);sel.innerHTML='<option value="">— Add anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');});const sc=g('scan');if(sc){const cv=sc.value;sc.innerHTML='<option value="">— Select anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}" ${cv===a.id?'selected':''}>${esc(a.name)}</option>`).join('');}}
-function addL(k){const v=g(CMAP[k].sel).value;if(!v){toast('Select anime first','err');return;}if(cfg[k].includes(v)){toast('Already in list','err');return;}cfg[k].push(v);logChange('CF'+k+' updated');mu();rCList(k);g(CMAP[k].sel).value='';}
-function rmL(k,i){cfg[k].splice(i,1);mu();rCList(k);}
-
-// ── SCHEDULE ──
-function rSched(){const wrap=g('stbl');if(!sched.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No entries yet</div>';return;}wrap.innerHTML=DAYS.map(day=>{const ents=sched.filter(s=>s.day===day);if(!ents.length)return'';const rows=ents.map(s=>{const gi=sched.indexOf(s);const an=DB.find(x=>x.id===s.animeId);return`<tr><td style="font-weight:500">${esc(an?an.name:s.animeId)}</td><td><span class="epnum">EP ${s.episode}</span></td><td><span class="tbadge">${esc(s.airTimeDisplay||s.airTime)}</span></td><td style="color:var(--muted);font-size:12px">${s.releaseDate||'—'}</td><td><div class="ra"><button class="ib ibe" onclick="openSM(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="ib ibd" onclick="delSched(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button></div></td></tr>`;}).join('');return`<div class="dgrp"><div class="dlbl">${day}</div><table class="sta"><thead><tr><th>Anime</th><th>Episode</th><th>Time</th><th>Date</th><th width="80">Actions</th></tr></thead><tbody>${rows}</tbody></table></div>`;}).join('');}
-function openSM(ei=null){g('scei').value=ei!==null?ei:'';g('scmxt').textContent=ei!==null?'Edit Entry':'Add Schedule Entry';if(ei!==null){const s=sched[ei];g('scday').value=s.day;g('scep').value=s.episode;g('scan').value=s.animeId;g('scat').value=s.airTime||'22:00';g('scatd').value=s.airTimeDisplay||'';g('scrd').value=s.releaseDate||'';}else{g('scday').value='Monday';g('scep').value='';g('scan').value='';g('scat').value='22:00';g('scatd').value='';g('scrd').value='';}om('scmx');}
-function saveSched(){const aid=g('scan').value,ep=parseInt(g('scep').value);if(!aid){toast('Select anime','err');return;}if(!ep||ep<1){toast('Enter episode number','err');return;}const obj={day:g('scday').value,animeId:aid,episode:ep,airTime:g('scat').value,releaseDate:g('scrd').value,airTimeDisplay:g('scatd').value};const ei=g('scei').value;if(ei!==''){sched[parseInt(ei)]=obj;logChange('SC edited');toast('Updated','ok');}else{sched.push(obj);logChange('SC added '+obj.day);toast('Added','ok');}mu();cm('scmx');rSched();}
-function delSched(i){if(!confirm('Delete entry?'))return;sched.splice(i,1);mu();rSched();toast('Deleted','ok');}
-
-// ── NEWS ──
-function rNews(){const wrap=g('nlst');if(!news.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No news yet</div>';return;}wrap.innerHTML=news.map((n,i)=>{const th=n.thumbnail?`<img class="nth" src="${esc(n.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';return`<div class="ncard">${th}<div class="nthp" style="${n.thumbnail?'display:none':''}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div><div class="nbody"><div class="ntitle">${esc(n.title)}</div><div class="ndesc">${esc(n.description)}</div><div class="ndate">${n.date||''}</div><div class="nact"><button class="btn btn-ghost btn-sm" onclick="openNM(${i})">Edit</button><button class="btn btn-danger btn-sm" onclick="delNews(${i})">Delete</button></div></div></div>`;}).join('');}
-function openNM(ei=null){g('nei').value=ei!==null?ei:'';g('nmxt').textContent=ei!==null?'Edit News':'Add News';if(ei!==null){const n=news[ei];g('nt').value=n.title||'';g('nd').value=n.description||'';g('nth').value=n.thumbnail||'';g('ndt').value=n.date||'';}else{['nt','nd','nth'].forEach(i=>g(i).value='');g('ndt').value=new Date().toISOString().split('T')[0];}om('nmx');}
-function saveNews(){const t=g('nt').value.trim(),d=g('nd').value.trim();if(!t){toast('Title required','err');return;}if(!d){toast('Description required','err');return;}const obj={title:t,description:d,thumbnail:g('nth').value.trim(),date:g('ndt').value};const ei=g('nei').value;if(ei!==''){news[parseInt(ei)]=obj;logChange('NW edited');toast('Updated','ok');}else{news.push(obj);logChange('NW added: '+t);toast('Added','ok');}mu();cm('nmx');rNews();}
-function delNews(i){if(!confirm('Delete?'))return;news.splice(i,1);mu();rNews();toast('Deleted','ok');}
-
-// ── GENERATORS ──
-function genData(){const ls=['const animeData = ['];DB.forEach((a,i)=>{ls.push('    {');ls.push(`        id: "${e2(a.id)}",`);ls.push(`        name: "${e2(a.name)}",`);if(a.status)ls.push(`        status: "${e2(a.status)}",`);ls.push(`        releaseYear: ${a.releaseYear||new Date().getFullYear()},`);ls.push(`        duration: "${e2(a.duration||'24m')}",`);ls.push(`        episodes: ${a.episodes||12},`);ls.push(`        season: "${e2(a.season||'1')}",`);ls.push(`        quality: "${e2(a.quality||'HD 1080p')}",`);ls.push(`        rating: "${e2(a.rating||'')}",`);ls.push(`        genres: [${(a.genres||[]).map(x=>`"${e2(x)}"`).join(', ')}],`);ls.push(`        language: "${e2(a.language||'')}",`);ls.push(`        description: "${e2(a.description||'')}",`);ls.push(`        thumbnail: "${e2(a.thumbnail||'')}",`);ls.push(`        category: "${e2(a.category||'action')}",`);if(a.recommended)ls.push(`        recommended: true,`);ls.push(`        downloadLinks: [`);(a.downloadLinks||[]).forEach(dl=>ls.push(`    { episode: ${dl.episode}, link: "${e2(dl.link)}" },`));ls.push(`]`);ls.push(i<DB.length-1?'    },':'    }');});ls.push('];');return ls.join('\n');}
-function genCfg(){return`/**\n * ANIME BLOOM - MANUAL CONFIGURATION\n * Generated by AnimeBloom Admin Panel\n */\n\nconst heroSliderIds = ${JSON.stringify(cfg.h,null,4)};\n\nconst newlyAddedIds = ${JSON.stringify(cfg.n,null,4)};\n\nconst recommendedIds = ${JSON.stringify(cfg.r,null,4)};\n\nconst trendingIds = ${JSON.stringify(cfg.t,null,4)};\n\nconst movieIds = [];\nconst actionIds = [];\nconst comedyIds = [];\nconst isekaiIds = [];\nconst fantasyIds = [];\nconst adventureIds = [];\nconst romanceIds = [];`;}
-function genSched(){const ss=sched.map(s=>`    {\n        day: "${e2(s.day)}",\n        animeId: "${e2(s.animeId)}",\n        episode: ${s.episode},\n        airTime: "${e2(s.airTime||'')}",\n        releaseDate: "${e2(s.releaseDate||'')}",\n        airTimeDisplay: "${e2(s.airTimeDisplay||'')}"\n    }`).join(',\n');const ns=news.map(n=>`    {\n        title: "${e2(n.title)}",\n        description: "${e2(n.description)}",\n        thumbnail: "${e2(n.thumbnail||'')}",\n        date: "${e2(n.date||'')}"\n    }`).join(',\n');return`var scheduleData = [\n${ss}\n];\n\nvar newsData = [\n${ns}\n];`;}
-function genMeta(){return JSON.stringify(DB.map(a=>({id:a.id,name:a.name,thumbnail:a.thumbnail||'',description:a.description||'',genres:a.genres||[],language:a.language||'',season:a.season||'1'})),null,2);}
-
-// ── CHECKBOX HELPERS ──
-function toggleFile(id) {
-  // clicking label triggers this — don't double-toggle
-  // actual toggle is handled by the checkbox's onchange
-}
-function toggleAllFiles(checked) {
-  ['chk-data','chk-config','chk-sched','chk-meta'].forEach(id => {
-    const el = g(id);
-    if (el) el.checked = checked;
-  });
-  updateSelectedCount();
-}
-function updateSelectedCount() {
-  const total = ['chk-data','chk-config','chk-sched','chk-meta'].filter(id => g(id)?.checked).length;
-  const el = g('selected-count');
-  if (el) el.textContent = total === 0 ? 'None selected' : `${total} file${total>1?'s':''} selected`;
-  // sync select-all checkbox state
-  const allChk = g('chk-all');
-  if (allChk) allChk.indeterminate = total > 0 && total < 4;
-  if (allChk) allChk.checked = total === 4;
-}
-
-// ══════════════════════════════════════════
-// AUTO-UPDATE NEWLY ADDED
-// ══════════════════════════════════════════
-const NEWLY_ADDED_MAX = 9;
-
-function getEpisodeUpdatedIds(){
-  // Extract unique anime IDs from changelog entries that are episode additions/edits
-  // logChange stores 'EP+EP{n} {name}' and 'EP+{n} episodes for {name}' and 'EP~EP{n} {name}'
-  const ids = new Set();
-  changelog.forEach(entry => {
-    if(!entry.startsWith('EP+') && !entry.startsWith('EP~')) return;
-    // Find anime by matching name from changelog entry
-    const nameFragment = entry.startsWith('EP+EP') || entry.startsWith('EP~EP')
-      ? entry.replace(/^EP[+~]EP\d+\s+/,'').trim()        // 'EP+EP10 Jujutsu Kaisen' → 'Jujutsu Kaisen'
-      : entry.replace(/^EP\+\d+ episodes for /,'').trim(); // 'EP+3 episodes for Fire Force' → 'Fire Force'
-    const match = DB.find(a => a.name === nameFragment || a.name.startsWith(nameFragment.slice(0,15)));
-    if(match) ids.add(match.id);
-  });
-  // Also catch newly added anime (A+ in changelog)
-  changelog.forEach(entry => {
-    if(!entry.startsWith('A+')) return;
-    const name = entry.slice(2);
-    const match = DB.find(a => a.name === name);
-    if(match) ids.add(match.id);
-  });
-  return [...ids];
-}
-
-function autoUpdateNewlyAdded(){
-  const changedIds = getEpisodeUpdatedIds();
-  if(changedIds.length === 0) return { updated: false, added: [], removed: [] };
-
-  const before = [...cfg.n];
-  const added = [];
-  const removed = [];
-
-  // Move each changed anime to the top, no duplicates
-  changedIds.forEach(id => {
-    const existingIdx = cfg.n.indexOf(id);
-    if(existingIdx > -1) cfg.n.splice(existingIdx, 1); // remove from current position
-    cfg.n.unshift(id); // add to top
-    if(existingIdx === -1) added.push(id); // track if it was new to the list
-  });
-
-  // Trim to max
-  while(cfg.n.length > NEWLY_ADDED_MAX){
-    const trimmed = cfg.n.pop();
-    removed.push(trimmed);
-  }
-
-  // Refresh the config UI to show changes
-  rCList('n');
-
-  return {
-    updated: true,
-    added,
-    removed,
-    changedIds
-  };
-}
-
-function showNewlyAddedPreview(){
-  const el = g('newly-added-preview');
-  if(!el) return;
-  const changedIds = getEpisodeUpdatedIds();
-  if(changedIds.length === 0){
-    el.style.display = 'none';
-    return;
-  }
-  const names = changedIds.map(id => {
-    const a = DB.find(x => x.id === id);
-    return a ? a.name : id;
-  });
-  el.style.display = 'block';
-  el.innerHTML = `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-    <span style="font-weight:600;font-size:12.5px">Newly Added will auto-update on push:</span>
-  </div>
-  ${names.map(n=>`<div style="display:flex;align-items:center;gap:7px;font-size:12px;padding:3px 0">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 0 2-2h7"/></svg>
-    <span>${esc(n)} <span style="color:var(--muted)">→ moved to top of Newly Added</span></span>
-  </div>`).join('')}
-  <div style="margin-top:8px;font-size:11px;color:var(--muted)">Max ${NEWLY_ADDED_MAX} items kept · oldest entries dropped if over limit</div>`;
-}
-
-// ══════════════════════════════════════════
-// PUSH TO GITHUB
-// ══════════════════════════════════════════
-let isPushing = false;
-
-async function doPush() {
-  if (isPushing) return;
-
-  // Build list of selected files only
-  const FILE_MAP = {
-    'data.js':          { chk: 'chk-data',   gen: genData,  statusEl: 'fs-data'   },
-    'config.js':        { chk: 'chk-config',  gen: genCfg,   statusEl: 'fs-config' },
-    'schedule-data.js': { chk: 'chk-sched',   gen: genSched, statusEl: 'fs-sched'  },
-    'anime-meta.json':  { chk: 'chk-meta',    gen: genMeta,  statusEl: 'fs-meta'   }
-  };
-
-  const selected = Object.entries(FILE_MAP).filter(([,f]) => g(f.chk)?.checked);
-  if (selected.length === 0) {
-    toast('Select at least one file to push', 'err');
-    return;
-  }
-
-  isPushing = true;
-
-  // Auto-update Newly Added based on episode changes this session
-  const naResult = autoUpdateNewlyAdded();
-  if(naResult.updated){
-    addLog('info', 'Auto-updated Newly Added: ' + naResult.changedIds.map(id=>{
-      const a=DB.find(x=>x.id===id); return a?a.name:id;
-    }).join(', '));
-    if(naResult.removed.length){
-      addLog('info', 'Dropped from Newly Added (over limit): ' + naResult.removed.map(id=>{
-        const a=DB.find(x=>x.id===id); return a?a.name:id;
-      }).join(', '));
-    }
-    // Make sure config.js is included in push if not already selected
-    const cfgChk = g('chk-config');
-    if(cfgChk && !cfgChk.checked){
-      cfgChk.checked = true;
-      updateSelectedCount();
-      addLog('info', 'config.js auto-selected because Newly Added was updated');
-    }
-  }
-
-  // Reset only selected file statuses
-  Object.values(FILE_MAP).forEach(f => setFileStatus(f.statusEl, 'pending', '—'));
-  selected.forEach(([,f]) => setFileStatus(f.statusEl, 'pending', 'Queued'));
-  clearLog();
-  setPushBtnState('pushing');
-  showBanner('pushing', `Pushing ${selected.length} file(s) to GitHub...`);
-  setProgress(0);
-
-  addLog('info', `Pushing ${selected.length} file(s): ${selected.map(([n])=>n).join(', ')}`);
-  setProgress(10);
-
-  // Build files payload — only selected
-  const files = {};
-  for (const [name, f] of selected) {
-    files[name] = f.gen();
-    setFileStatus(f.statusEl, 'pushing', 'Pushing...');
-  }
-
-  setProgress(30);
-  addLog('info', 'Sending to /api/push...');
-
-  try {
-    const res = await fetch('/api/push', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ files, commitMsg: g('commit-preview')?.value?.trim() || '' })
-    });
-
-    setProgress(80);
-    const data = await res.json();
-
-    if (res.ok && data.success) {
-      data.results.forEach(r => {
-        const f = FILE_MAP[r.file];
-        if (f) setFileStatus(f.statusEl, 'ok', r.commit ? `✓ ${r.commit}` : '✓ Done');
-        addLog('ok', `${r.file} → committed ${r.commit||''}`);
-      });
-      setProgress(100);
-      setPushBtnState('success');
-      showBanner('success', `${data.results.length} file(s) pushed! Vercel deploying — live in ~30 seconds.`);
-      g('upill').classList.remove('show');
-      changelog=[];updateCommitPreview();
-      localStorage.setItem('last_push',new Date().toLocaleString());
-      toast('Pushed to GitHub! Vercel deploying...', 'ok');
-      addLog('ok', 'All done! Check your site in 30–40 seconds.');
-    } else {
-      (data.results || []).forEach(r => {
-        const f = FILE_MAP[r.file];
-        if (f) setFileStatus(f.statusEl, r.ok ? 'ok' : 'err', r.ok ? '✓ Done' : '✗ Failed');
-        addLog(r.ok ? 'ok' : 'err', `${r.file}: ${r.ok ? 'OK' : r.error}`);
-      });
-      if (!data.results) addLog('err', data.error || 'Unknown error');
-      setPushBtnState('error');
-      showBanner('error', data.message || 'Push failed — check the log below.');
-      toast(data.message || 'Push failed', 'err');
-      setProgress(0);
-    }
-  } catch (err) {
-    addLog('err', 'Network error: ' + err.message);
-    addLog('warn', 'Make sure api/push.js is deployed and env vars are set in Vercel.');
-    setPushBtnState('error');
-    showBanner('error', 'Connection error — is api/push.js deployed?');
-    Object.values(FILE_MAP).forEach(f => setFileStatus(f.statusEl, 'err', '✗ Error'));
-    toast('Connection error — see Push to Site tab', 'err');
-    setProgress(0);
-  }
-
-  isPushing = false;
-  setTimeout(() => {
-    setPushBtnState('idle');
-    hideBanner();
-  }, 8000);
-}
-
-function setPushBtnState(state) {
-  const btn = g('push-btn');
-  const lbl = g('push-btn-label');
-  const qbtn = g('quick-push-btn');
-  const qlbl = g('quick-push-label');
-  if (!btn) return;
-  btn.disabled = state === 'pushing';
-  qbtn.disabled = state === 'pushing';
-  const states = {
-    idle:    { label: 'Push All Changes to Site', qlabel: 'Push to Site', cls: '' },
-    pushing: { label: 'Pushing to GitHub...', qlabel: 'Pushing...', cls: 'pushing' },
-    success: { label: '✓ Successfully Pushed!', qlabel: '✓ Pushed!', cls: 'success' },
-    error:   { label: '✗ Push Failed — Check Log', qlabel: '✗ Failed', cls: 'error' }
-  };
-  const s = states[state] || states.idle;
-  lbl.textContent = s.label;
-  qlbl.textContent = s.qlabel;
-  btn.className = `big-push-btn ${s.cls}`;
-}
-
-function setFileStatus(elId, state, text) {
-  const el = g(elId);
-  if (!el) return;
-  const classes = { pending: 'fs-pending', pushing: 'fs-pushing', ok: 'fs-ok', err: 'fs-err' };
-  el.className = `file-status ${classes[state] || 'fs-pending'}`;
-  el.innerHTML = state === 'pushing'
-    ? `<div class="dp-spin" style="width:10px;height:10px;border-width:1.5px"></div> ${text}`
-    : text;
-}
-
-function setProgress(pct) {
-  const bar = g('push-progress');
-  const qbar = g('quick-progress');
-  if (bar) bar.style.width = pct + '%';
-  if (qbar) qbar.style.width = pct + '%';
-}
-
-function showBanner(type, msg) {
-  const b = g('deploy-banner');
-  b.className = `deploy-banner show${type === 'error' ? ' err' : ''}`;
-  g('deploy-spin').style.display = type === 'pushing' ? 'block' : 'none';
-  g('deploy-msg').textContent = msg;
-  g('deploy-time').textContent = new Date().toLocaleTimeString();
-}
-function hideBanner() { g('deploy-banner').className = 'deploy-banner'; }
-
-function addLog(type, msg) {
-  const box = g('log-box');
-  if (!box) return;
-  box.classList.add('show');
-  const line = document.createElement('div');
-  line.className = 'log-line';
-  const now = new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  line.innerHTML = `<span class="log-time">[${now}]</span><span class="log-${type}">${esc(msg)}</span>`;
-  box.appendChild(line);
-  box.scrollTop = box.scrollHeight;
-}
-function clearLog() { const b = g('log-box'); if(b){b.innerHTML='';b.classList.remove('show');} }
-
-// ── BACKUP & RESTORE ──
-function doBackup(){
-  const snap={
-    version:2,
-    timestamp:new Date().toISOString(),
-    anime:DB,
-    config:cfg,
-    schedule:sched,
-    news:news
-  };
-  const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  const ts=new Date().toISOString().slice(0,10);
-  a.download=`animebloom-backup-${ts}.json`;
-  a.click();
-  localStorage.setItem('last_backup',new Date().toLocaleString());
-  updateBackupTime();
-  toast('Backup downloaded!','ok');
-}
-
-function updateBackupTime(){
-  const el=g('last-backup-time');
-  const t=localStorage.getItem('last_backup');
-  if(el&&t) el.textContent='Last backup: '+t;
-}
-
-function doRestore(event){
-  const file=event.target.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    try{
-      const snap=JSON.parse(e.target.result);
-      // Validate
-      if(!snap.anime||!Array.isArray(snap.anime)) throw new Error('Invalid backup — missing anime data');
-      const prev=g('restore-preview');
-      prev.style.display='block';
-      prev.innerHTML=`&#9888; Restoring will replace all current data.<br>
-        Backup from: <strong>${snap.timestamp||'unknown'}</strong><br>
-        Anime: <strong>${snap.anime.length}</strong> &nbsp;|&nbsp;
-        Schedule: <strong>${(snap.schedule||[]).length} entries</strong> &nbsp;|&nbsp;
-        News: <strong>${(snap.news||[]).length} items</strong><br><br>
-        <button class="btn btn-danger btn-sm" onclick="confirmRestore(${JSON.stringify(snap).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')})">
-          &#9888; Confirm Restore
-        </button>
-        <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none'" style="margin-left:8px">Cancel</button>`;
-    }catch(err){
-      toast('Invalid backup file: '+err.message,'err');
-    }
-  };
-  reader.readAsText(file);
-  event.target.value='';
-}
-
-function confirmRestore(snap){
-  DB=snap.anime||[];
-  cfg=snap.config||{h:[],n:[],r:[],t:[]};
-  sched=snap.schedule||[];
-  news=snap.news||[];
-  changelog=[];
-  g('restore-preview').style.display='none';
-  rSidebar();rConfig();rSched();rNews();rfCSel();
-  updateCommitPreview();
-  mu();
-  toast('Restored! '+DB.length+' anime loaded. Push to apply to your site.','ok');
-}
-
-// ── IMAGE UPLOAD (freeimage.host via /api/imgupload proxy) ──
-function saveFreeimgKey(){
-  const k=g('freeimg-key').value.trim();
-  if(!k){toast('Paste your API key first','err');return;}
-  localStorage.setItem('freeimg_key',k);
-  showKeyStatus('✓ Key saved in browser','var(--green)');
-  toast('API key saved','ok');
-}
-function loadFreeimgKey(){
-  const k=localStorage.getItem('freeimg_key')||'';
-  const el=g('freeimg-key');
-  if(el&&k){el.value=k;showKeyStatus('Key loaded from browser storage','var(--muted)');}
-}
-function showKeyStatus(msg,color){
-  const el=g('freeimg-key-status');
-  if(!el)return;
-  el.style.display='block';el.style.color=color||'var(--muted)';el.textContent=msg;
-}
-function imgLog(data,label){
-  const box=g('img-json-log');
-  if(!box)return;
-  box.style.display='block';
-  const ts=new Date().toLocaleTimeString('en',{hour12:false});
-  const entry=document.createElement('div');
-  entry.style.cssText='margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:12px';
-  entry.innerHTML='<div style="color:var(--muted);font-size:11px;margin-bottom:6px">['+ts+'] '+esc(label)+'</div>'+
-    '<pre style="color:#7ecfff;font-size:11px;line-height:1.6;white-space:pre-wrap;word-break:break-all">'+esc(JSON.stringify(data,null,2))+'</pre>';
-  box.insertBefore(entry,box.firstChild);
-}
-async function callImgAPI(base64,key){
-  const res=await fetch('/api/imgupload',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({source:base64,key})
-  });
-  return await res.json();
-}
-async function testFreeimgKey(){
-  const key=localStorage.getItem('freeimg_key');
-  if(!key){toast('Save your API key first','err');return;}
-  const btn=g('test-img-btn');
-  btn.disabled=true;btn.textContent='Testing...';
-  showKeyStatus('Testing via /api/imgupload...','var(--amber)');
-  const tiny='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
-  try{
-    const d=await callImgAPI(tiny,key);
-    imgLog(d,'Test upload (1x1 pixel PNG)');
-    if(d.url||d.parsed?.status_code===200){
-      showKeyStatus('✅ API key is valid and working!','var(--green)');
-      toast('API key works!','ok');
-    } else {
-      const err=d.parsed?.status_txt||d.error||d.raw||'Unknown error';
-      showKeyStatus('❌ '+err,'var(--red)');
-      toast('Key test failed: '+err,'err');
-    }
-  } catch(e){
-    showKeyStatus('❌ '+e.message,'var(--red)');
-    imgLog({error:e.message},'Test failed');
-    toast(e.message,'err');
-  }
-  btn.disabled=false;btn.textContent='Test';
-}
-async function uploadThumb(event,urlFieldId,btnId,labelId,statusId,previewId,previewImgId){
-  const file=event.target.files[0];
-  if(!file)return;
-  const key=localStorage.getItem('freeimg_key');
-  if(!key){toast('Add your freeimage.host API key first — go to Push to Site tab','err');event.target.value='';return;}
-  if(file.size>10*1024*1024){toast('Image too large — max 10MB','err');event.target.value='';return;}
-  const btn=g(btnId),lbl=g(labelId),status=g(statusId);
-  if(btn)btn.style.opacity='0.7';
-  if(lbl)lbl.textContent='Uploading...';
-  if(status){status.textContent='Uploading...';status.style.color='var(--amber)';}
-  const b64=await new Promise((res,rej)=>{
-    const r=new FileReader();
-    r.onload=e=>res(e.target.result.split(',')[1]);
-    r.onerror=rej;r.readAsDataURL(file);
-  });
-  try{
-    const d=await callImgAPI(b64,key);
-    imgLog(d,'Upload: '+file.name+' ('+Math.round(file.size/1024)+'KB)');
-    const url=d.url||d.parsed?.image?.url||d.parsed?.image?.display_url||'';
-    if(url){
-      const inp=g(urlFieldId);if(inp)inp.value=url;
-      previewThumb(urlFieldId,previewId);
-      if(status){status.textContent='✓ Uploaded!';status.style.color='var(--green)';}
-      toast('Image uploaded!','ok');
-      setTimeout(()=>{if(status)status.textContent='';},3000);
-    } else {
-      throw new Error(d.parsed?.status_txt||d.error||'No URL in response');
-    }
-  } catch(e){
-    if(status){status.textContent='✗ '+e.message;status.style.color='var(--red)';}
-    toast('Upload failed: '+e.message,'err');
-  }
-  if(btn)btn.style.opacity='1';
-  if(lbl)lbl.textContent='Upload';
-  event.target.value='';
-}
-function previewThumb(urlFieldId,previewId){
-  const url=g(urlFieldId)?.value?.trim();
-  const wrap=g(previewId);
-  if(!wrap)return;
-  if(url){
-    const img=wrap.querySelector('img');
-    if(img){img.src=url;img.onerror=()=>{wrap.style.display='none';};}
-    wrap.style.display='block';
-  } else {wrap.style.display='none';}
-}
-
-// ── SITE PREVIEW ──
-let previewDevice = 'desktop';
-let previewSiteUrl = '';
-
-function openPreview(){
-  const overlay = g('preview-overlay');
-  overlay.style.display = 'flex';
-  if(!previewSiteUrl) promptPreviewUrl();
-  else loadPreview(previewSiteUrl);
-}
-
-function promptPreviewUrl(){
-  const url = prompt('Enter your site URL (e.g. https://animebloom.vercel.app):', previewSiteUrl||'https://');
-  if(url && url.startsWith('http')){
-    previewSiteUrl = url.replace(/\/$/,'');
-    localStorage.setItem('preview_url', previewSiteUrl);
-    loadPreview(previewSiteUrl);
-  }
-}
-
-function loadPreview(url){
-  const iframe = g('preview-iframe');
-  const urlDisplay = g('preview-url-display');
-  iframe.src = url;
-  if(urlDisplay) urlDisplay.textContent = url;
-  toggleDevice(previewDevice);
-}
-
-function reloadPreview(){
-  const iframe = g('preview-iframe');
-  if(iframe.src) iframe.src = iframe.src;
-}
-
-function openInTab(){
-  if(previewSiteUrl) window.open(previewSiteUrl,'_blank');
-}
-
-function closePreview(){
-  g('preview-overlay').style.display = 'none';
-}
-
-function toggleDevice(mode){
-  previewDevice = mode;
-  const iframe = g('preview-iframe');
-  const wrap = g('preview-frame-wrap');
-  const btnM = g('btn-mobile');
-  const btnD = g('btn-desktop');
-  if(mode === 'mobile'){
-    iframe.style.width = '390px';
-    iframe.style.height = '844px';
-    wrap.style.padding = '20px';
-    if(btnM) btnM.style.color = 'var(--red)';
-    if(btnD) btnD.style.color = '';
-  } else {
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    wrap.style.padding = '0';
-    if(btnD) btnD.style.color = 'var(--red)';
-    if(btnM) btnM.style.color = '';
-  }
-}
-
-// Load saved URL on init
-function initPreviewUrl(){
-  previewSiteUrl = localStorage.getItem('preview_url') || '';
-}
-
-// ── DRAG TO REORDER (config lists) ──
-let dragSrcKey = null;
-let dragSrcIdx = null;
-
-function dragStart(e, k, i){
-  dragSrcKey = k; dragSrcIdx = i;
-  e.currentTarget.classList.add('dragging');
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', i);
-}
-
-function dragOver(e){
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-  e.currentTarget.classList.add('drag-over');
-}
-
-function dragLeave(e){
-  e.currentTarget.classList.remove('drag-over');
-}
-
-function dragDrop(e, k, targetIdx){
-  e.preventDefault();
-  e.currentTarget.classList.remove('drag-over');
-  if(dragSrcKey !== k || dragSrcIdx === targetIdx) return;
-  // Reorder the array
-  const arr = cfg[k];
-  const moved = arr.splice(dragSrcIdx, 1)[0];
-  arr.splice(targetIdx, 0, moved);
-  mu(); rCList(k);
-  toast('Reordered!', 'ok');
-}
-
-function dragEnd(e){
-  e.currentTarget.classList.remove('dragging');
-  document.querySelectorAll('.iditem').forEach(el => el.classList.remove('drag-over'));
-  dragSrcKey = null; dragSrcIdx = null;
-}
-
-// ── ANIME STATUS QUICK TOGGLE ──
-function quickToggleStatus(idx){
-  const cycle = {airing:'completed', completed:'upcoming', upcoming:'airing', aired:'airing'};
-  const a = DB[idx];
-  const oldStatus = a.status || 'airing';
-  a.status = cycle[oldStatus] || 'airing';
-  mu();
-  logChange('A~'+a.name+' status:'+a.status);
-  rEpD(idx);
-  rSidebar(g('sinput').value);
-  toast(a.name+' → '+a.status, 'ok');
-}
-
-// ── DUPLICATE EPISODE DETECTOR ──
+// Real-time duplicate check while typing episode number
 function checkDupNum(ai){
-  const n = parseInt(g('nen')?.value);
-  const warn = g('dup-warn-num');
-  const msg = g('dup-warn-msg');
-  if(!warn || !msg) return;
-  if(!n || n < 1){ warn.classList.remove('show'); return; }
-  const exists = DB[ai]?.downloadLinks?.find(e => e.episode === n);
+  const n=parseInt(g('nen')?.value);
+  const warn=g('dup-warn-num');const msg=g('dup-warn-msg');
+  if(!warn||!msg)return;
+  if(!n||n<1){warn.classList.remove('show');return;}
+  const exists=DB[ai]?.downloadLinks?.find(e=>e.episode===n);
   if(exists){
-    msg.textContent = 'Episode '+n+' already has a link — adding will be blocked. Edit it in the table above instead.';
+    msg.textContent='Episode '+n+' already has a link — edit it in the table above instead.';
     warn.classList.add('show');
-  } else {
+  }else{
     warn.classList.remove('show');
   }
 }
-function findDupLink(link,ai,skipEp){
-  if(!link||link.length<5)return[];
-  const results=[];
-  for(let i=0;i<DB.length;i++){
-    const a=DB[i];if(!a.downloadLinks)continue;
-    for(const dl of a.downloadLinks){
-      if(dl.link===link&&!(i===ai&&dl.episode===skipEp)){
-        results.push({animeIdx:i,name:a.name,episode:dl.episode,same:i===ai});
-      }
-    }
-  }
-  return results;
-}
+
+// Real-time duplicate check while typing link — shows ALL matches
 function checkDupLink(ai){
   const link=g('nel')?.value?.trim();
-  const warn=g('dup-warn-link');
-  const msg=g('dup-warn-link-msg');
+  const warn=g('dup-warn-link');const msg=g('dup-warn-link-msg');
   if(!warn||!msg)return;
   if(!link||link.length<5){warn.classList.remove('show');return;}
   const dups=findDupLink(link,ai,null);
@@ -1427,50 +1103,621 @@ function checkDupLink(ai){
   }
 }
 
-// ── CONNECTION TEST ──
-async function testConnection() {
-  const btn = g('test-btn');
-  const results = g('test-results');
-  btn.disabled = true;
-  btn.innerHTML = '<div class="dp-spin" style="width:12px;height:12px;border-width:1.5px"></div> Testing...';
-  results.innerHTML = '<div style="color:var(--muted);font-size:12.5px">Running checks...</div>';
-
-  try {
-    const res = await fetch('/api/github-test');
-    const data = await res.json();
-
-    results.innerHTML = data.checks.map(c => `
-      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid ${c.ok ? 'rgba(34,224,122,.2)' : 'rgba(255,59,59,.2)'};border-radius:8px">
-        <span style="font-size:15px;flex-shrink:0;margin-top:1px">${c.ok ? '✅' : '❌'}</span>
-        <div>
-          <div style="font-size:12.5px;font-weight:600;color:${c.ok ? 'var(--green)' : 'var(--red)'}">${esc(c.name)}</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5">${esc(c.detail)}</div>
-        </div>
-      </div>`).join('');
-
-    if (data.ok) {
-      toast('All checks passed — ready to push!', 'ok');
-    } else {
-      const failed = data.checks.find(c => !c.ok);
-      toast('Fix: ' + (failed?.detail || 'Check the results'), 'err');
+// ══════════════════════════════════════════
+// MISSING DATA SCANNER
+// ══════════════════════════════════════════
+function scanMissingData(){
+  const issues=[];
+  DB.forEach((a,i)=>{
+    const problems=[];
+    if(!a.thumbnail)problems.push('No thumbnail');
+    if(!a.description||a.description.length<20)problems.push('Missing or too short description');
+    if(!a.genres||a.genres.length===0)problems.push('No genres');
+    if(!a.downloadLinks||a.downloadLinks.length===0)problems.push('No episodes added yet');
+    if(a.episodes&&a.downloadLinks&&a.downloadLinks.length<a.episodes&&a.status==='completed'){
+      problems.push(`Incomplete: ${a.downloadLinks.length}/${a.episodes} eps but marked as Completed`);
     }
-  } catch (e) {
-    results.innerHTML = `<div style="padding:12px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;color:var(--red);font-size:12.5px">
-      ❌ <strong>api/github-test.js not found</strong> — make sure you added the file to your /api/ folder and redeployed.</div>`;
-    toast('Test endpoint not found', 'err');
+    // Check for episode number gaps
+    if(a.downloadLinks&&a.downloadLinks.length>1){
+      const nums=a.downloadLinks.map(d=>d.episode).sort((x,y)=>x-y);
+      const gaps=[];
+      for(let j=1;j<nums.length;j++){if(nums[j]-nums[j-1]>1)gaps.push(nums[j-1]+1);}
+      if(gaps.length)problems.push('Episode gaps after: EP'+gaps.slice(0,3).join(', EP')+(gaps.length>3?'...':''));
+    }
+    if(problems.length)issues.push({idx:i,name:a.name,problems});
+  });
+  if(!issues.length){toast('All anime data looks complete!','ok');return;}
+  const lines=issues.map(item=>
+    `<div style="margin-bottom:12px;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="font-size:12.5px;font-weight:600">${esc(item.name)}</span>
+        <button class="btn btn-ghost btn-sm" onclick="selA(${item.idx});cm('missing-modal')" style="margin-left:auto;padding:2px 8px;font-size:11px">Fix →</button>
+      </div>
+      ${item.problems.map(p=>
+        `<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--amber);padding:2px 0">
+          <span>⚠</span><span>${esc(p)}</span>
+        </div>`
+      ).join('')}
+    </div>`
+  ).join('');
+  let modal=g('missing-modal');
+  if(!modal){
+    modal=document.createElement('div');modal.id='missing-modal';modal.className='overlay';
+    modal.innerHTML=`<div class="modal" style="max-width:580px">
+      <div class="mh"><span class="mt" id="missing-modal-title"></span>
+        <button class="xbtn" onclick="cm('missing-modal')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="mb" id="missing-modal-body" style="max-height:65vh;overflow-y:auto"></div>
+    </div>`;
+    document.body.appendChild(modal);
   }
-
-  btn.disabled = false;
-  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Test Again';
+  g('missing-modal-title').textContent=issues.length+' Anime with Issues';
+  g('missing-modal-body').innerHTML=lines;
+  om('missing-modal');
+  toast(issues.length+' anime have missing data','err');
 }
 
-// ── UTILS ──
-function mu(){g('upill').classList.add('show');}
+// ══════════════════════════════════════════
+// SERIES MODAL
+// ══════════════════════════════════════════
+function openAddSM(){
+  g('smei').value='';g('smxt').textContent='Add New Anime';
+  ['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');
+  g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';
+  g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;
+  om('smx');
+}
+function openEditSM(idx){
+  const a=DB[idx];
+  g('smei').value=idx;g('smxt').textContent='Edit Anime Info';
+  g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';
+  g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';
+  g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';
+  g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';
+  g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';
+  g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';
+  g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;
+  om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);
+}
+function saveSeries(){
+  const nm=g('smn').value.trim(),sid=g('smid').value.trim();
+  if(!nm){toast('Title required','err');return;}
+  if(!sid){toast('ID required','err');return;}
+  const ei=g('smei').value;
+  // Duplicate ID check on add
+  if(ei===''){
+    const idExists=DB.find(a=>a.id===sid);
+    if(idExists){toast('ID "'+sid+'" already exists — change the slug','err');return;}
+  }
+  const obj={
+    id:sid,name:nm,status:g('smst').value,
+    releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),
+    duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,
+    season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',
+    rating:g('smr').value.trim(),
+    genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),
+    language:g('sml').value,description:g('smde').value.trim(),
+    thumbnail:g('smth').value.trim(),category:g('smcat').value
+  };
+  if(g('smrec').checked)obj.recommended=true;
+  if(ei!==''){
+    const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];
+    DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');
+  }else{
+    obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');
+  }
+  mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();
+}
+function delSeries(idx){
+  if(!confirm(`Delete "${DB[idx].name}" + all episodes?`))return;
+  logChange('A-'+DB[idx].name);DB.splice(idx,1);cidx=null;
+  mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();
+  window.location.hash='';
+  toast('Deleted','err');
+}
+
+// ══════════════════════════════════════════
+// STATUS QUICK TOGGLE
+// ══════════════════════════════════════════
+function quickToggleStatus(idx){
+  const cycle={airing:'completed',completed:'upcoming',upcoming:'airing',aired:'airing'};
+  const a=DB[idx];
+  a.status=cycle[a.status||'airing']||'airing';
+  mu();logChange('A~'+a.name+' status:'+a.status);
+  rEpD(idx);rSidebar(g('sinput').value);
+  toast(a.name+' → '+a.status,'ok');
+}
+
+// ══════════════════════════════════════════
+// CONFIG (HOMEPAGE)
+// ══════════════════════════════════════════
+const CMAP={h:{k:'h',cnt:'hcnt',list:'hlist',sel:'hsel'},n:{k:'n',cnt:'ncnt',list:'nlist',sel:'nsel'},r:{k:'r',cnt:'rcnt',list:'rlist',sel:'rsel'},t:{k:'t',cnt:'tcnt',list:'tlist',sel:'tsel'}};
+function rConfig(){Object.keys(CMAP).forEach(k=>rCList(k));rfCSel();}
+function rCList(k){
+  const ids=cfg[k];const el=g(CMAP[k].list);
+  g(CMAP[k].cnt).textContent=ids.length;
+  if(ids.length===0){el.innerHTML='<div style="color:var(--muted);font-size:12px;padding:8px 0;text-align:center">Empty</div>';return;}
+  el.innerHTML=ids.map((aid,i)=>{
+    const a=DB.find(x=>x.id===aid);
+    return`<div class="iditem" draggable="true" data-key="${k}" data-idx="${i}"
+      ondragstart="dragStart(event,'${k}',${i})"
+      ondragover="dragOver(event)"
+      ondragleave="dragLeave(event)"
+      ondrop="dragDrop(event,'${k}',${i})"
+      ondragend="dragEnd(event)">
+      <div class="drag-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></div>
+      <div style="flex:1;min-width:0"><div class="idname">${esc(a?a.name:aid)}</div><div class="idid">${esc(aid)}</div></div>
+      <button class="iddel" onclick="rmL('${k}',${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>`;
+  }).join('');
+}
+function rfCSel(){
+  ['h','n','r','t'].forEach(k=>{
+    const sel=g(CMAP[k].sel);
+    sel.innerHTML='<option value="">— Add anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+  });
+  const sc=g('scan');
+  if(sc){const cv=sc.value;sc.innerHTML='<option value="">— Select anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}" ${cv===a.id?'selected':''}>${esc(a.name)}</option>`).join('');}
+}
+function addL(k){
+  const v=g(CMAP[k].sel).value;
+  if(!v){toast('Select anime first','err');return;}
+  if(cfg[k].includes(v)){toast('Already in list','err');return;}
+  cfg[k].push(v);logChange('CF'+k+' updated');mu();rCList(k);g(CMAP[k].sel).value='';
+}
+function rmL(k,i){cfg[k].splice(i,1);mu();rCList(k);}
+
+// ══════════════════════════════════════════
+// SCHEDULE
+// ══════════════════════════════════════════
+function rSched(){
+  const wrap=g('stbl');
+  if(!sched.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No entries yet</div>';return;}
+  wrap.innerHTML=DAYS.map(day=>{
+    const ents=sched.filter(s=>s.day===day);
+    if(!ents.length)return'';
+    const rows=ents.map(s=>{
+      const gi=sched.indexOf(s);const an=DB.find(x=>x.id===s.animeId);
+      return`<tr><td style="font-weight:500">${esc(an?an.name:s.animeId)}</td><td><span class="epnum">EP ${s.episode}</span></td><td><span class="tbadge">${esc(s.airTimeDisplay||s.airTime)}</span></td><td style="color:var(--muted);font-size:12px">${s.releaseDate||'—'}</td><td><div class="ra">
+        <button class="ib ibe" onclick="openSM(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="ib ibd" onclick="delSched(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button>
+      </div></td></tr>`;
+    }).join('');
+    return`<div class="dgrp"><div class="dlbl">${day}</div><table class="sta"><thead><tr><th>Anime</th><th>Episode</th><th>Time</th><th>Date</th><th width="80">Actions</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join('');
+}
+function openSM(ei=null){
+  g('scei').value=ei!==null?ei:'';g('scmxt').textContent=ei!==null?'Edit Entry':'Add Schedule Entry';
+  if(ei!==null){const s=sched[ei];g('scday').value=s.day;g('scep').value=s.episode;g('scan').value=s.animeId;g('scat').value=s.airTime||'22:00';g('scatd').value=s.airTimeDisplay||'';g('scrd').value=s.releaseDate||'';}
+  else{g('scday').value='Monday';g('scep').value='';g('scan').value='';g('scat').value='22:00';g('scatd').value='';g('scrd').value='';}
+  om('scmx');
+}
+function saveSched(){
+  const aid=g('scan').value,ep=parseInt(g('scep').value);
+  if(!aid){toast('Select anime','err');return;}
+  if(!ep||ep<1){toast('Enter episode number','err');return;}
+  const obj={day:g('scday').value,animeId:aid,episode:ep,airTime:g('scat').value,releaseDate:g('scrd').value,airTimeDisplay:g('scatd').value};
+  const ei=g('scei').value;
+  if(ei!==''){sched[parseInt(ei)]=obj;logChange('SC edited');toast('Updated','ok');}
+  else{sched.push(obj);logChange('SC added '+obj.day);toast('Added','ok');}
+  mu();cm('scmx');rSched();
+}
+function delSched(i){if(!confirm('Delete entry?'))return;sched.splice(i,1);mu();rSched();toast('Deleted','ok');}
+
+// ══════════════════════════════════════════
+// NEWS
+// ══════════════════════════════════════════
+function rNews(){
+  const wrap=g('nlst');
+  if(!news.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No news yet</div>';return;}
+  wrap.innerHTML=news.map((n,i)=>{
+    const th=n.thumbnail?`<img class="nth" src="${esc(n.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';
+    return`<div class="ncard">${th}<div class="nthp" style="${n.thumbnail?'display:none':''}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div>
+      <div class="nbody"><div class="ntitle">${esc(n.title)}</div><div class="ndesc">${esc(n.description)}</div><div class="ndate">${n.date||''}</div>
+        <div class="nact"><button class="btn btn-ghost btn-sm" onclick="openNM(${i})">Edit</button><button class="btn btn-danger btn-sm" onclick="delNews(${i})">Delete</button></div>
+      </div></div>`;
+  }).join('');
+}
+function openNM(ei=null){
+  g('nei').value=ei!==null?ei:'';g('nmxt').textContent=ei!==null?'Edit News':'Add News';
+  if(ei!==null){const n=news[ei];g('nt').value=n.title||'';g('nd').value=n.description||'';g('nth').value=n.thumbnail||'';g('ndt').value=n.date||'';}
+  else{['nt','nd','nth'].forEach(i=>g(i).value='');g('ndt').value=new Date().toISOString().split('T')[0];}
+  om('nmx');
+}
+function saveNews(){
+  const t=g('nt').value.trim(),d=g('nd').value.trim();
+  if(!t){toast('Title required','err');return;}
+  if(!d){toast('Description required','err');return;}
+  const obj={title:t,description:d,thumbnail:g('nth').value.trim(),date:g('ndt').value};
+  const ei=g('nei').value;
+  if(ei!==''){news[parseInt(ei)]=obj;logChange('NW edited');toast('Updated','ok');}
+  else{news.push(obj);logChange('NW added: '+t);toast('Added','ok');}
+  mu();cm('nmx');rNews();
+}
+function delNews(i){if(!confirm('Delete?'))return;news.splice(i,1);mu();rNews();toast('Deleted','ok');}
+
+// ══════════════════════════════════════════
+// AUTO-SAVE TO LOCALSTORAGE
+// ══════════════════════════════════════════
+const AUTOSAVE_KEY='animebloom_autosave';
+const AUTOSAVE_INTERVAL=30000; // 30 seconds
+let autosaveTimer=null;
+
+function startAutosave(){
+  if(autosaveTimer)clearInterval(autosaveTimer);
+  autosaveTimer=setInterval(doAutosave,AUTOSAVE_INTERVAL);
+}
+
+function doAutosave(){
+  try{
+    const snap={timestamp:Date.now(),anime:DB,config:cfg,schedule:sched,news:news};
+    localStorage.setItem(AUTOSAVE_KEY,JSON.stringify(snap));
+    showAutosaveIndicator();
+  }catch(e){
+    console.warn('Autosave failed:',e);
+  }
+}
+
+function showAutosaveIndicator(){
+  const ind=g('autosave-ind');
+  if(!ind)return;
+  ind.textContent='✓ Auto-saved '+new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  ind.style.opacity='1';
+  setTimeout(()=>{ind.style.opacity='0';},2000);
+}
+
+function checkAutosaveRestore(){
+  try{
+    const raw=localStorage.getItem(AUTOSAVE_KEY);
+    if(!raw)return;
+    const snap=JSON.parse(raw);
+    if(!snap||!snap.anime||snap.anime.length===0)return;
+    const age=Date.now()-snap.timestamp;
+    const mins=Math.round(age/60000);
+    const timeStr=mins<1?'just now':mins+' min ago';
+    const banner=document.createElement('div');
+    banner.id='autosave-banner';
+    banner.style.cssText='position:fixed;top:52px;left:0;right:0;z-index:200;background:#1a1400;border-bottom:1px solid rgba(245,166,35,.4);padding:10px 20px;display:flex;align-items:center;gap:12px;font-size:12.5px';
+    banner.innerHTML=`
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span style="color:var(--amber);font-weight:600">Unsaved session found</span>
+      <span style="color:var(--muted)">${snap.anime.length} anime · saved ${timeStr}</span>
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" onclick="restoreAutosave()" style="border-color:rgba(245,166,35,.4);color:var(--amber)">Restore Session</button>
+        <button class="btn btn-ghost btn-sm" onclick="discardAutosave()">Discard</button>
+      </div>`;
+    document.body.appendChild(banner);
+  }catch(e){localStorage.removeItem(AUTOSAVE_KEY);}
+}
+
+function restoreAutosave(){
+  try{
+    const snap=JSON.parse(localStorage.getItem(AUTOSAVE_KEY));
+    DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};
+    sched=snap.schedule||[];news=snap.news||[];
+    rSidebar();rConfig();rSched();rNews();rfCSel();mu();
+    toast('Session restored — '+DB.length+' anime loaded','ok');
+  }catch(e){toast('Restore failed','err');}
+  removeAutosaveBanner();
+}
+
+function discardAutosave(){
+  localStorage.removeItem(AUTOSAVE_KEY);
+  removeAutosaveBanner();
+  toast('Autosave discarded','ok');
+}
+
+function removeAutosaveBanner(){
+  const b=g('autosave-banner');if(b)b.remove();
+}
+
+function clearAutosave(){
+  localStorage.removeItem(AUTOSAVE_KEY);
+}
+
+// ══════════════════════════════════════════
+// FILE GENERATORS
+// ══════════════════════════════════════════
+function genData(){
+  const ls=['const animeData = ['];
+  DB.forEach((a,i)=>{
+    ls.push('    {');
+    ls.push(`        id: "${e2(a.id)}",`);ls.push(`        name: "${e2(a.name)}",`);
+    if(a.status)ls.push(`        status: "${e2(a.status)}",`);
+    ls.push(`        releaseYear: ${a.releaseYear||new Date().getFullYear()},`);
+    ls.push(`        duration: "${e2(a.duration||'24m')}",`);ls.push(`        episodes: ${a.episodes||12},`);
+    ls.push(`        season: "${e2(a.season||'1')}",`);ls.push(`        quality: "${e2(a.quality||'HD 1080p')}",`);
+    ls.push(`        rating: "${e2(a.rating||'')}",`);
+    ls.push(`        genres: [${(a.genres||[]).map(x=>`"${e2(x)}"`).join(', ')}],`);
+    ls.push(`        language: "${e2(a.language||'')}",`);ls.push(`        description: "${e2(a.description||'')}",`);
+    ls.push(`        thumbnail: "${e2(a.thumbnail||'')}",`);ls.push(`        category: "${e2(a.category||'action')}",`);
+    if(a.recommended)ls.push(`        recommended: true,`);
+    ls.push(`        downloadLinks: [`);
+    (a.downloadLinks||[]).forEach(dl=>ls.push(`    { episode: ${dl.episode}, link: "${e2(dl.link)}" },`));
+    ls.push(`]`);ls.push(i<DB.length-1?'    },':'    }');
+  });
+  ls.push('];');return ls.join('\n');
+}
+function genCfg(){
+  return`/**\n * ANIME BLOOM - MANUAL CONFIGURATION\n * Generated by AnimeBloom Admin Panel\n */\n\nconst heroSliderIds = ${JSON.stringify(cfg.h,null,4)};\n\nconst newlyAddedIds = ${JSON.stringify(cfg.n,null,4)};\n\nconst recommendedIds = ${JSON.stringify(cfg.r,null,4)};\n\nconst trendingIds = ${JSON.stringify(cfg.t,null,4)};\n\nconst movieIds = [];\nconst actionIds = [];\nconst comedyIds = [];\nconst isekaiIds = [];\nconst fantasyIds = [];\nconst adventureIds = [];\nconst romanceIds = [];`;
+}
+function genSched(){
+  const ss=sched.map(s=>`    {\n        day: "${e2(s.day)}",\n        animeId: "${e2(s.animeId)}",\n        episode: ${s.episode},\n        airTime: "${e2(s.airTime||'')}",\n        releaseDate: "${e2(s.releaseDate||'')}",\n        airTimeDisplay: "${e2(s.airTimeDisplay||'')}"\n    }`).join(',\n');
+  const ns=news.map(n=>`    {\n        title: "${e2(n.title)}",\n        description: "${e2(n.description)}",\n        thumbnail: "${e2(n.thumbnail||'')}",\n        date: "${e2(n.date||'')}"\n    }`).join(',\n');
+  return`var scheduleData = [\n${ss}\n];\n\nvar newsData = [\n${ns}\n];`;
+}
+function genMeta(){
+  return JSON.stringify(DB.map(a=>({id:a.id,name:a.name,thumbnail:a.thumbnail||'',description:a.description||'',genres:a.genres||[],language:a.language||'',season:a.season||'1'})),null,2);
+}
+
+// ══════════════════════════════════════════
+// CHECKBOX HELPERS (Push page)
+// ══════════════════════════════════════════
+function toggleAllFiles(checked){
+  ['chk-data','chk-config','chk-sched','chk-meta'].forEach(id=>{const el=g(id);if(el)el.checked=checked;});
+  updateSelectedCount();
+}
+function updateSelectedCount(){
+  const total=['chk-data','chk-config','chk-sched','chk-meta'].filter(id=>g(id)?.checked).length;
+  const el=g('selected-count');
+  if(el)el.textContent=total===0?'None selected':`${total} file${total>1?'s':''} selected`;
+  const allChk=g('chk-all');
+  if(allChk){allChk.indeterminate=total>0&&total<4;allChk.checked=total===4;}
+}
+
+// ══════════════════════════════════════════
+// AUTO-UPDATE NEWLY ADDED
+// ══════════════════════════════════════════
+const NEWLY_ADDED_MAX=9;
+
+function getEpisodeUpdatedIds(){
+  const ids=new Set();
+  changelog.forEach(entry=>{
+    if(!entry.startsWith('EP+')&&!entry.startsWith('EP~'))return;
+    const nameFragment=entry.startsWith('EP+EP')||entry.startsWith('EP~EP')
+      ?entry.replace(/^EP[+~]EP\d+\s+/,'').trim()
+      :entry.replace(/^EP\+\d+ episodes for /,'').trim();
+    const match=DB.find(a=>a.name===nameFragment||a.name.startsWith(nameFragment.slice(0,15)));
+    if(match)ids.add(match.id);
+  });
+  changelog.forEach(entry=>{
+    if(!entry.startsWith('A+'))return;
+    const name=entry.slice(2);
+    const match=DB.find(a=>a.name===name);
+    if(match)ids.add(match.id);
+  });
+  return[...ids];
+}
+
+function autoUpdateNewlyAdded(){
+  const changedIds=getEpisodeUpdatedIds();
+  if(changedIds.length===0)return{updated:false,added:[],removed:[]};
+  const added=[];const removed=[];
+  changedIds.forEach(id=>{
+    const existingIdx=cfg.n.indexOf(id);
+    if(existingIdx>-1)cfg.n.splice(existingIdx,1);
+    cfg.n.unshift(id);
+    if(existingIdx===-1)added.push(id);
+  });
+  while(cfg.n.length>NEWLY_ADDED_MAX){const trimmed=cfg.n.pop();removed.push(trimmed);}
+  rCList('n');
+  return{updated:true,added,removed,changedIds};
+}
+
+function showNewlyAddedPreview(){
+  const el=g('newly-added-preview');if(!el)return;
+  const changedIds=getEpisodeUpdatedIds();
+  if(changedIds.length===0){el.style.display='none';return;}
+  const names=changedIds.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;});
+  el.style.display='block';
+  el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span style="font-weight:600;font-size:12.5px">Newly Added will auto-update on push:</span></div>
+  ${names.map(n=>`<div style="display:flex;align-items:center;gap:7px;font-size:12px;padding:3px 0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 0 2-2h7"/></svg><span>${esc(n)} <span style="color:var(--muted)">→ moved to top of Newly Added</span></span></div>`).join('')}
+  <div style="margin-top:8px;font-size:11px;color:var(--muted)">Max ${NEWLY_ADDED_MAX} items kept · oldest entries dropped if over limit</div>`;
+}
+
+// ══════════════════════════════════════════
+// PUSH TO GITHUB
+// ══════════════════════════════════════════
+let isPushing=false;
+
+async function doPush(){
+  if(isPushing)return;
+  const FILE_MAP={
+    'data.js':{chk:'chk-data',gen:genData,statusEl:'fs-data'},
+    'config.js':{chk:'chk-config',gen:genCfg,statusEl:'fs-config'},
+    'schedule-data.js':{chk:'chk-sched',gen:genSched,statusEl:'fs-sched'},
+    'anime-meta.json':{chk:'chk-meta',gen:genMeta,statusEl:'fs-meta'}
+  };
+  const selected=Object.entries(FILE_MAP).filter(([,f])=>g(f.chk)?.checked);
+  if(selected.length===0){toast('Select at least one file to push','err');return;}
+  isPushing=true;
+  const naResult=autoUpdateNewlyAdded();
+  if(naResult.updated){
+    addLog('info','Auto-updated Newly Added: '+naResult.changedIds.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;}).join(', '));
+    if(naResult.removed.length)addLog('info','Dropped from Newly Added: '+naResult.removed.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;}).join(', '));
+    const cfgChk=g('chk-config');
+    if(cfgChk&&!cfgChk.checked){cfgChk.checked=true;updateSelectedCount();addLog('info','config.js auto-selected because Newly Added was updated');}
+  }
+  Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'pending','—'));
+  selected.forEach(([,f])=>setFileStatus(f.statusEl,'pending','Queued'));
+  clearLog();setPushBtnState('pushing');showBanner('pushing',`Pushing ${selected.length} file(s) to GitHub...`);setProgress(0);
+  addLog('info',`Pushing ${selected.length} file(s): ${selected.map(([n])=>n).join(', ')}`);setProgress(10);
+  const files={};
+  for(const[name,f]of selected){files[name]=f.gen();setFileStatus(f.statusEl,'pushing','Pushing...');}
+  setProgress(30);addLog('info','Sending to /api/push...');
+  try{
+    const res=await fetch('/api/push',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({files,commitMsg:g('commit-preview')?.value?.trim()||''})});
+    setProgress(80);const data=await res.json();
+    if(res.ok&&data.success){
+      data.results.forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,'ok',r.commit?`✓ ${r.commit}`:'✓ Done');addLog('ok',`${r.file} → committed ${r.commit||''}`);});
+      setProgress(100);setPushBtnState('success');
+      showBanner('success',`${data.results.length} file(s) pushed! Vercel deploying — live in ~30 seconds.`);
+      g('upill').classList.remove('show');
+      changelog=[];updateCommitPreview();
+      clearAutosave();
+      localStorage.setItem('last_push',new Date().toLocaleString());
+      toast('Pushed to GitHub! Vercel deploying...','ok');
+      addLog('ok','All done! Check your site in 30–40 seconds.');
+    }else{
+      (data.results||[]).forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,r.ok?'ok':'err',r.ok?'✓ Done':'✗ Failed');addLog(r.ok?'ok':'err',`${r.file}: ${r.ok?'OK':r.error}`);});
+      if(!data.results)addLog('err',data.error||'Unknown error');
+      setPushBtnState('error');showBanner('error',data.message||'Push failed — check the log below.');
+      toast(data.message||'Push failed','err');setProgress(0);
+    }
+  }catch(err){
+    addLog('err','Network error: '+err.message);
+    addLog('warn','Make sure api/push.js is deployed and env vars are set in Vercel.');
+    setPushBtnState('error');showBanner('error','Connection error — is api/push.js deployed?');
+    Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'err','✗ Error'));
+    toast('Connection error — see Push to Site tab','err');setProgress(0);
+  }
+  isPushing=false;
+  setTimeout(()=>{setPushBtnState('idle');hideBanner();},8000);
+}
+
+function setPushBtnState(state){
+  const btn=g('push-btn');const lbl=g('push-btn-label');
+  const qbtn=g('quick-push-btn');const qlbl=g('quick-push-label');
+  if(!btn)return;btn.disabled=state==='pushing';qbtn.disabled=state==='pushing';
+  const states={idle:{label:'Push All Changes to Site',qlabel:'Push to Site',cls:''},pushing:{label:'Pushing to GitHub...',qlabel:'Pushing...',cls:'pushing'},success:{label:'✓ Successfully Pushed!',qlabel:'✓ Pushed!',cls:'success'},error:{label:'✗ Push Failed — Check Log',qlabel:'✗ Failed',cls:'error'}};
+  const s=states[state]||states.idle;
+  lbl.textContent=s.label;qlbl.textContent=s.qlabel;btn.className=`big-push-btn ${s.cls}`;
+}
+function setFileStatus(elId,state,text){
+  const el=g(elId);if(!el)return;
+  const classes={pending:'fs-pending',pushing:'fs-pushing',ok:'fs-ok',err:'fs-err'};
+  el.className=`file-status ${classes[state]||'fs-pending'}`;
+  el.innerHTML=state==='pushing'?`<div class="dp-spin" style="width:10px;height:10px;border-width:1.5px"></div> ${text}`:text;
+}
+function setProgress(pct){const bar=g('push-progress');const qbar=g('quick-progress');if(bar)bar.style.width=pct+'%';if(qbar)qbar.style.width=pct+'%';}
+function showBanner(type,msg){const b=g('deploy-banner');b.className=`deploy-banner show${type==='error'?' err':''}`;g('deploy-spin').style.display=type==='pushing'?'block':'none';g('deploy-msg').textContent=msg;g('deploy-time').textContent=new Date().toLocaleTimeString();}
+function hideBanner(){g('deploy-banner').className='deploy-banner';}
+function addLog(type,msg){const box=g('log-box');if(!box)return;box.classList.add('show');const line=document.createElement('div');line.className='log-line';const now=new Date().toLocaleTimeString('en',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});line.innerHTML=`<span class="log-time">[${now}]</span><span class="log-${type}">${esc(msg)}</span>`;box.appendChild(line);box.scrollTop=box.scrollHeight;}
+function clearLog(){const b=g('log-box');if(b){b.innerHTML='';b.classList.remove('show');}}
+
+// ══════════════════════════════════════════
+// CONNECTION TEST
+// ══════════════════════════════════════════
+async function testConnection(){
+  const btn=g('test-btn');const results=g('test-results');
+  btn.disabled=true;btn.innerHTML='<div class="dp-spin" style="width:12px;height:12px;border-width:1.5px"></div> Testing...';
+  results.innerHTML='<div style="color:var(--muted);font-size:12.5px">Running checks...</div>';
+  try{
+    const res=await fetch('/api/github-test');const data=await res.json();
+    results.innerHTML=data.checks.map(c=>`<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid ${c.ok?'rgba(34,224,122,.2)':'rgba(255,59,59,.2)'};border-radius:8px"><span style="font-size:15px;flex-shrink:0;margin-top:1px">${c.ok?'✅':'❌'}</span><div><div style="font-size:12.5px;font-weight:600;color:${c.ok?'var(--green)':'var(--red)'}">${esc(c.name)}</div><div style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5">${esc(c.detail)}</div></div></div>`).join('');
+    if(data.ok)toast('All checks passed — ready to push!','ok');
+    else{const failed=data.checks.find(c=>!c.ok);toast('Fix: '+(failed?.detail||'Check the results'),'err');}
+  }catch(e){
+    results.innerHTML=`<div style="padding:12px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;color:var(--red);font-size:12.5px">❌ <strong>api/github-test.js not found</strong> — make sure you added the file to your /api/ folder and redeployed.</div>`;
+    toast('Test endpoint not found','err');
+  }
+  btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Test Again';
+}
+
+// ══════════════════════════════════════════
+// BACKUP & RESTORE
+// ══════════════════════════════════════════
+function doBackup(){
+  const snap={version:2,timestamp:new Date().toISOString(),anime:DB,config:cfg,schedule:sched,news:news};
+  const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  const ts=new Date().toISOString().slice(0,10);a.download=`animebloom-backup-${ts}.json`;a.click();
+  localStorage.setItem('last_backup',new Date().toLocaleString());updateBackupTime();
+  toast('Backup downloaded!','ok');
+}
+function updateBackupTime(){const el=g('last-backup-time');const t=localStorage.getItem('last_backup');if(el&&t)el.textContent='Last backup: '+t;}
+function doRestore(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const snap=JSON.parse(e.target.result);
+      if(!snap.anime||!Array.isArray(snap.anime))throw new Error('Invalid backup — missing anime data');
+      const prev=g('restore-preview');prev.style.display='block';
+      prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${snap.timestamp||'unknown'}</strong><br>Anime: <strong>${snap.anime.length}</strong> &nbsp;|&nbsp; Schedule: <strong>${(snap.schedule||[]).length} entries</strong> &nbsp;|&nbsp; News: <strong>${(snap.news||[]).length} items</strong><br><br>
+        <button class="btn btn-danger btn-sm" onclick='confirmRestore(${JSON.stringify(snap).replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")})'>⚠ Confirm Restore</button>
+        <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none'" style="margin-left:8px">Cancel</button>`;
+    }catch(err){toast('Invalid backup file: '+err.message,'err');}
+  };
+  reader.readAsText(file);event.target.value='';
+}
+function confirmRestore(snap){
+  DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];
+  changelog=[];g('restore-preview').style.display='none';
+  rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();
+  toast('Restored! '+DB.length+' anime loaded. Push to apply to your site.','ok');
+}
+
+// ══════════════════════════════════════════
+// IMAGE UPLOAD
+// ══════════════════════════════════════════
+function saveFreeimgKey(){const k=g('freeimg-key').value.trim();if(!k){toast('Paste your API key first','err');return;}localStorage.setItem('freeimg_key',k);showKeyStatus('✓ Key saved in browser','var(--green)');toast('API key saved','ok');}
+function loadFreeimgKey(){const k=localStorage.getItem('freeimg_key')||'';const el=g('freeimg-key');if(el&&k){el.value=k;showKeyStatus('Key loaded from browser storage','var(--muted)');}}
+function showKeyStatus(msg,color){const el=g('freeimg-key-status');if(!el)return;el.style.display='block';el.style.color=color||'var(--muted)';el.textContent=msg;}
+function imgLog(data,label){const box=g('img-json-log');if(!box)return;box.style.display='block';const ts=new Date().toLocaleTimeString('en',{hour12:false});const entry=document.createElement('div');entry.style.cssText='margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:12px';entry.innerHTML='<div style="color:var(--muted);font-size:11px;margin-bottom:6px">['+ts+'] '+esc(label)+'</div><pre style="color:#7ecfff;font-size:11px;line-height:1.6;white-space:pre-wrap;word-break:break-all">'+esc(JSON.stringify(data,null,2))+'</pre>';box.insertBefore(entry,box.firstChild);}
+async function callImgAPI(base64,key){const res=await fetch('/api/imgupload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:base64,key})});return await res.json();}
+async function testFreeimgKey(){const key=localStorage.getItem('freeimg_key');if(!key){toast('Save your API key first','err');return;}const btn=g('test-img-btn');btn.disabled=true;btn.textContent='Testing...';showKeyStatus('Testing via /api/imgupload...','var(--amber)');const tiny='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';try{const d=await callImgAPI(tiny,key);imgLog(d,'Test upload (1x1 pixel PNG)');if(d.url||d.parsed?.status_code===200){showKeyStatus('✅ API key is valid and working!','var(--green)');toast('API key works!','ok');}else{const err=d.parsed?.status_txt||d.error||d.raw||'Unknown error';showKeyStatus('❌ '+err,'var(--red)');toast('Key test failed: '+err,'err');}}catch(e){showKeyStatus('❌ '+e.message,'var(--red)');imgLog({error:e.message},'Test failed');toast(e.message,'err');}btn.disabled=false;btn.textContent='Test';}
+async function uploadThumb(event,urlFieldId,btnId,labelId,statusId,previewId,previewImgId){const file=event.target.files[0];if(!file)return;const key=localStorage.getItem('freeimg_key');if(!key){toast('Add your freeimage.host API key first — go to Push to Site tab','err');event.target.value='';return;}if(file.size>10*1024*1024){toast('Image too large — max 10MB','err');event.target.value='';return;}const btn=g(btnId),lbl=g(labelId),status=g(statusId);if(btn)btn.style.opacity='0.7';if(lbl)lbl.textContent='Uploading...';if(status){status.textContent='Uploading...';status.style.color='var(--amber)';}const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});try{const d=await callImgAPI(b64,key);imgLog(d,'Upload: '+file.name+' ('+Math.round(file.size/1024)+'KB)');const url=d.url||d.parsed?.image?.url||d.parsed?.image?.display_url||'';if(url){const inp=g(urlFieldId);if(inp)inp.value=url;previewThumb(urlFieldId,previewId);if(status){status.textContent='✓ Uploaded!';status.style.color='var(--green)';}toast('Image uploaded!','ok');setTimeout(()=>{if(status)status.textContent='';},3000);}else{throw new Error(d.parsed?.status_txt||d.error||'No URL in response');}}catch(e){if(status){status.textContent='✗ '+e.message;status.style.color='var(--red)';}toast('Upload failed: '+e.message,'err');}if(btn)btn.style.opacity='1';if(lbl)lbl.textContent='Upload';event.target.value='';}
+function previewThumb(urlFieldId,previewId){const url=g(urlFieldId)?.value?.trim();const wrap=g(previewId);if(!wrap)return;if(url){const img=wrap.querySelector('img');if(img){img.src=url;img.onerror=()=>{wrap.style.display='none';};}wrap.style.display='block';}else{wrap.style.display='none';}}
+
+// ══════════════════════════════════════════
+// SITE PREVIEW
+// ══════════════════════════════════════════
+let previewDevice='desktop';let previewSiteUrl='';
+function openPreview(){const overlay=g('preview-overlay');overlay.style.display='flex';if(!previewSiteUrl)promptPreviewUrl();else loadPreview(previewSiteUrl);}
+function promptPreviewUrl(){const url=prompt('Enter your site URL (e.g. https://animebloom.vercel.app):',previewSiteUrl||'https://');if(url&&url.startsWith('http')){previewSiteUrl=url.replace(/\/$/,'');localStorage.setItem('preview_url',previewSiteUrl);loadPreview(previewSiteUrl);}}
+function loadPreview(url){const iframe=g('preview-iframe');const urlDisplay=g('preview-url-display');iframe.src=url;if(urlDisplay)urlDisplay.textContent=url;toggleDevice(previewDevice);}
+function reloadPreview(){const iframe=g('preview-iframe');if(iframe.src)iframe.src=iframe.src;}
+function openInTab(){if(previewSiteUrl)window.open(previewSiteUrl,'_blank');}
+function closePreview(){g('preview-overlay').style.display='none';}
+function toggleDevice(mode){previewDevice=mode;const iframe=g('preview-iframe');const wrap=g('preview-frame-wrap');const btnM=g('btn-mobile');const btnD=g('btn-desktop');if(mode==='mobile'){iframe.style.width='390px';iframe.style.height='844px';wrap.style.padding='20px';if(btnM)btnM.style.color='var(--red)';if(btnD)btnD.style.color='';}else{iframe.style.width='100%';iframe.style.height='100%';wrap.style.padding='0';if(btnD)btnD.style.color='var(--red)';if(btnM)btnM.style.color='';}}
+function initPreviewUrl(){previewSiteUrl=localStorage.getItem('preview_url')||'';}
+
+// ══════════════════════════════════════════
+// DRAG TO REORDER (config lists)
+// ══════════════════════════════════════════
+let dragSrcKey=null;let dragSrcIdx=null;
+function dragStart(e,k,i){dragSrcKey=k;dragSrcIdx=i;e.currentTarget.classList.add('dragging');e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',i);}
+function dragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';e.currentTarget.classList.add('drag-over');}
+function dragLeave(e){e.currentTarget.classList.remove('drag-over');}
+function dragDrop(e,k,targetIdx){e.preventDefault();e.currentTarget.classList.remove('drag-over');if(dragSrcKey!==k||dragSrcIdx===targetIdx)return;const arr=cfg[k];const moved=arr.splice(dragSrcIdx,1)[0];arr.splice(targetIdx,0,moved);mu();rCList(k);toast('Reordered!','ok');}
+function dragEnd(e){e.currentTarget.classList.remove('dragging');document.querySelectorAll('.iditem').forEach(el=>el.classList.remove('drag-over'));dragSrcKey=null;dragSrcIdx=null;}
+
+// ══════════════════════════════════════════
+// KEYBOARD SHORTCUTS
+// ══════════════════════════════════════════
+document.addEventListener('keydown',e=>{
+  // Ctrl+S = quick push
+  if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();doPush();}
+  // Ctrl+F = focus sidebar search
+  if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();sw('episodes');g('sinput').focus();g('sinput').select();}
+  // Ctrl+N = add new anime
+  if((e.ctrlKey||e.metaKey)&&e.key==='n'){e.preventDefault();openAddSM();}
+  // Escape = close any open modal
+  if(e.key==='Escape'){document.querySelectorAll('.overlay.show').forEach(m=>m.classList.remove('show'));}
+  // Alt+ArrowDown/Up = navigate sidebar
+  if(e.key==='ArrowDown'&&e.altKey&&cidx!==null){e.preventDefault();const next=Math.min(cidx+1,DB.length-1);selA(next);}
+  if(e.key==='ArrowUp'&&e.altKey&&cidx!==null){e.preventDefault();const prev=Math.max(cidx-1,0);selA(prev);}
+});
+
+// ══════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════
+function mu(){
+  g('upill').classList.add('show');
+  // Trigger autosave 2 seconds after each change
+  clearTimeout(window._muSaveTimer);
+  window._muSaveTimer=setTimeout(doAutosave,2000);
+}
 function g(s){return document.getElementById(s);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function e2(s){return String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/\n/g,'\\n');}
-function om(i){g(i).classList.add('show');}function cm(i){g(i).classList.remove('show');}
+function om(i){g(i).classList.add('show');}
+function cm(i){g(i).classList.remove('show');}
 function toast(msg,type='ok'){const t=g('toast');t.textContent=msg;t.className=`toast show t${type}`;clearTimeout(t._t);t._t=setTimeout(()=>t.className='toast',2800);}
+
 document.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
