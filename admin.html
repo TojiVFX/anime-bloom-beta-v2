@@ -212,6 +212,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <div class="sw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" class="si" placeholder="Search anime..." oninput="filterList(this.value)" id="sinput"></div>
     </div>
     <div class="alist" id="alist"></div>
+    <button class="addbtn" onclick="scanAllDupes()" style="background:rgba(255,59,59,.06);color:var(--red)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Scan for Duplicate Links</button>
     <button class="addbtn" onclick="openAddSM()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add New Anime</button>
   </div>
 
@@ -643,12 +644,64 @@ function rEpD(idx){
     </div></div>`;
 }
 function eRow(ai,en){if(editRow!==null)cxRow(ai,editRow);editRow=en;g(`prev-${en}`).style.display='none';g(`inp-${en}`).style.display='block';g(`inp-${en}`).focus();g(`be-${en}`).style.display='none';g(`bs-${en}`).style.display='flex';g(`bc-${en}`).style.display='flex';}
-function svRow(ai,en){const l=g(`inp-${en}`).value.trim();if(!l){toast('Empty link','err');return;}const ep=DB[ai].downloadLinks.find(e=>e.episode===en);if(ep)ep.link=l;logChange('EP~EP'+en+' '+DB[ai].name);editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');}
+function svRow(ai,en){
+  const l=g(`inp-${en}`).value.trim();
+  if(!l){toast('Empty link','err');return;}
+  const dup=findDupLink(l,ai,en);
+  if(dup){
+    const m=dup.same
+      ?'This link is already used for Episode '+dup.episode+' of this anime. Save anyway?'
+      :'WARNING: This link already exists in "'+dup.name+'" Episode '+dup.episode+'. Likely a mistake. Save anyway?';
+    if(!confirm(m))return;
+  }
+  const ep=DB[ai].downloadLinks.find(e=>e.episode===en);
+  if(ep)ep.link=l;
+  logChange('EP~EP'+en+' '+DB[ai].name);
+  editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');
+}
 function cxRow(ai,en){editRow=null;g(`prev-${en}`).style.display='block';g(`inp-${en}`).style.display='none';g(`be-${en}`).style.display='flex';g(`bs-${en}`).style.display='none';g(`bc-${en}`).style.display='none';}
 function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
 function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
-function bulkAdd(ai){const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);if(!st||st<1){toast('Enter starting episode','err');return;}if(!ls.length){toast('Paste links','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];let ad=0,sk=0;ls.forEach((lk,i)=>{const n=st+i;if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}DB[ai].downloadLinks.push({episode:n,link:lk});ad++;});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);if(ad>0)logChange('EP+'+ad+' episodes for '+DB[ai].name);mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);toast(`Added ${ad}${sk?`, skipped ${sk} dupes`:''}`,'ok');}
-
+function scanAllDupes(){
+  const seen={};const dups=[];
+  DB.forEach((a,ai)=>{
+    (a.downloadLinks||[]).forEach(dl=>{
+      if(!dl.link)return;
+      if(seen[dl.link]){
+        dups.push('"'+seen[dl.link].name+'" EP'+seen[dl.link].ep+'\n  same as\n"'+a.name+'" EP'+dl.episode);
+      }else{
+        seen[dl.link]={name:a.name,ep:dl.episode};
+      }
+    });
+  });
+  if(!dups.length){toast('No duplicate links found across all anime!','ok');return;}
+  toast(dups.length+' duplicate(s) found — see alert for details','err');
+  setTimeout(()=>alert('Duplicate links found ('+dups.length+'):\n\n'+dups.join('\n\n')),300);
+}
+  function bulkAdd(ai){
+  const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);
+  if(!st||st<1){toast('Enter starting episode','err');return;}
+  if(!ls.length){toast('Paste links','err');return;}
+  if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];
+  let ad=0,sk=0,xd=[];
+  ls.forEach((lk,i)=>{
+    const n=st+i;
+    if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}
+    const dup=findDupLink(lk,ai,null);
+    if(dup&&!dup.same)xd.push('EP'+n+': already in "'+dup.name+'" EP'+dup.episode);
+    DB[ai].downloadLinks.push({episode:n,link:lk});
+    ad++;
+  });
+  DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);
+  if(ad>0)logChange('EP+'+ad+' episodes for '+DB[ai].name);
+  mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);
+  if(xd.length){
+    toast('Added '+ad+' — '+xd.length+' cross-anime duplicate(s) found!','err');
+    setTimeout(()=>alert('Cross-anime duplicate links:\n\n'+xd.join('\n')+'\n\nCheck these carefully.'),300);
+  }else{
+    toast('Added '+ad+(sk?', skipped '+sk+' dupes':''),'ok');
+  }
+}
 // ── SERIES MODAL ──
 function openAddSM(){g('smei').value='';g('smxt').textContent='Add New Anime';['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;om('smx');}
 function openEditSM(idx){const a=DB[idx];g('smei').value=idx;g('smxt').textContent='Edit Anime Info';g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);}
@@ -1293,18 +1346,35 @@ function checkDupNum(ai){
     warn.classList.remove('show');
   }
 }
-
+function findDupLink(link,ai,skipEp){
+  if(!link||link.length<20)return null;
+  for(let i=0;i<DB.length;i++){
+    const a=DB[i];if(!a.downloadLinks)continue;
+    for(const dl of a.downloadLinks){
+      if(dl.link===link&&!(i===ai&&dl.episode===skipEp))
+        return{animeIdx:i,name:a.name,episode:dl.episode,same:i===ai};
+    }
+  }
+  return null;
+}
 function checkDupLink(ai){
-  const link = g('nel')?.value?.trim();
-  const warn = g('dup-warn-link');
-  const msg = g('dup-warn-link-msg');
-  if(!warn || !msg || !link || link.length < 20) { warn?.classList.remove('show'); return; }
-  const existing = DB[ai]?.downloadLinks?.find(e => e.link === link);
-  if(existing){
-    msg.textContent = 'This exact link is already used for Episode '+existing.episode+' — are you sure this is correct?';
+  const link=g('nel')?.value?.trim();
+  const warn=g('dup-warn-link');
+  const msg=g('dup-warn-link-msg');
+  if(!warn||!msg){return;}
+  if(!link||link.length<20){warn.classList.remove('show');return;}
+  const dup=findDupLink(link,ai,null);
+  if(dup){
+    msg.textContent=dup.same
+      ?'Already used for Episode '+dup.episode+' of this anime — check before adding.'
+      :'WARNING: This link already exists in "'+dup.name+'" Episode '+dup.episode+' — likely a paste mistake!';
     warn.classList.add('show');
-  } else {
+    warn.style.borderColor=dup.same?'rgba(245,166,35,.35)':'rgba(255,59,59,.45)';
+    warn.style.background=dup.same?'rgba(245,166,35,.08)':'rgba(255,59,59,.12)';
+    warn.style.color=dup.same?'var(--amber)':'var(--red)';
+  }else{
     warn.classList.remove('show');
+    warn.style.borderColor='';warn.style.background='';warn.style.color='';
   }
 }
 
