@@ -16,15 +16,15 @@ const heroSliderIds = [
 ];
 
 const newlyAddedIds = [
+    "release-that-witch-season-1-hindi-dubbed",
+    "liar-game-season-1-hindi-dubbed",
     "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed",
     "a-misanthrope-teaches-a-class-for-demi-humans-season-1-hindi-dubbed",
     "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
     "agents-of-the-four-seasons-dance-of-spring-season-1-hindi-dubbed",
     "snowball-earth-season-1-hindi-dubbed",
     "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
-    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
-    "dead-account-season-1-english-dubbed",
-    "hells-paradise-season-2-english-dubbed"
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed"
 ];
 
 const recommendedIds = [
