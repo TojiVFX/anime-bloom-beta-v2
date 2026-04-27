@@ -577,7 +577,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
 <div class="toast" id="toast"></div>
 
 <script>
-let DB=[],cfg={h:[],n:[],r:[],t:[]},sched=[],news=[],cidx=null,editRow=null;
+let DB=[],cfg={h:[],n:[],r:[],t:[]},sched=[],news=[],cidx=null,editRow=null,_pendingRestore=null;
 let changelog=[];
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
@@ -1635,21 +1635,29 @@ function doRestore(event){
     try{
       const snap=JSON.parse(e.target.result);
       if(!snap.anime||!Array.isArray(snap.anime))throw new Error('Invalid backup — missing anime data');
+      _pendingRestore=snap;  // ← store here, not in the DOM
       const prev=g('restore-preview');prev.style.display='block';
-      prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${snap.timestamp||'unknown'}</strong><br>Anime: <strong>${snap.anime.length}</strong> &nbsp;|&nbsp; Schedule: <strong>${(snap.schedule||[]).length} entries</strong> &nbsp;|&nbsp; News: <strong>${(snap.news||[]).length} items</strong><br><br>
-        <button class="btn btn-danger btn-sm" onclick='confirmRestore(${JSON.stringify(snap).replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")})'>⚠ Confirm Restore</button>
-        <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none'" style="margin-left:8px">Cancel</button>`;
+      prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${esc(snap.timestamp||'unknown')}</strong><br>Anime: <strong>${snap.anime.length}</strong> &nbsp;|&nbsp; Schedule: <strong>${(snap.schedule||[]).length} entries</strong> &nbsp;|&nbsp; News: <strong>${(snap.news||[]).length} items</strong><br><br>
+        <button class="btn btn-danger btn-sm" onclick="confirmRestore()">⚠ Confirm Restore</button>
+        <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none';_pendingRestore=null;" style="margin-left:8px">Cancel</button>`;
     }catch(err){toast('Invalid backup file: '+err.message,'err');}
   };
   reader.readAsText(file);event.target.value='';
 }
-function confirmRestore(snap){
-  DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];
-  changelog=[];g('restore-preview').style.display='none';
+
+function confirmRestore(){
+  const snap=_pendingRestore;
+  if(!snap){toast('No backup loaded','err');return;}
+  DB=snap.anime||[];
+  cfg=snap.config||{h:[],n:[],r:[],t:[]};
+  sched=snap.schedule||[];
+  news=snap.news||[];
+  _pendingRestore=null;
+  changelog=[];
+  g('restore-preview').style.display='none';
   rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();
   toast('Restored! '+DB.length+' anime loaded. Push to apply to your site.','ok');
 }
-
 // ══════════════════════════════════════════
 // IMAGE UPLOAD
 // ══════════════════════════════════════════
