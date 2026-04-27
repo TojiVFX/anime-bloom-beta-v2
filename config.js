@@ -4,25 +4,27 @@
  */
 
 const heroSliderIds = [
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "dorohedoro-season-1-hindi-dubbed",
+    "the-beginning-after-the-end-season-2-hindi-dubbed",
     "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
+    "witch-hat-atelier-season-1-hindi-dubbed",
     "release-that-witch-season-1-hindi-dubbed",
-    "grand-blue-dreaming-season-1-hindi-dubbed",
     "scum-of-the-brave-season-1-hindi-dubbed",
-    "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
     "agents-of-the-four-seasons-dance-of-spring-season-1-hindi-dubbed",
     "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed"
 ];
 
 const newlyAddedIds = [
-    "scum-of-the-brave-season-1-hindi-dubbed",
-    "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
-    "release-that-witch-season-1-hindi-dubbed",
-    "wistoria-wand-and-sword-season-1-hindi-dubbed",
-    "naruto-shippuden-season-1-hindi-dubbed",
-    "bleach-season-1-hindi-dubbed",
-    "kunon-the-sorcerer-can-see-season-1-hindi-dubbed",
-    "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed",
-    "bofuri-i-dont-want-to-get-hurt-so-ill-max-out-my-defense-season-2-hindi-dubbed"
+    "a-misanthrope-teaches-a-class-for-demi-humans-season-1-hindi-dubbed",
+    "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
+    "agents-of-the-four-seasons-dance-of-spring-season-1-hindi-dubbed",
+    "snowball-earth-season-1-hindi-dubbed",
+    "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "dead-account-season-1-english-dubbed",
+    "hells-paradise-season-2-english-dubbed",
+    "the-angel-next-door-spoils-me-rotten-season-1-hindi-dubbed"
 ];
 
 const recommendedIds = [
