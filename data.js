@@ -418,12 +418,13 @@ const animeData = [
         genres: ["Action", "Historical", "Drama"],
         language: "Hindi Dubbed",
         description: "A revolution sparked by nuclear war, natural disaster, and misrule leads to the collapse of Japanese society. The country splits into three nations vying for hegemony, and the Sangoku era begins. Aoteru Misumi, a former agricultural officer, vows to reunify Japan. He rises through the ranks with only his knowledge and eloquence. Witness the legend of the man later hailed as a genius strategist.",
-        thumbnail: "https://iili.io/BS8UnAN.jpg",
+        thumbnail: "https://iili.io/BP2XRhx.webp",
         category: "action",
         downloadLinks: [
     { episode: 1, link: "https://t.me/AnimeBloom_Bot?start=BQADAQADSBEAAjyymEYW7cAH9Q0V1hYE" },
     { episode: 2, link: "https://t.me/AnimeBloom_Bot?start=BQADAQADkA4AAsxe4EZ4JS56ocu3ZxYE" },
     { episode: 3, link: "https://t.me/AnimeBloom_Bot?start=BQADAQAD4BAAArvXKUenVIknQzJoGRYE" },
+    { episode: 4, link: "https://t.me/AnimeBloom_Bot?start=BQADAQAD19eWJh8J6Mx9DrGXKEv3ojKmqw8Cv9pscK" },
 ]
     },
     {
