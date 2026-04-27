@@ -2,25 +2,17 @@ var scheduleData = [
     {
         day: "Tuesday",
         animeId: "scum-of-the-brave-season-1-hindi-dubbed",
-        episode: 8,
+        episode: 9,
         airTime: "22:00",
-        releaseDate: "2026-04-21",
+        releaseDate: "2026-04-28",
         airTimeDisplay: "10:00 PM IST"
-    },
-    {
-        day: "Tuesday",
-        animeId: "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
-        episode: 13,
-        airTime: "22:30",
-        releaseDate: "2026-04-21",
-        airTimeDisplay: "10:30 PM IST"
     },
     {
         day: "Wednesday",
         animeId: "easygoing-territory-defense-by-the-optimistic-lord-season-1-hindi-dubbed",
-        episode: 7,
+        episode: 9,
         airTime: "20:00",
-        releaseDate: "2026-04-22",
+        releaseDate: "2026-04-29",
         airTimeDisplay: "08:00 PM IST"
     },
     {
@@ -42,9 +34,9 @@ var scheduleData = [
     {
         day: "Monday",
         animeId: "release-that-witch-season-1-hindi-dubbed",
-        episode: 5,
+        episode: 6,
         airTime: "23:30",
-        releaseDate: "2026-04-20",
+        releaseDate: "2026-04-27",
         airTimeDisplay: "11:30 PM IST"
     },
     {
@@ -74,9 +66,9 @@ var scheduleData = [
     {
         day: "Wednesday",
         animeId: "grand-blue-dreaming-season-1-hindi-dubbed",
-        episode: 7,
+        episode: 9,
         airTime: "20:00",
-        releaseDate: "2026-04-22",
+        releaseDate: "2026-04-29",
         airTimeDisplay: "08:00 PM IST"
     },
     {
@@ -89,18 +81,10 @@ var scheduleData = [
     },
     {
         day: "Wednesday",
-        animeId: "witch-hat-atelier-season-1-hindi-dubbed",
+        animeId: "reborn-as-a-vending-machine-i-now-wander-the-dungeon-season-3-hindi-dubbed",
         episode: 2,
         airTime: "22:30",
-        releaseDate: "2026-04-22",
-        airTimeDisplay: "10:30 PM IST"
-    },
-    {
-        day: "Wednesday",
-        animeId: "reborn-as-a-vending-machine-i-now-wander-the-dungeon-season-3-hindi-dubbed",
-        episode: 1,
-        airTime: "22:30",
-        releaseDate: "2026-04-22",
+        releaseDate: "2026-04-29",
         airTimeDisplay: "10:30 PM IST"
     },
     {
@@ -142,6 +126,22 @@ var scheduleData = [
         airTime: "23:30",
         releaseDate: "2026-04-24",
         airTimeDisplay: "11:30 PM IST"
+    },
+    {
+        day: "Monday",
+        animeId: "liar-game-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-27",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Wednesday",
+        animeId: "witch-hat-atelier-season-1-hindi-dubbed",
+        episode: 2,
+        airTime: "22:30",
+        releaseDate: "2026-04-29",
+        airTimeDisplay: "10:30 PM IST"
     }
 ];
 
