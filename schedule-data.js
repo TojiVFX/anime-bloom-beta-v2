@@ -56,14 +56,6 @@ var scheduleData = [
         airTimeDisplay: "11:00 PM IST"
     },
     {
-        day: "Saturday",
-        animeId: "bofuri-i-dont-want-to-get-hurt-so-ill-max-out-my-defense-season-2-hindi-dubbed",
-        episode: 8,
-        airTime: "23:30",
-        releaseDate: "2026-04-25",
-        airTimeDisplay: "11:30 PM IST"
-    },
-    {
         day: "Sunday",
         animeId: "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed",
         episode: 4,
@@ -94,6 +86,62 @@ var scheduleData = [
         airTime: "22:00",
         releaseDate: "2026-04-25",
         airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Wednesday",
+        animeId: "witch-hat-atelier-season-1-hindi-dubbed",
+        episode: 2,
+        airTime: "22:30",
+        releaseDate: "2026-04-22",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Wednesday",
+        animeId: "reborn-as-a-vending-machine-i-now-wander-the-dungeon-season-3-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-22",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "dorohedoro-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-23",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "the-beginning-after-the-end-season-2-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-23",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "23:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "11:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "snowball-earth-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "23:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "11:30 PM IST"
     }
 ];
 
