@@ -66,10 +66,13 @@ textarea {
     -webkit-user-select: text !important;
 }
 
-.details-layout,
-.details-layout *:not(button):not(.download-btn):not(img) {
-    user-select: text !important;
-    -webkit-user-select: text !important;
+.details-info,
+.details-info h1,
+.details-info .info-item,
+.details-info .description,
+.details-info .description p {
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 button,
@@ -286,10 +289,6 @@ nav a:hover::before {
     transform: scaleY(1);
 }
 
-nav a::after {
-    display: none;
-}
-
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -490,11 +489,6 @@ main {
     border-color: rgba(255, 130, 100, 0.6);
 }
 
-.greeting h1 {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-}
-
 .search-section {
     position: relative;
     overflow: visible;
@@ -539,10 +533,6 @@ main {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
     pointer-events: none;
     border-radius: 50px;
-}
-
-.search-section::after {
-    content: none;
 }
 
 .search-section:focus-within {
@@ -715,7 +705,9 @@ main {
     background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: 1px solid var(--soft-border);
     text-align: left;
@@ -880,12 +872,6 @@ main {
 
 .rating-badge {
     color: #f5c518;
-    border: 1px solid rgba(245,197,24,0.4);
-    flex-shrink: 0;
-}
-
-.rating-badge {
-    color: #f5c518;
     border: 1px solid rgba(245,197,24,0.5);
     display: flex;
     align-items: center;
@@ -941,7 +927,7 @@ main {
     height: 100vh;
     background-size: cover;
     background-position: center;
-    filter: blur(50px) brightness(0.3);
+    filter: blur(12px) brightness(0.3);
     z-index: -1;
     transform: scale(1.1);
 }
@@ -1070,69 +1056,6 @@ main {
         0 4px 14px rgba(0,0,0,0.4);
     color: #fff;
     transform: translateY(-3px);
-}
-
-.season-link-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 3.5rem;
-}
-
-.season-btn {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    user-select: none !important;
-    -webkit-user-select: none !important;
-    background: linear-gradient(135deg,
-        rgba(255, 60, 60, 0.88) 0%,
-        rgba(190, 15, 15, 0.92) 100%);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    border: 1px solid rgba(255, 110, 80, 0.45);
-    box-shadow:
-        inset 0 1px 0 rgba(255,180,160,0.25),
-        0 4px 18px rgba(255, 46, 46, 0.42);
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-}
-
-.season-btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -75%;
-    width: 50%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.22), transparent);
-    transform: skewX(-15deg);
-    transition: left 0.55s ease;
-    pointer-events: none;
-}
-.season-btn:hover::before { left: 135%; }
-
-.season-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 60%);
-    pointer-events: none;
-}
-
-.season-btn:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 140, 100, 0.6);
-    box-shadow:
-        inset 0 1px 0 rgba(255,180,160,0.3),
-        0 6px 24px rgba(255, 46, 46, 0.55);
-    color: #ffffff;
 }
 
 .recommended-section {
@@ -1790,10 +1713,6 @@ footer {
     pointer-events: none;
 }
 
-.library-search-wrapper::after {
-    content: none;
-}
-
 .library-search-wrapper:focus-within {
     border-color: rgba(255, 46, 46, 0.55);
 }
@@ -2107,13 +2026,6 @@ footer {
     color: var(--accent-color);
 }
 
-.modal-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 0 10px rgba(36, 161, 222, 0.3));
-}
-
 .modal-body h2 {
     color: var(--text-color);
     margin: 0 0 1rem;
@@ -2188,30 +2100,31 @@ footer {
     height: 100%;
 }
 
-.skeleton-img {
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(90deg, #18181c 25%, #222228 50%, #18181c 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite linear;
+.skeleton-img,
+.skeleton-title {
+    background: #18181c;
+    position: relative;
+    overflow: hidden;
 }
+
 
 .skeleton-info {
     padding: 1rem;
 }
 
-.skeleton-title {
-    height: 1.2rem;
-    width: 80%;
-    background: linear-gradient(90deg, #18181c 25%, #222228 50%, #18181c 75%);
-    background-size: 200% 100%;
+.skeleton-img::after,
+.skeleton-title::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, #222228 50%, transparent 100%);
     animation: shimmer 1.5s infinite linear;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
 }
 
+
 @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .skeleton-grid {
@@ -2339,20 +2252,6 @@ footer {
     object-fit: cover;
 }
 
-.air-time-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
-    color: var(--accent-color);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border: 1px solid var(--accent-color);
-}
-
 .schedule-info {
     padding: 1.2rem;
 }
@@ -2400,12 +2299,6 @@ footer {
 
 /* ── ANIMATION SYSTEM ── */
 body {
-    animation: bodyFadeIn 0.6s ease forwards;
-}
-
-@keyframes bodyFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
 
 .reveal {
@@ -2419,13 +2312,6 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.40s; }
-
 
 .search-section {
     animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
@@ -2479,8 +2365,7 @@ body {
 }
 
 .watch-btn:active,
-.join-btn:active,
-.season-btn:active {
+.join-btn:active,{
     transform: scale(0.93) !important;
     box-shadow: 0 2px 8px rgba(255, 46, 46, 0.3) !important;
     transition: transform 0.1s ease, box-shadow 0.1s ease !important;
