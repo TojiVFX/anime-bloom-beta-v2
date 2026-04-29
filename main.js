@@ -97,11 +97,32 @@ function buildSkRow(cardCount = 5) {
 /**
  * Inject skeleton content before real data renders.
  * Called synchronously at DOMContentLoaded.
- * (Now largely handled by hardcoded HTML for instant loading)
  */
 function initSkeletons() {
-  // Hardcoded skeletons are now in index.html, library.html, genre.html
-  // This function remains for any dynamic skeleton needs if necessary.
+  // ── Home page ──
+  const heroSlider = document.getElementById('hero-slider');
+  if (heroSlider) heroSlider.appendChild(buildHeroSkeleton());
+
+  const homeContainer = document.getElementById('anime-container');
+  if (homeContainer) {
+    for (let i = 0; i < 4; i++) homeContainer.appendChild(buildSkRow(5));
+  }
+
+  // ── Library page ──
+  const libContainer = document.getElementById('anime-container-library');
+  if (libContainer) {
+    libContainer.className = 'discovery-mode';
+    for (let i = 0; i < 5; i++) libContainer.appendChild(buildSkRow(5));
+  }
+
+  // ── Genre page ──
+  const genreContainer = document.getElementById('genre-container');
+  if (genreContainer) {
+    const grid = document.createElement('div');
+    grid.className = 'sk-grid';
+    for (let i = 0; i < 12; i++) grid.appendChild(buildSkCard());
+    genreContainer.appendChild(grid);
+  }
 }
 
 /** Remove hero skeleton smoothly before the real slider renders */
@@ -109,20 +130,16 @@ function removeHeroSkeleton() {
   const s = document.getElementById('hero-skeleton');
   if (!s) return;
   s.classList.add('sk-fade-out');
-  setTimeout(() => {
-    if (s.parentNode) s.remove();
-  }, 300);
+  setTimeout(() => s.remove(), 300);
 }
 
 /** Clear skeleton rows from a container with a brief fade */
 function clearSkeletons(container) {
   if (!container) return;
-  const skRows = container.querySelectorAll('.sk-row, .sk-grid, .details-skeleton, .sk-card');
+  const skRows = container.querySelectorAll('.sk-row, .sk-grid');
   skRows.forEach(el => {
     el.classList.add('sk-fade-out');
-    setTimeout(() => {
-      if (el.parentNode) el.remove();
-    }, 300);
+    setTimeout(() => el.remove(), 300);
   });
 }
 
@@ -820,9 +837,6 @@ function loadAnimeDetails() {
   const container = document.getElementById('details-container');
   if (!container) return;
 
-  // Clear existing skeletons if any
-  clearSkeletons(container);
-
   const urlParams = new URLSearchParams(window.location.search);
   let animeId = urlParams.get('id');
 
@@ -902,8 +916,6 @@ function initSchedule() {
   if (!newsContainer || !scheduleContainer) return;
 
   const newsData = window.newsData || [];
-  clearSkeletons(newsContainer);
-  setTimeout(() => {
   newsContainer.innerHTML = newsData.map(news => `
     <div class="news-card reveal">
       <img src="${news.thumbnail}" alt="${news.title}" class="news-img" loading="lazy">
@@ -921,8 +933,6 @@ function initSchedule() {
 
   function renderScheduleForDay(day) {
     const filtered = scheduleData.filter(item => item.day === day);
-
-    clearSkeletons(scheduleContainer);
 
     if (filtered.length === 0) {
       scheduleContainer.innerHTML = `<p class="no-results">No releases scheduled for ${day}.</p>`;
@@ -950,7 +960,6 @@ function initSchedule() {
     }).join('');
 
     if (typeof observeNewReveals === 'function') observeNewReveals();
-  }, 320);
   }
 
   dayTabs.forEach(tab => {
@@ -1249,16 +1258,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('details-container')) {
     loadAnimeDetails();
     setTimeout(staggerInfoItems, 100);
-  }
-
-  // Hide splash screen if present (usually handled by CSS/JS)
-  const splash = document.getElementById('splash-screen');
-  if (splash) {
-    setTimeout(() => {
-      splash.style.opacity = '0';
-      splash.style.visibility = 'hidden';
-      setTimeout(() => splash.remove(), 500);
-    }, 500);
   }
   if (document.getElementById('contact-form')) {
     initAbout();
