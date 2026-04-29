@@ -70,7 +70,31 @@ module.exports = (req, res) => {
     </header>
 
     <main id="details-container">
-        <div class="loading">Loading anime details...</div>
+        <!-- Details Skeleton -->
+        <div class="details-skeleton" id="details-skeleton">
+            <div class="sk-details-layout">
+                <div class="sk-details-thumb sk-shine"></div>
+                <div class="sk-details-info">
+                    <div class="sk-title sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                    <div class="sk-line sk-shine"></div>
+                </div>
+            </div>
+            <div class="sk-row">
+                <div class="sk-section-title sk-shine"></div>
+                <div class="sk-row-cards">
+                    <div class="sk-card"><div class="sk-card-img sk-shine"></div><div class="sk-card-body"><div class="sk-card-name sk-shine"></div><div class="sk-card-meta sk-shine"></div></div></div>
+                    <div class="sk-card"><div class="sk-card-img sk-shine"></div><div class="sk-card-body"><div class="sk-card-name sk-shine"></div><div class="sk-card-meta sk-shine"></div></div></div>
+                    <div class="sk-card"><div class="sk-card-img sk-shine"></div><div class="sk-card-body"><div class="sk-card-name sk-shine"></div><div class="sk-card-meta sk-shine"></div></div></div>
+                    <div class="sk-card"><div class="sk-card-img sk-shine"></div><div class="sk-card-body"><div class="sk-card-name sk-shine"></div><div class="sk-card-meta sk-shine"></div></div></div>
+                    <div class="sk-card"><div class="sk-card-img sk-shine"></div><div class="sk-card-body"><div class="sk-card-name sk-shine"></div><div class="sk-card-meta sk-shine"></div></div></div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -104,9 +128,9 @@ module.exports = (req, res) => {
 
     <button id="back-to-top" title="Go to top">&#8679;</button>
 
-    <script src="/data.js"></script>
-    <script src="/config.js"></script>
-    <script src="/main.js"></script>
+    <script defer src="/data.js"></script>
+    <script defer src="/config.js"></script>
+    <script defer src="/main.js"></script>
 </body>
 </html>`);
 };
