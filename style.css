@@ -2495,37 +2495,190 @@ body {
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-#splash-screen.fade-out {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+@keyframes sk-shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
 }
-
-.splash-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
-    animation: pulse 2s infinite ease-in-out;
+ 
+.sk-shine {
+  background: linear-gradient(
+    90deg,
+    #111115 0%,
+    #1c1c22 40%,
+    #111115 80%
+  );
+  background-size: 600px 100%;
+  animation: sk-shimmer 1.4s infinite linear;
 }
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 40px rgba(255, 46, 46, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
-    }
+ 
+/* ── Hero skeleton ── */
+.hero-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 5rem 3.5rem;
+  border-radius: inherit;
+  overflow: hidden;
+  background: #0a0a0e;
+  pointer-events: none;
 }
-
-
+ 
+.hero-skeleton .sk-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #0e0e13 0%,
+    #181820 40%,
+    #0e0e13 80%
+  );
+  background-size: 900px 100%;
+  animation: sk-shimmer 1.6s infinite linear;
+}
+ 
+.hero-skeleton-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 520px;
+}
+ 
+.sk-title {
+  height: 38px;
+  width: 75%;
+  border-radius: 8px;
+}
+ 
+.sk-title-sm {
+  height: 28px;
+  width: 55%;
+  border-radius: 6px;
+}
+ 
+.sk-line {
+  height: 13px;
+  border-radius: 5px;
+}
+ 
+.sk-line-sm {
+  width: 80%;
+}
+ 
+.sk-line-xs {
+  width: 60%;
+}
+ 
+.sk-btn {
+  height: 42px;
+  width: 140px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+ 
+.hero-skeleton-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  display: flex;
+  gap: 8px;
+}
+ 
+.hero-skeleton-progress .sk-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.06);
+}
+ 
+/* ── Row skeleton ── */
+.sk-row {
+  margin-bottom: 2rem;
+}
+ 
+.sk-row-title {
+  height: 28px;
+  width: 220px;
+  border-radius: 7px;
+  margin: 4rem 0 1.5rem 15px;
+}
+ 
+.sk-row-cards {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  padding: 1rem 0 2rem;
+}
+ 
+.sk-card {
+  flex: 0 0 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+ 
+.sk-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+}
+ 
+.sk-card-body {
+  padding: 1rem;
+  background: #0f0f12;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+ 
+.sk-card-name {
+  height: 16px;
+  width: 80%;
+  border-radius: 5px;
+}
+ 
+.sk-card-meta {
+  height: 11px;
+  width: 50%;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+ 
+/* ── Grid skeleton (library) ── */
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+ 
+/* ── Section title skeleton ── */
+.sk-section-title {
+  height: 30px;
+  width: 200px;
+  border-radius: 7px;
+  margin: 3rem 0 1.2rem 15px;
+  position: relative;
+}
+ 
+/* ── Fade-out when real content arrives ── */
+.sk-row,
+.hero-skeleton,
+.sk-grid {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+ 
+.sk-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* ── Search Suggestions Dropdown ── */
 .search-suggestions {
