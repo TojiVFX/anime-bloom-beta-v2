@@ -2365,7 +2365,7 @@ body {
 }
 
 .watch-btn:active,
-.join-btn:active,{
+.join-btn:active {
     transform: scale(0.93) !important;
     box-shadow: 0 2px 8px rgba(255, 46, 46, 0.3) !important;
     transition: transform 0.1s ease, box-shadow 0.1s ease !important;
