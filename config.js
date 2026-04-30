@@ -16,15 +16,15 @@ const heroSliderIds = [
 ];
 
 const newlyAddedIds = [
-    "release-that-witch-season-1-hindi-dubbed",
-    "liar-game-season-1-hindi-dubbed",
-    "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed",
-    "a-misanthrope-teaches-a-class-for-demi-humans-season-1-hindi-dubbed",
-    "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
-    "agents-of-the-four-seasons-dance-of-spring-season-1-hindi-dubbed",
-    "snowball-earth-season-1-hindi-dubbed",
-    "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
-    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed"
+    "reborn-as-a-vending-machine-i-now-wander-the-dungeon-season-3-hindi-dubbed",
+    "witch-hat-atelier-season-1-hindi-dubbed",
+    "grand-blue-dreaming-season-1-hindi-dubbed",
+    "easygoing-territory-defense-by-the-optimistic-lord-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-2-hindi-dubbed",
+    "eren-the-southpaw-season-1-hindi-dubbed",
+    "marriagetoxin-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-1-hindi-dubbed",
+    "release-that-witch-season-1-hindi-dubbed"
 ];
 
 const recommendedIds = [
