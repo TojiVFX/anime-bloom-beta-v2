@@ -142,6 +142,22 @@ var scheduleData = [
         airTime: "22:30",
         releaseDate: "2026-04-29",
         airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Tuesday",
+        animeId: "eren-the-southpaw-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:00",
+        releaseDate: "2026-04-28",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Tuesday",
+        animeId: "marriagetoxin-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:00",
+        releaseDate: "2026-04-28",
+        airTimeDisplay: "10:30 PM IST"
     }
 ];
 
