@@ -84,7 +84,7 @@ function buildSkRow(cardCount = 5) {
   const row = document.createElement('div');
   row.className = 'sk-row';
 
-  row.appendChild(sk('sk-section-title'));
+  row.appendChild(sk('sk-row-title'));   // ✓ now matches .sk-row-title in CSS
 
   const strip = document.createElement('div');
   strip.className = 'sk-row-cards';
@@ -151,11 +151,6 @@ function shuffleArray(array) {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
-}
-
-function createSkeletonCard() {
-  // Now uses the same sk-* system as initSkeletons() so shimmer matches
-  return buildSkCard();
 }
 
 function createAnimeCard(anime) {
@@ -673,7 +668,7 @@ function initLibrary() {
 
       showLoading(false);
       updateResultInfo(true);
-    }, 1000);
+    }, 350);
   }
 
   function renderGrid(animes) {
@@ -704,7 +699,7 @@ function initLibrary() {
     }, 180);
   }
 
-  function loadMore() {
+    function loadMore() {
     if (container.className !== 'grid-mode' || displayedCount >= currentFilteredAnimes.length || isTransitioning) return;
     isTransitioning = true;
     const loadingIndicator = document.getElementById('loading-indicator');
@@ -713,8 +708,9 @@ function initLibrary() {
     const skeletonBatch = document.createElement('div');
     skeletonBatch.className = 'sk-grid';   // ← was skeleton-grid
     for (let i = 0; i < loadAmount; i++) {
-      if (displayedCount + i < currentFilteredAnimes.length) skeletonBatch.appendChild(createSkeletonCard());
+    if (displayedCount + i < currentFilteredAnimes.length) skeletonBatch.appendChild(buildSkCard());
     }
+
     container.appendChild(skeletonBatch);
 
     setTimeout(() => {
