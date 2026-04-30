@@ -241,13 +241,13 @@ function displayAnime(animes, showLoadMore = false, isCategoryFiltered = false) 
   // Clear skeleton rows first
   clearSkeletons(container);
 
-  container.style.transition = 'opacity 0.18s ease';
-  container.style.opacity = '0';
+container.style.transition = 'opacity 0.18s ease';
+container.style.opacity = '0';
 
-  setTimeout(() => {
-    // Remove any remaining skeleton rows (safety)
-    container.querySelectorAll('.sk-row').forEach(el => el.remove());
-    container.innerHTML = '';
+setTimeout(() => {
+  // Remove any remaining skeleton rows (safety)
+  container.querySelectorAll('.sk-row').forEach(el => el.remove());
+  container.innerHTML = '';
 
     if (resultInfo) {
       if (animes.length === animeData.length) {
