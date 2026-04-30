@@ -489,6 +489,75 @@ main {
     border-color: rgba(255, 130, 100, 0.6);
 }
 
+
+.landing-highlight {
+    max-width: 1200px;
+    margin: 2rem auto 1.5rem;
+    padding: 0 1.5rem;
+}
+
+.landing-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.2rem;
+}
+
+.landing-copy,
+.landing-stats {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 46, 46, 0.06));
+    border: 1px solid var(--soft-border);
+    border-radius: 18px;
+    padding: 1.4rem;
+}
+
+.landing-kicker { color: var(--secondary-color); font-weight: 600; margin-bottom: 0.5rem; }
+.landing-copy h2 { margin: 0 0 0.75rem; font-size: 1.9rem; line-height: 1.25; }
+.landing-copy p { color: var(--secondary-text); margin: 0 0 1rem; }
+.landing-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.primary-cta,
+.secondary-cta {
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.primary-cta { background: var(--accent-color); color: #fff; }
+.secondary-cta { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid var(--soft-border); }
+
+.landing-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+.stat-card {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 1rem;
+}
+.stat-card span { display:block; font-size:1.1rem; font-weight:700; color: #fff; margin-bottom:0.3rem; }
+.stat-card p { margin:0; color: var(--secondary-text); font-size: 0.9rem; }
+
+.why-choose-us {
+    max-width: 1200px;
+    margin: 0 auto 1.2rem;
+    padding: 0 1.5rem;
+}
+.why-choose-us h2 { font-size: 1.4rem; margin: 0 0 0.9rem; }
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--soft-border);
+    border-radius: 14px;
+    padding: 1rem;
+}
+.feature-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.feature-card p { margin: 0; color: var(--secondary-text); }
+
 .search-section {
     position: relative;
     overflow: visible;
@@ -2812,4 +2881,10 @@ body {
 }
 .did-you-mean:hover {
     opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+  .landing-grid, .feature-grid { grid-template-columns: 1fr; }
+  .landing-copy h2 { font-size: 1.45rem; }
 }
