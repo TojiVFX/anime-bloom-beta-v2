@@ -44,10 +44,6 @@ module.exports = (req, res) => {
 <link rel="stylesheet" href="/style.css">
     <script async src="/gtag.js"></script>
 </head>
-<body class="dark-theme">
-    <div id="splash-screen">
-        <img src="/favicon.png" alt="Anime Bloom Logo" class="splash-logo">
-    </div>
     <header>
         <nav>
             <div class="nav-container">
