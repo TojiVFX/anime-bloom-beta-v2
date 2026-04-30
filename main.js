@@ -35,7 +35,7 @@ function buildHeroSkeleton() {
 
   // shimmer background
   const bg = document.createElement('div');
-  bg.className = 'sk-bg';
+  bg.className = 'sk-bg sk-shine';   // ← add sk-shine
   wrap.appendChild(bg);
 
   // content column
@@ -154,15 +154,8 @@ function shuffleArray(array) {
 }
 
 function createSkeletonCard() {
-  const card = document.createElement('div');
-  card.className = 'skeleton-card';
-  card.innerHTML = `
-    <div class="skeleton-img"></div>
-    <div class="skeleton-info">
-      <div class="skeleton-title"></div>
-    </div>
-  `;
-  return card;
+  // Now uses the same sk-* system as initSkeletons() so shimmer matches
+  return buildSkCard();
 }
 
 function createAnimeCard(anime) {
@@ -370,9 +363,19 @@ function initHeroSlider() {
     .map(id => animeData.find(a => a.id === id))
     .filter(a => a !== undefined);
 
-  const totalSlides = featuredAnime.length;
+  // Fallback: if no hero IDs configured, use first 5 anime from data
+  if (featuredAnime.length === 0) {
+    featuredAnime = animeData.slice(0, 5);
+  }
 
-  // Remove hero skeleton smoothly, then build real slider
+  // If still empty, remove skeleton and hide hero entirely
+  if (featuredAnime.length === 0) {
+    removeHeroSkeleton();
+    heroSlider.style.display = 'none';
+    return;
+  }
+
+  const totalSlides = featuredAnime.length;
   removeHeroSkeleton();
 
   // Clear everything except the (now fading) skeleton
@@ -708,7 +711,7 @@ function initLibrary() {
     if (loadingIndicator) loadingIndicator.style.display = 'block';
 
     const skeletonBatch = document.createElement('div');
-    skeletonBatch.className = 'skeleton-grid';
+    skeletonBatch.className = 'sk-grid';   // ← was skeleton-grid
     for (let i = 0; i < loadAmount; i++) {
       if (displayedCount + i < currentFilteredAnimes.length) skeletonBatch.appendChild(createSkeletonCard());
     }
