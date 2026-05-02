@@ -158,6 +158,14 @@ var scheduleData = [
         airTime: "22:00",
         releaseDate: "2026-04-28",
         airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "the-warrior-princess-and-the-barbaric-king-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-30",
+        airTimeDisplay: "10:30 PM IST"
     }
 ];
 
