@@ -506,6 +506,9 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
     <div class="nav-item" onclick="sw('ai')" id="nav-ai">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>AI Insights
     </div>
+    <div class="nav-item" onclick="sw('logs')" id="nav-logs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>Activity Logs
+    </div>
   </div>
   <div class="nav-bottom">
     <button class="nav-bottom-btn push-nav-btn" onclick="doPush()" id="sidebar-push-btn">
@@ -760,6 +763,25 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
         </div>
       </div>
 
+      <!-- LOGS PANE -->
+      <div class="pane" id="pane-logs">
+        <div class="tpage">
+          <div class="tpage-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div>
+              <h1>Activity Logs</h1>
+              <p>History of your administrative actions.</p>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="clearAdminLogs()"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>Clear All</button>
+          </div>
+
+          <div class="ccard">
+            <div id="admin-log-box" style="padding:10px;max-height:calc(100vh - 240px);overflow-y:auto;background:#080910;border-radius:10px;font-family:'Courier New',monospace">
+              <div style="padding:40px;text-align:center;color:var(--muted);font-size:12.5px">No activity recorded yet.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- PUSH PANE -->
       <div class="pane" id="pane-push">
         <div class="ppage">
@@ -897,6 +919,10 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
     <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
     <span>AI</span>
   </button>
+  <button class="mobile-nav-item" id="mnav-logs" onclick="sw('logs');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+    <span>Logs</span>
+  </button>
   <button class="mobile-nav-item" id="mnav-push" onclick="sw('push');setMobileActive(this)">
     <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
     <span>Push</span>
@@ -1012,7 +1038,7 @@ let changelog=[];
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const isMobile=()=>window.innerWidth<=768;
 
-const PAGE_TITLES={episodes:{title:'Episodes',sub:'Manage anime & episode links'},config:{title:'Homepage Config',sub:'Hero, Newly Added, Trending'},schedule:{title:'Airing Schedule',sub:'Weekly release schedule'},news:{title:'News & Announcements',sub:'Notices & updates'},tools:{title:'Tools & Diagnostics',sub:'Scans & audits'},ai:{title:'AI Insights',sub:'Smart suggestions & optimizations'},push:{title:'Push to Site',sub:'Deploy to GitHub → Vercel'},preview:{title:'Site Preview',sub:'Live preview'}};
+const PAGE_TITLES={episodes:{title:'Episodes',sub:'Manage anime & episode links'},config:{title:'Homepage Config',sub:'Hero, Newly Added, Trending'},schedule:{title:'Airing Schedule',sub:'Weekly release schedule'},news:{title:'News & Announcements',sub:'Notices & updates'},tools:{title:'Tools & Diagnostics',sub:'Scans & audits'},ai:{title:'AI Insights',sub:'Smart suggestions & optimizations'},logs:{title:'Activity Logs',sub:'History of administrative actions'},push:{title:'Push to Site',sub:'Deploy to GitHub → Vercel'},preview:{title:'Site Preview',sub:'Live preview'}};
 
 // ══ MOBILE NAV ══
 function setMobileActive(el){
@@ -1071,8 +1097,61 @@ function buildCommitMsg(){
   return '[AnimeBloom Admin] '+parts.join(' · ');
 }
 
+// ══ LOGGING SYSTEM ══
+const LOGS_KEY = 'animebloom_activity_logs';
+let adminLogs = [];
+
+function initLogs() {
+  try {
+    const raw = localStorage.getItem(LOGS_KEY);
+    adminLogs = raw ? JSON.parse(raw) : [];
+    renderAdminLogs();
+  } catch (e) { adminLogs = []; }
+}
+
+function addAdminLog(type, msg) {
+  const log = {
+    timestamp: new Date().toISOString(),
+    type, // 'info', 'ok', 'err', 'warn'
+    message: msg
+  };
+  adminLogs.unshift(log);
+  if (adminLogs.length > 200) adminLogs.pop();
+  localStorage.setItem(LOGS_KEY, JSON.stringify(adminLogs));
+  renderAdminLogs();
+}
+
+function renderAdminLogs() {
+  const box = g('admin-log-box');
+  if (!box) return;
+  if (adminLogs.length === 0) {
+    box.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted);font-size:12.5px">No activity recorded yet.</div>';
+    return;
+  }
+  box.innerHTML = adminLogs.map(l => {
+    const time = new Date(l.timestamp).toLocaleTimeString('en', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const date = new Date(l.timestamp).toLocaleDateString('en', { month: 'short', day: 'numeric' });
+    const cls = `log-${l.type || 'info'}`;
+    return `
+      <div class="log-line" style="border-bottom:1px solid rgba(255,255,255,0.03);padding:8px 4px">
+        <span class="log-time" style="font-size:10px;color:var(--muted);min-width:130px">[${date} ${time}]</span>
+        <span class="${cls}" style="font-size:12px">${esc(l.message)}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function clearAdminLogs() {
+  if (!confirm('Clear all activity logs?')) return;
+  adminLogs = [];
+  localStorage.removeItem(LOGS_KEY);
+  renderAdminLogs();
+  toast('Logs cleared', 'ok');
+}
+
 // ══ INIT ══
 function init(){
+  initLogs();
   if(typeof animeData!=='undefined')DB=JSON.parse(JSON.stringify(animeData));
   else{toast('data.js not found','err');return;}
   if(typeof heroSliderIds!=='undefined')cfg.h=[...heroSliderIds];
@@ -1153,6 +1232,7 @@ async function generateAIInsights(demo = false) {
     }
 
     aiLastResult = data.insights;
+    addAdminLog('ok', `Generated AI Insights (mode: ${demo?'demo':'live'})`);
     renderAIInsights(data.insights);
 
   } catch (err) {
@@ -1221,6 +1301,7 @@ function applyAIRecommendations(ids) {
   if (!confirm(`Apply these ${ids.length} anime to your Recommended section? This will replace your current list.`)) return;
 
   cfg.r = [...ids];
+  addAdminLog('ok', `Applied AI Recommendations: ${ids.join(', ')}`);
   mu();
   rCList('r');
   toast('AI Recommendations applied!', 'ok');
@@ -1414,17 +1495,17 @@ function toolOrphanCheck(){
 
 // ══ EPISODE ROW EDIT ══
 function eRow(ai,en){if(editRow!==null)cxRow(ai,editRow);editRow=en;g(`prev-${en}`).style.display='none';g(`inp-${en}`).style.display='block';g(`inp-${en}`).focus();g(`be-${en}`).style.display='none';g(`bs-${en}`).style.display='flex';g(`bc-${en}`).style.display='flex';}
-function svRow(ai,en){const l=g(`inp-${en}`).value.trim();if(!l){toast('Empty link','err');return;}const dups=findDupLink(l,ai,en);if(dups.length){const m=dups.map(d=>d.same?'Already EP'+d.episode+' of this anime':'Already in "'+d.name+'" EP'+d.episode).join('\n');if(!confirm('Duplicate link:\n'+m+'\n\nSave anyway?'))return;}const ep=DB[ai].downloadLinks.find(e=>e.episode===en);if(ep)ep.link=l;logChange('EP~EP'+en+' '+DB[ai].name);editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');}
+function svRow(ai,en){const l=g(`inp-${en}`).value.trim();if(!l){toast('Empty link','err');return;}const dups=findDupLink(l,ai,en);if(dups.length){const m=dups.map(d=>d.same?'Already EP'+d.episode+' of this anime':'Already in "'+d.name+'" EP'+d.episode).join('\n');if(!confirm('Duplicate link:\n'+m+'\n\nSave anyway?'))return;}const ep=DB[ai].downloadLinks.find(e=>e.episode===en);if(ep)ep.link=l;logChange('EP~EP'+en+' '+DB[ai].name);addAdminLog('info', `Updated EP ${en} link for ${DB[ai].name}`);editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');}
 function cxRow(ai,en){editRow=null;g(`prev-${en}`).style.display='block';g(`inp-${en}`).style.display='none';g(`be-${en}`).style.display='flex';g(`bs-${en}`).style.display='none';g(`bc-${en}`).style.display='none';}
-function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
-function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists — edit it above`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
+function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);addAdminLog('warn', `Deleted EP ${en} from ${DB[ai].name}`);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
+function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists — edit it above`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);addAdminLog('ok', `Added EP ${n} to ${DB[ai].name}`);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
 
 // ══ BULK EPISODE OPS ══
 function toggleAllEp(checked){document.querySelectorAll('.ep-chk').forEach(c=>c.checked=checked);if(cidx!==null)updateBulkBar(cidx);}
 function updateBulkBar(ai){const checked=document.querySelectorAll('.ep-chk:checked');const bar=g('bulk-bar');const cnt=g('bulk-count');if(!bar)return;if(checked.length>0){bar.classList.add('show');cnt.textContent=checked.length+' episode'+(checked.length>1?'s':'')+' selected';}else{bar.classList.remove('show');}const allChk=g('chk-all-ep');const total=document.querySelectorAll('.ep-chk').length;if(allChk){allChk.indeterminate=checked.length>0&&checked.length<total;allChk.checked=checked.length===total&&total>0;}}
 function clearEpSel(){document.querySelectorAll('.ep-chk').forEach(c=>c.checked=false);if(cidx!==null)updateBulkBar(cidx);}
-function bulkDeleteEp(ai){const checked=[...document.querySelectorAll('.ep-chk:checked')];if(!checked.length)return;const nums=checked.map(c=>parseInt(c.dataset.ep)).sort((a,b)=>a-b);if(!confirm(`Delete ${nums.length} episode(s)?`))return;DB[ai].downloadLinks=DB[ai].downloadLinks.filter(dl=>!nums.includes(dl.episode));logChange('EP-'+nums.length+' episodes from '+DB[ai].name);mu();rEpD(ai);rSidebar(g('sinput').value);toast(nums.length+' episodes deleted','ok');}
-function bulkAdd(ai){const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);if(!st||st<1){toast('Enter starting episode','err');return;}if(!ls.length){toast('Paste links','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];let ad=0,sk=0,xd=[];ls.forEach((lk,i)=>{const n=st+i;if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}const dups=findDupLink(lk,ai,null);dups.forEach(d=>{const label=d.same?'EP'+n+': already EP'+d.episode:'EP'+n+': in "'+d.name+'" EP'+d.episode;xd.push(label);});DB[ai].downloadLinks.push({episode:n,link:lk});ad++;});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);if(ad>0)logChange('EP+'+ad+' eps for '+DB[ai].name);mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);if(xd.length){toast('Added '+ad+' — '+xd.length+' duplicate(s)!','err');}else{toast('Added '+ad+(sk?', skipped '+sk:''),'ok');}}
+function bulkDeleteEp(ai){const checked=[...document.querySelectorAll('.ep-chk:checked')];if(!checked.length)return;const nums=checked.map(c=>parseInt(c.dataset.ep)).sort((a,b)=>a-b);if(!confirm(`Delete ${nums.length} episode(s)?`))return;DB[ai].downloadLinks=DB[ai].downloadLinks.filter(dl=>!nums.includes(dl.episode));logChange('EP-'+nums.length+' episodes from '+DB[ai].name);addAdminLog('warn', `Bulk deleted ${nums.length} episodes from ${DB[ai].name}`);mu();rEpD(ai);rSidebar(g('sinput').value);toast(nums.length+' episodes deleted','ok');}
+function bulkAdd(ai){const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);if(!st||st<1){toast('Enter starting episode','err');return;}if(!ls.length){toast('Paste links','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];let ad=0,sk=0,xd=[];ls.forEach((lk,i)=>{const n=st+i;if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}const dups=findDupLink(lk,ai,null);dups.forEach(d=>{const label=d.same?'EP'+n+': already EP'+d.episode:'EP'+n+': in "'+d.name+'" EP'+d.episode;xd.push(label);});DB[ai].downloadLinks.push({episode:n,link:lk});ad++;});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);if(ad>0)logChange('EP+'+ad+' eps for '+DB[ai].name);addAdminLog('ok', `Bulk added ${ad} episodes to ${DB[ai].name}`);mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);if(xd.length){toast('Added '+ad+' — '+xd.length+' duplicate(s)!','err');}else{toast('Added '+ad+(sk?', skipped '+sk:''),'ok');}}
 
 // ══ DUPLICATE DETECTION ══
 function findDupLink(link,ai,skipEp){if(!link||link.length<5)return[];const results=[];for(let i=0;i<DB.length;i++){const a=DB[i];if(!a.downloadLinks)continue;for(const dl of a.downloadLinks){if(dl.link===link&&!(i===ai&&dl.episode===skipEp)){results.push({animeIdx:i,name:a.name,episode:dl.episode,same:i===ai});}}}return results;}
@@ -1434,29 +1515,29 @@ function checkDupLink(ai){const link=g('nel')?.value?.trim();const warn=g('dup-w
 // ══ SERIES MODAL ══
 function openAddSM(){g('smei').value='';g('smxt').textContent='Add New Anime';['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;om('smx');}
 function openEditSM(idx){const a=DB[idx];g('smei').value=idx;g('smxt').textContent='Edit Anime Info';g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);}
-function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;if(ei===''){const idExists=DB.find(a=>a.id===sid);if(idExists){toast('ID "'+sid+'" already exists','err');return;}}const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
-function delSeries(idx){if(!confirm(`Delete "${DB[idx].name}" + all episodes?`))return;logChange('A-'+DB[idx].name);DB.splice(idx,1);cidx=null;mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();window.location.hash='';toast('Deleted','err');}
-function quickToggleStatus(idx){const cycle={airing:'completed',completed:'upcoming',upcoming:'airing',aired:'airing'};const a=DB[idx];a.status=cycle[a.status||'airing']||'airing';mu();logChange('A~'+a.name+' status:'+a.status);rEpD(idx);rSidebar(g('sinput').value);toast(a.name+' → '+a.status,'ok');}
+function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;if(ei===''){const idExists=DB.find(a=>a.id===sid);if(idExists){toast('ID "'+sid+'" already exists','err');return;}}const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);addAdminLog('info', `Updated anime: ${nm}`);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);addAdminLog('ok', `Added new anime: ${nm}`);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
+function delSeries(idx){const name = DB[idx].name; if(!confirm(`Delete "${name}" + all episodes?`))return;logChange('A-'+name);addAdminLog('warn', `Deleted anime: ${name}`);DB.splice(idx,1);cidx=null;mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();window.location.hash='';toast('Deleted','err');}
+function quickToggleStatus(idx){const cycle={airing:'completed',completed:'upcoming',upcoming:'airing',aired:'airing'};const a=DB[idx];a.status=cycle[a.status||'airing']||'airing';mu();logChange('A~'+a.name+' status:'+a.status);addAdminLog('info', `Status toggle: ${a.name} → ${a.status}`);rEpD(idx);rSidebar(g('sinput').value);toast(a.name+' → '+a.status,'ok');}
 
 // ══ CONFIG ══
 const CMAP={h:{k:'h',cnt:'hcnt',list:'hlist',sel:'hsel'},n:{k:'n',cnt:'ncnt',list:'nlist',sel:'nsel'},r:{k:'r',cnt:'rcnt',list:'rlist',sel:'rsel'},t:{k:'t',cnt:'tcnt',list:'tlist',sel:'tsel'}};
 function rConfig(){Object.keys(CMAP).forEach(k=>rCList(k));rfCSel();}
 function rCList(k){const ids=cfg[k];const el=g(CMAP[k].list);g(CMAP[k].cnt).textContent=ids.length;if(ids.length===0){el.innerHTML='<div style="color:var(--muted);font-size:12px;padding:8px 0;text-align:center">Empty</div>';return;}el.innerHTML=ids.map((aid,i)=>{const a=DB.find(x=>x.id===aid);return`<div class="iditem" draggable="true" data-key="${k}" data-idx="${i}" ondragstart="dragStart(event,'${k}',${i})" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dragDrop(event,'${k}',${i})" ondragend="dragEnd(event)"><div class="drag-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></div><div style="flex:1;min-width:0"><div class="idname">${esc(a?a.name:aid)}</div><div class="idid">${esc(aid)}</div></div><button class="iddel" onclick="rmL('${k}',${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>`;}).join('');}
 function rfCSel(){['h','n','r','t'].forEach(k=>{const sel=g(CMAP[k].sel);sel.innerHTML='<option value="">— Add anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');});const sc=g('scan');if(sc){const cv=sc.value;sc.innerHTML='<option value="">— Select anime —</option>'+DB.map(a=>`<option value="${esc(a.id)}" ${cv===a.id?'selected':''}>${esc(a.name)}</option>`).join('');}}
-function addL(k){const v=g(CMAP[k].sel).value;if(!v){toast('Select anime first','err');return;}if(cfg[k].includes(v)){toast('Already in list','err');return;}cfg[k].push(v);logChange('CF'+k+' updated');mu();rCList(k);g(CMAP[k].sel).value='';}
-function rmL(k,i){cfg[k].splice(i,1);mu();rCList(k);}
+function addL(k){const v=g(CMAP[k].sel).value;if(!v){toast('Select anime first','err');return;}if(cfg[k].includes(v)){toast('Already in list','err');return;}cfg[k].push(v);logChange('CF'+k+' updated');addAdminLog('info', `Added to config [${k}]: ${v}`);mu();rCList(k);g(CMAP[k].sel).value='';}
+function rmL(k,i){const id=cfg[k][i];cfg[k].splice(i,1);addAdminLog('info', `Removed from config [${k}]: ${id}`);mu();rCList(k);}
 
 // ══ SCHEDULE ══
 function rSched(){const wrap=g('stbl');if(!sched.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No entries yet</div>';return;}wrap.innerHTML=DAYS.map(day=>{const ents=sched.filter(s=>s.day===day);if(!ents.length)return'';const rows=ents.map(s=>{const gi=sched.indexOf(s);const an=DB.find(x=>x.id===s.animeId);return`<tr><td style="font-weight:500">${esc(an?an.name:s.animeId)}</td><td><span class="epnum">EP ${s.episode}</span></td><td><span class="tbadge">${esc(s.airTimeDisplay||s.airTime)}</span></td><td style="color:var(--muted);font-size:12px">${s.releaseDate||'—'}</td><td><div class="ra"><button class="ib ibe" onclick="openSM(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="ib ibd" onclick="delSched(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button></div></td></tr>`;}).join('');return`<div class="dgrp"><div class="dlbl">${day}</div><div class="sched-table-wrap"><table class="sta"><thead><tr><th>Anime</th><th>Episode</th><th>Time</th><th>Date</th><th width="80">Actions</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;}).join('');}
 function openSM(ei=null){g('scei').value=ei!==null?ei:'';g('scmxt').textContent=ei!==null?'Edit Entry':'Add Schedule Entry';if(ei!==null){const s=sched[ei];g('scday').value=s.day;g('scep').value=s.episode;g('scan').value=s.animeId;g('scat').value=s.airTime||'22:00';g('scatd').value=s.airTimeDisplay||'';g('scrd').value=s.releaseDate||'';}else{g('scday').value='Monday';g('scep').value='';g('scan').value='';g('scat').value='22:00';g('scatd').value='';g('scrd').value='';}om('scmx');}
-function saveSched(){const aid=g('scan').value,ep=parseInt(g('scep').value);if(!aid){toast('Select anime','err');return;}if(!ep||ep<1){toast('Enter episode number','err');return;}const obj={day:g('scday').value,animeId:aid,episode:ep,airTime:g('scat').value,releaseDate:g('scrd').value,airTimeDisplay:g('scatd').value};const ei=g('scei').value;if(ei!==''){sched[parseInt(ei)]=obj;logChange('SC edited');toast('Updated','ok');}else{sched.push(obj);logChange('SC added '+obj.day);toast('Added','ok');}mu();cm('scmx');rSched();}
-function delSched(i){if(!confirm('Delete entry?'))return;sched.splice(i,1);mu();rSched();toast('Deleted','ok');}
+function saveSched(){const aid=g('scan').value,ep=parseInt(g('scep').value);if(!aid){toast('Select anime','err');return;}if(!ep||ep<1){toast('Enter episode number','err');return;}const obj={day:g('scday').value,animeId:aid,episode:ep,airTime:g('scat').value,releaseDate:g('scrd').value,airTimeDisplay:g('scatd').value};const ei=g('scei').value;if(ei!==''){sched[parseInt(ei)]=obj;logChange('SC edited');addAdminLog('info', `Updated schedule entry: ${aid} (EP ${ep})`);toast('Updated','ok');}else{sched.push(obj);logChange('SC added '+obj.day);addAdminLog('ok', `Added to schedule [${obj.day}]: ${aid} (EP ${ep})`);toast('Added','ok');}mu();cm('scmx');rSched();}
+function delSched(i){const s=sched[i]; if(!confirm('Delete entry?'))return;addAdminLog('warn', `Deleted schedule entry: ${s.animeId} on ${s.day}`);sched.splice(i,1);mu();rSched();toast('Deleted','ok');}
 
 // ══ NEWS ══
 function rNews(){const wrap=g('nlst');if(!news.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No news yet</div>';return;}wrap.innerHTML=news.map((n,i)=>{const th=n.thumbnail?`<img class="nth" src="${esc(n.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';return`<div class="ncard">${th}<div class="nthp" style="${n.thumbnail?'display:none':''}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div><div class="nbody"><div class="ntitle">${esc(n.title)}</div><div class="ndesc">${esc(n.description)}</div><div class="ndate">${n.date||''}</div><div class="nact"><button class="btn btn-ghost btn-sm" onclick="openNM(${i})">Edit</button><button class="btn btn-danger btn-sm" onclick="delNews(${i})">Delete</button></div></div></div>`;}).join('');}
 function openNM(ei=null){g('nei').value=ei!==null?ei:'';g('nmxt').textContent=ei!==null?'Edit News':'Add News';if(ei!==null){const n=news[ei];g('nt').value=n.title||'';g('nd').value=n.description||'';g('nth').value=n.thumbnail||'';g('ndt').value=n.date||'';}else{['nt','nd','nth'].forEach(i=>g(i).value='');g('ndt').value=new Date().toISOString().split('T')[0];}om('nmx');}
-function saveNews(){const t=g('nt').value.trim(),d=g('nd').value.trim();if(!t){toast('Title required','err');return;}if(!d){toast('Description required','err');return;}const obj={title:t,description:d,thumbnail:g('nth').value.trim(),date:g('ndt').value};const ei=g('nei').value;if(ei!==''){news[parseInt(ei)]=obj;logChange('NW edited');toast('Updated','ok');}else{news.push(obj);logChange('NW added: '+t);toast('Added','ok');}mu();cm('nmx');rNews();}
-function delNews(i){if(!confirm('Delete?'))return;news.splice(i,1);mu();rNews();toast('Deleted','ok');}
+function saveNews(){const t=g('nt').value.trim(),d=g('nd').value.trim();if(!t){toast('Title required','err');return;}if(!d){toast('Description required','err');return;}const obj={title:t,description:d,thumbnail:g('nth').value.trim(),date:g('ndt').value};const ei=g('nei').value;if(ei!==''){news[parseInt(ei)]=obj;logChange('NW edited');addAdminLog('info', `Updated news: ${t}`);toast('Updated','ok');}else{news.push(obj);logChange('NW added: '+t);addAdminLog('ok', `Added news: ${t}`);toast('Added','ok');}mu();cm('nmx');rNews();}
+function delNews(i){const n=news[i]; if(!confirm('Delete?'))return;addAdminLog('warn', `Deleted news: ${n.title}`);news.splice(i,1);mu();rNews();toast('Deleted','ok');}
 
 // ══ AUTO-SAVE ══
 const AUTOSAVE_KEY='animebloom_autosave';let autosaveTimer=null;
@@ -1498,14 +1579,16 @@ async function doPush(){
   Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'pending','—'));
   selected.forEach(([,f])=>setFileStatus(f.statusEl,'pending','Queued'));
   clearLog();setPushBtnState('pushing');showBanner('pushing',`Pushing ${selected.length} file(s)...`);setProgress(0);
-  addLog('info',`Pushing ${selected.length} file(s): ${selected.map(([n])=>n).join(', ')}`);setProgress(10);
+  addLog('info',`Pushing ${selected.length} file(s): ${selected.map(([n])=>n).join(', ')}`);
+  addAdminLog('info', `Deployment started: ${selected.length} files`);
+  setProgress(10);
   const files={};for(const[name,f]of selected){files[name]=f.gen();setFileStatus(f.statusEl,'pushing','Pushing...');}
   setProgress(30);addLog('info','Sending to /api/push...');
   try{
     const res=await fetch('/api/push',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({files,commitMsg:g('commit-preview')?.value?.trim()||''})});
     setProgress(80);const data=await res.json();
-    if(res.ok&&data.success){data.results.forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,'ok',r.commit?`✓ ${r.commit}`:'✓ Done');addLog('ok',`${r.file} → ${r.commit||'committed'}`);});setProgress(100);setPushBtnState('success');showBanner('success',`${data.results.length} file(s) pushed! Deploying in ~30s.`);g('upill').classList.remove('show');changelog=[];updateCommitPreview();clearAutosave();toast('Pushed! Vercel deploying...','ok');}
-    else{(data.results||[]).forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,r.ok?'ok':'err',r.ok?'✓':'✗');addLog(r.ok?'ok':'err',`${r.file}: ${r.ok?'OK':r.error}`);});if(!data.results)addLog('err',data.error||'Unknown error');setPushBtnState('error');showBanner('error',data.message||'Push failed');toast(data.message||'Push failed','err');setProgress(0);}
+    if(res.ok&&data.success){data.results.forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,'ok',r.commit?`✓ ${r.commit}`:'✓ Done');addLog('ok',`${r.file} → ${r.commit||'committed'}`);});setProgress(100);setPushBtnState('success');showBanner('success',`${data.results.length} file(s) pushed! Deploying in ~30s.`);g('upill').classList.remove('show');changelog=[];updateCommitPreview();clearAutosave();addAdminLog('ok', `Deployment successful! ${data.results.length} files pushed.`);toast('Pushed! Vercel deploying...','ok');}
+    else{(data.results||[]).forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,r.ok?'ok':'err',r.ok?'✓':'✗');addLog(r.ok?'ok':'err',`${r.file}: ${r.ok?'OK':r.error}`);});if(!data.results)addLog('err',data.error||'Unknown error');setPushBtnState('error');showBanner('error',data.message||'Push failed');addAdminLog('err', `Deployment failed: ${data.message || 'Unknown error'}`);toast(data.message||'Push failed','err');setProgress(0);}
   }catch(err){addLog('err','Network error: '+err.message);setPushBtnState('error');showBanner('error','Connection error — is api/push.js deployed?');Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'err','✗'));toast('Connection error','err');setProgress(0);}
   isPushing=false;setTimeout(()=>{setPushBtnState('idle');hideBanner();},8000);
 }
@@ -1530,7 +1613,7 @@ async function testConnection(){const btn=g('test-btn');const results=g('test-re
 function doBackup(){const snap={version:2,timestamp:new Date().toISOString(),anime:DB,config:cfg,schedule:sched,news:news};const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`animebloom-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();localStorage.setItem('last_backup',new Date().toLocaleString());updateBackupTime();toast('Backup downloaded!','ok');}
 function updateBackupTime(){const el=g('last-backup-time');const t=localStorage.getItem('last_backup');if(el&&t)el.textContent='Last: '+t;}
 function doRestore(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const snap=JSON.parse(e.target.result);if(!snap.anime||!Array.isArray(snap.anime))throw new Error('Invalid backup');_pendingRestore=snap;const prev=g('restore-preview');prev.style.display='block';prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${esc(snap.timestamp||'unknown')}</strong><br>Anime: <strong>${snap.anime.length}</strong><br><br><button class="btn btn-danger btn-sm" onclick="confirmRestore()">⚠ Confirm Restore</button> <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none';_pendingRestore=null;">Cancel</button>`;}catch(err){toast('Invalid backup: '+err.message,'err');}};reader.readAsText(file);event.target.value='';}
-function confirmRestore(){const snap=_pendingRestore;if(!snap)return;DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];_pendingRestore=null;changelog=[];g('restore-preview').style.display='none';rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();toast('Restored! '+DB.length+' anime loaded','ok');}
+function confirmRestore(){const snap=_pendingRestore;if(!snap)return;DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];_pendingRestore=null;changelog=[];g('restore-preview').style.display='none';rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();addAdminLog('warn', `System restored from backup (${DB.length} anime)`);toast('Restored! '+DB.length+' anime loaded','ok');}
 
 // ══ IMAGE UPLOAD ══
 function saveFreeimgKey(){const k=g('freeimg-key').value.trim();if(!k){toast('Paste key first','err');return;}localStorage.setItem('freeimg_key',k);showKeyStatus('✓ Key saved','var(--green)');toast('API key saved','ok');}
