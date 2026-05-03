@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>AnimeBloom Admin Panel</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="data.js"></script>
@@ -10,78 +10,58 @@
 <script src="schedule-data.js"></script>
 <style>
 :root{--bg:#0d0e14;--surface:#12141f;--surface2:#191c2c;--surface3:#222640;--red:#ff3b3b;--red-dim:rgba(255,59,59,0.12);--red-border:rgba(255,59,59,0.28);--green:#22e07a;--green-dim:rgba(34,224,122,0.1);--amber:#f5a623;--amber-dim:rgba(245,166,35,0.12);--blue:#4da6ff;--blue-dim:rgba(77,166,255,0.1);--text:#e2e4f0;--muted:#6b6f8a;--border:rgba(255,255,255,0.06);--radius:10px;--nav-w:210px}
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
 body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-size:13.5px;display:flex}
 
 /* ══ LEFT NAV SIDEBAR ══ */
-.nav-sidebar{
-  width:var(--nav-w);min-width:var(--nav-w);
-  background:var(--surface);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;
-  overflow:hidden;z-index:200;flex-shrink:0;
-}
-.nav-logo{
-  height:52px;display:flex;align-items:center;
-  padding:0 16px;gap:9px;
-  border-bottom:1px solid var(--border);flex-shrink:0;
-}
-.nav-logo-icon{
-  width:28px;height:28px;border-radius:8px;
-  background:var(--red-dim);border:1px solid var(--red-border);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
+.nav-sidebar{width:var(--nav-w);min-width:var(--nav-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;z-index:200;flex-shrink:0}
+.nav-logo{height:52px;display:flex;align-items:center;padding:0 16px;gap:9px;border-bottom:1px solid var(--border);flex-shrink:0}
+.nav-logo-icon{width:28px;height:28px;border-radius:8px;background:var(--red-dim);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-logo-icon svg{width:13px;height:13px;color:var(--red)}
 .nav-logo-text{font-size:14px;font-weight:700;background:linear-gradient(90deg,#ff3b3b,#ff7040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
-
 .nav-section{padding:14px 10px 6px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
 .nav-items{flex:1;overflow-y:auto;padding:6px 8px;display:flex;flex-direction:column;gap:2px}
 .nav-items::-webkit-scrollbar{width:3px}.nav-items::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:3px}
-
-.nav-item{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 10px;border-radius:9px;
-  cursor:pointer;transition:all .15s;
-  color:var(--muted);font-size:12.5px;font-weight:500;
-  border:1px solid transparent;
-  position:relative;white-space:nowrap;
-}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;cursor:pointer;transition:all .15s;color:var(--muted);font-size:12.5px;font-weight:500;border:1px solid transparent;position:relative;white-space:nowrap}
 .nav-item:hover{background:var(--surface2);color:var(--text)}
 .nav-item.active{background:var(--red-dim);color:var(--red);border-color:var(--red-border)}
 .nav-item svg{width:15px;height:15px;flex-shrink:0}
-.nav-item .nav-badge{
-  margin-left:auto;background:var(--red);color:#fff;
-  border-radius:10px;padding:1px 6px;font-size:10px;font-weight:700;
-  display:none;
-}
+.nav-item .nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:10px;padding:1px 6px;font-size:10px;font-weight:700;display:none}
 .nav-item.has-changes .nav-badge{display:block}
-
 .nav-divider{height:1px;background:var(--border);margin:6px 4px}
-
 .nav-bottom{padding:10px 8px;border-top:1px solid var(--border);flex-shrink:0}
-.nav-bottom-btn{
-  display:flex;align-items:center;gap:9px;padding:8px 10px;
-  border-radius:9px;cursor:pointer;transition:all .15s;
-  color:var(--muted);font-size:12px;font-weight:500;width:100%;
-  background:none;border:none;font-family:'Sora',sans-serif;
-}
+.nav-bottom-btn{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;cursor:pointer;transition:all .15s;color:var(--muted);font-size:12px;font-weight:500;width:100%;background:none;border:none;font-family:'Sora',sans-serif}
 .nav-bottom-btn:hover{background:var(--surface2);color:var(--text)}
 .nav-bottom-btn svg{width:14px;height:14px;flex-shrink:0}
-.nav-bottom-btn.push-nav-btn{
-  background:var(--green-dim);color:var(--green);
-  border:1px solid rgba(34,224,122,.25);margin-bottom:4px;
-}
+.nav-bottom-btn.push-nav-btn{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,224,122,.25);margin-bottom:4px}
 .nav-bottom-btn.push-nav-btn:hover{background:rgba(34,224,122,.2)}
+
+/* ══ MOBILE BOTTOM NAV ══ */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--surface);border-top:1px solid var(--border);z-index:300;align-items:stretch;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.mobile-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;color:var(--muted);cursor:pointer;font-family:'Sora',sans-serif;font-size:9px;font-weight:600;transition:color .15s;padding:0;letter-spacing:.3px;position:relative}
+.mobile-nav-item svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.mobile-nav-item.active{color:var(--red)}
+.mobile-nav-item.active svg{transform:scale(1.1)}
+.mobile-nav-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--red);border-radius:0 0 3px 3px;transition:width .2s}
+.mobile-nav-item.active::before{width:28px}
+
+/* ══ MOBILE LIBRARY SHEET ══ */
+.mobile-lib-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:250;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.mobile-lib-backdrop.show{display:block}
+.mobile-lib-fab{display:none;position:fixed;bottom:68px;right:14px;width:44px;height:44px;background:var(--red);border:none;border-radius:50%;color:#fff;cursor:pointer;z-index:200;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,59,59,.45);transition:transform .15s;-webkit-tap-highlight-color:transparent}
+.mobile-lib-fab:active{transform:scale(.9)}
+.mobile-lib-fab svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.5}
+.mobile-lib-fab .fab-count{position:absolute;top:-4px;right:-4px;background:#fff;color:var(--red);border-radius:10px;padding:1px 5px;font-size:9px;font-weight:700;min-width:16px;text-align:center}
+
+/* Mobile unsaved indicator */
+.mobile-unsaved-dot{display:none;position:absolute;top:6px;right:calc(50% - 18px);width:6px;height:6px;border-radius:50%;background:var(--amber)}
 
 /* ══ MAIN BODY ══ */
 .admin-body{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
 
-/* ══ TOP BAR (mini) ══ */
-.topbar{
-  height:52px;background:var(--surface);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 18px;gap:10px;flex-shrink:0;z-index:100;
-}
+/* ══ TOP BAR ══ */
+.topbar{height:52px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:10px;flex-shrink:0;z-index:100}
 .topbar-title{font-size:13px;font-weight:600;color:var(--text);margin-right:auto}
 .topbar-sub{font-size:11px;color:var(--muted);margin-left:4px;font-weight:400}
 .upill{display:none;align-items:center;gap:6px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.3);color:var(--amber);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600}
@@ -92,7 +72,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .push-btn.success{background:#0f3d1f!important;color:#22e07a!important;border:1px solid rgba(34,224,122,.4)!important}
 .push-btn.error{background:#3d0f0f!important;color:var(--red)!important;border:1px solid var(--red-border)!important}
 .progress-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--green);width:0;transition:width .3s;border-radius:2px}
-
 .deploy-banner{display:none;align-items:center;gap:10px;padding:0 18px;background:#0f1a10;border-bottom:1px solid rgba(34,224,122,.2);height:36px;flex-shrink:0;font-size:12px}
 .deploy-banner.show{display:flex}.deploy-banner.err{background:#1a0f0f;border-color:rgba(255,59,59,.2)}
 .deploy-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -112,7 +91,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .cbadge{background:var(--surface3);color:var(--muted);border-radius:20px;padding:2px 8px;font-size:11px}
 .sw{position:relative}.sw svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted);pointer-events:none}
 .si{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Sora',sans-serif;font-size:12.5px;padding:8px 10px 8px 32px;outline:none}.si:focus{border-color:var(--red)}
-.alist{flex:1;overflow-y:auto}.alist::-webkit-scrollbar{width:4px}.alist::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px}
+.alist{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}.alist::-webkit-scrollbar{width:4px}.alist::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px}
 .aitem{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .12s;border-bottom:1px solid var(--border)}
 .aitem:hover{background:var(--surface2)}.aitem.active{background:var(--surface3);border-left:2px solid var(--red)}
 .ath{width:38px;height:52px;border-radius:5px;object-fit:cover;background:var(--surface3);flex-shrink:0}
@@ -143,15 +122,16 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-s
 .dbadges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500}
 .b-red{background:var(--red-dim);color:var(--red);border:1px solid var(--red-border)}.b-green{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,224,122,.25)}.b-amber{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,166,35,.25)}.b-blue{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(77,166,255,.25)}.b-gray{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
-.dact{display:flex;gap:8px}
-.sec{margin-bottom:28px}.sech{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dact{display:flex;gap:8px;flex-wrap:wrap}
+.sec{margin-bottom:28px}.sech{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
 .seclbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
-.epta{width:100%;border-collapse:collapse}.epta th{font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}.epta td{padding:10px;border-bottom:1px solid var(--border);vertical-align:middle}.epta tr:last-child td{border-bottom:none}.epta tr:hover td{background:rgba(255,255,255,.02)}
+.table-scroll-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);border:1px solid var(--border)}
+.epta{width:100%;border-collapse:collapse;min-width:480px}.epta th{font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}.epta td{padding:10px;border-bottom:1px solid var(--border);vertical-align:middle}.epta tr:last-child td{border-bottom:none}.epta tr:hover td{background:rgba(255,255,255,.02)}
 .epnum{display:inline-flex;align-items:center;justify-content:center;background:var(--red-dim);color:var(--red);border:1px solid var(--red-border);border-radius:6px;padding:3px 8px;font-size:11.5px;font-weight:700;min-width:40px}
-.eplp{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:340px;display:block}
+.eplp{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px;display:block}
 .epli{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Sora',sans-serif;font-size:12px;padding:6px 9px;outline:none;display:none}.epli:focus{border-color:var(--red)}
 .ra{display:flex;gap:5px}
-.ib{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:all .12s;background:var(--surface2)}.ib svg{width:13px;height:13px}
+.ib{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:all .12s;background:var(--surface2)}.ib svg{width:13px;height:13px}
 .ibe{color:var(--blue)}.ibe:hover{background:var(--blue-dim)}.ibs{color:var(--green);display:none}.ibs:hover{background:var(--green-dim)}.ibc{color:var(--muted);display:none}.ibc:hover{background:var(--surface3)}.ibd{color:var(--red)}.ibd:hover{background:var(--red-dim)}
 .aef{display:grid;grid-template-columns:100px 1fr auto;gap:10px;align-items:end;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-top:12px}
 .fg{display:flex;flex-direction:column;gap:5px}.fl{font-size:11px;color:var(--muted);font-weight:500}
@@ -186,7 +166,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .dgrp{margin-bottom:22px}
 .dlbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .dlbl::after{content:'';flex:1;height:1px;background:var(--border)}
-.sta{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.sched-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);border:1px solid var(--border)}
+.sta{width:100%;border-collapse:collapse;background:var(--surface);min-width:500px}
 .sta th{font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}.sta td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:12.5px;vertical-align:middle}.sta tr:last-child td{border-bottom:none}.sta tr:hover td{background:rgba(255,255,255,.02)}
 .tbadge{background:rgba(245,166,35,.12);color:var(--amber);border:1px solid rgba(245,166,35,.25);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600;white-space:nowrap}
 
@@ -232,10 +213,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .tpage-header{margin-bottom:28px}
 .tpage-header h1{font-size:22px;font-weight:700;margin-bottom:5px}
 .tpage-header p{font-size:12.5px;color:var(--muted);line-height:1.6}
-
 .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
-@media(max-width:900px){.tools-grid{grid-template-columns:1fr}}
-
 .tool-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s}
 .tool-card:hover{border-color:rgba(255,255,255,.12)}
 .tool-card-head{padding:20px 20px 16px;display:flex;align-items:flex-start;gap:14px}
@@ -264,8 +242,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .tool-result.ok{color:var(--green);border-color:rgba(34,224,122,.2);background:var(--green-dim)}
 .tool-result.warn{color:var(--amber);border-color:rgba(245,166,35,.2);background:var(--amber-dim)}
 .tool-result.err{color:var(--red);border-color:var(--red-border);background:var(--red-dim)}
-
-/* Scan results inside tools page */
 .scan-results-wrap{padding:20px 28px}
 .scan-results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .scan-results-title{font-size:15px;font-weight:700}
@@ -277,8 +253,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .scan-entry:last-child{border-bottom:none}
 .scan-entry .epnum{font-size:11px;padding:2px 6px}
 .scan-url{font-size:10.5px;color:var(--muted);word-break:break-all;font-family:'Courier New',monospace;flex:1}
-
-/* Stats strip */
 .stats-strip{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
 .stat-pill{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;min-width:130px}
 .stat-pill-val{font-size:22px;font-weight:700;color:var(--text);line-height:1;margin-bottom:3px}
@@ -292,7 +266,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0
 .mb{padding:22px;display:flex;flex-direction:column;gap:15px}.mf{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
 .xbtn{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:5px;display:flex}.xbtn:hover{background:var(--surface2);color:var(--text)}
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:13px;z-index:9000;box-shadow:0 6px 24px rgba(0,0,0,.5);transform:translateY(70px);opacity:0;transition:all .22s;pointer-events:none}
+.toast{position:fixed;bottom:70px;right:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:13px;z-index:9000;box-shadow:0 6px 24px rgba(0,0,0,.5);transform:translateY(70px);opacity:0;transition:all .22s;pointer-events:none;max-width:calc(100vw - 32px)}
 .toast.show{transform:translateY(0);opacity:1}.tok{border-color:rgba(34,224,122,.35);color:var(--green)}.terr{border-color:var(--red-border);color:var(--red)}
 .flex{display:flex;align-items:center}.gap8{gap:8px}.mla{margin-left:auto}
 .emrow td{text-align:center;padding:32px;color:var(--muted);font-size:12.5px}
@@ -307,81 +281,237 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
 .bulk-bar{display:none;margin-top:12px;padding:10px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;align-items:center;gap:10px}
 .bulk-bar.show{display:flex}
 .kbd{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10.5px;color:var(--muted)}
-#autosave-ind{position:fixed;bottom:14px;left:calc(var(--nav-w) + 50%);transform:translateX(-50%);background:rgba(34,224,122,.12);border:1px solid rgba(34,224,122,.3);color:var(--green);padding:5px 14px;border-radius:20px;font-size:11.5px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
+#autosave-ind{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(34,224,122,.12);border:1px solid rgba(34,224,122,.3);color:var(--green);padding:5px 14px;border-radius:20px;font-size:11.5px;font-weight:600;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .jump-valid{border-color:rgba(34,224,122,.6)!important}
 .jump-invalid{border-color:rgba(255,59,59,.6)!important}
+
+/* ══ MOBILE RESPONSIVE ══ */
+@media (max-width: 768px) {
+  /* Base layout */
+  html, body { overflow: auto; height: auto; min-height: 100%; }
+  body { flex-direction: column; overflow-x: hidden; }
+  .admin-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* Hide desktop nav, show mobile nav */
+  .nav-sidebar { display: none !important; }
+  .mobile-nav { display: flex; }
+  .mobile-lib-fab { display: flex; }
+  .autosave-ind-desktop { display: none; }
+
+  /* Topbar */
+  .topbar { height: 48px; padding: 0 12px; gap: 6px; }
+  .topbar-title { font-size: 12px; }
+  .topbar-sub { display: none; }
+  .upill { display: none !important; }
+  #quick-push-btn { padding: 6px 10px; font-size: 11px; gap: 4px; }
+  #quick-push-btn svg { width: 11px; height: 11px; }
+
+  /* Deploy banner */
+  .deploy-banner { padding: 0 12px; font-size: 11px; height: 32px; }
+
+  /* Layout */
+  .layout { flex-direction: column; position: relative; }
+
+  /* Sidebar becomes a bottom sheet */
+  .sidebar {
+    position: fixed !important;
+    bottom: 56px !important;
+    left: 0 !important; right: 0 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 72vh !important;
+    border-right: none !important;
+    border-top: 1px solid var(--border) !important;
+    border-radius: 16px 16px 0 0 !important;
+    transform: translateY(110%) !important;
+    transition: transform 0.32s cubic-bezier(0.16,1,0.3,1) !important;
+    z-index: 260 !important;
+    box-shadow: 0 -12px 40px rgba(0,0,0,.6) !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .sidebar.mobile-open { transform: translateY(0) !important; }
+  .sidebar.hidden { transform: translateY(110%) !important; }
+
+  /* Drag handle for sidebar sheet */
+  .sidebar::before {
+    content: '';
+    display: block;
+    width: 36px; height: 4px;
+    background: rgba(255,255,255,.2);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
+
+  /* Panel */
+  .panel { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 72px; }
+
+  /* Detail view */
+  .detail { padding: 14px 14px; }
+  .dh { flex-direction: row; gap: 12px; align-items: flex-start; }
+  .dcov, .dcovp { width: 70px; height: 96px; flex-shrink: 0; }
+  .dname { font-size: 15px; }
+  .dact { gap: 6px; }
+  .dact .btn-sm { padding: 6px 10px; font-size: 11px; }
+
+  /* Sec header */
+  .sech { gap: 6px; }
+  .sech .cbadge + .btn-sm { font-size: 10.5px; padding: 3px 7px; }
+
+  /* Episode table */
+  .table-scroll-wrap { border-radius: 8px; }
+  .epta { min-width: 440px; }
+  .epta th, .epta td { padding: 8px 8px; font-size: 11px; }
+  .epnum { font-size: 10.5px; padding: 2px 6px; min-width: 34px; }
+  .eplp { max-width: 160px; font-size: 10.5px; }
+  .ib { width: 28px; height: 28px; }
+  .ra { gap: 3px; }
+
+  /* Add episode form */
+  .aef { grid-template-columns: 70px 1fr auto; gap: 8px; padding: 10px 12px; }
+  .aef .btn { padding: 8px 10px; font-size: 11.5px; }
+
+  /* Bulk bar */
+  .bulk-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .bulk-bar > div:last-child { display: flex; gap: 6px; width: 100%; }
+  .bulk-bar > div:last-child .btn { flex: 1; justify-content: center; }
+
+  /* Grids */
+  .cgrid { grid-template-columns: 1fr !important; }
+  .tools-grid { grid-template-columns: 1fr !important; }
+  .mg { grid-template-columns: 1fr !important; }
+
+  /* Pages */
+  .cpage { padding: 14px; }
+  .spage { padding: 14px; }
+  .tpage { padding: 14px; }
+  .tpage-header h1 { font-size: 17px; }
+  .ppage { padding: 14px; max-width: 100%; }
+  .push-card { padding: 16px; border-radius: 10px; }
+  .push-card-title { font-size: 15px; }
+  .push-card-sub { font-size: 12px; margin-bottom: 16px; }
+  .big-push-btn { font-size: 13px; padding: 13px; }
+  .file-row { padding: 10px 12px; gap: 10px; }
+  .file-name { font-size: 12px; }
+  .file-desc { font-size: 10.5px; }
+  .file-status { min-width: 60px; font-size: 11px; }
+
+  /* Stats strip */
+  .stats-strip { gap: 8px; }
+  .stat-pill { min-width: calc(50% - 4px); padding: 10px 12px; flex: none; }
+  .stat-pill-val { font-size: 20px; }
+
+  /* Schedule table */
+  .sched-table-wrap { border-radius: 8px; }
+  .sta { min-width: 460px; }
+  .sta th, .sta td { padding: 8px 10px; font-size: 11.5px; }
+
+  /* News */
+  .ncard { padding: 12px; gap: 10px; }
+  .nth { width: 56px; height: 42px; }
+
+  /* Config card lists */
+  .ccard-b { padding: 12px; }
+  .idlist { max-height: 180px; }
+  .idar { flex-wrap: wrap; }
+  .idar select { min-width: 0; flex: 1; }
+
+  /* Modals - slide up from bottom */
+  .overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    border-radius: 18px 18px 0 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 94vh;
+    border-bottom: none;
+  }
+  .mb { padding: 16px 18px; gap: 12px; }
+  .mh { padding: 14px 18px; }
+  .mf { padding: 12px 18px; }
+  .mf .btn { flex: 1; justify-content: center; }
+
+  /* Toast */
+  .toast { bottom: 70px; right: 12px; left: 12px; right: 12px; max-width: 100%; text-align: center; }
+
+  /* Keyboard shortcuts bar hidden on mobile */
+  .kb-shortcuts { display: none; }
+
+  /* Welcome screen */
+  .welcome { height: 60vh; }
+  .welcome svg { width: 44px; height: 44px; }
+  .welcome h2 { font-size: 15px; }
+
+  /* Autosave indicator */
+  #autosave-ind { bottom: 68px; font-size: 10.5px; }
+
+  /* Scan results */
+  .scan-results-wrap { padding: 0; }
+  .scan-result-item { padding: 12px; }
+}
+
+/* Touch-friendly tap targets everywhere on mobile */
+@media (max-width: 768px) {
+  .btn { min-height: 38px; }
+  .ib { min-height: 32px; min-width: 32px; }
+  .addbtn { padding: 11px; }
+  input, select, textarea { font-size: 16px !important; } /* Prevents iOS zoom */
+  .si { font-size: 16px !important; }
+}
+
+@media (max-width: 480px) {
+  .dh { flex-direction: column; }
+  .dcov, .dcovp { width: 100%; height: 140px; border-radius: 10px; }
+  .tool-card-head { flex-direction: column; gap: 10px; }
+  .tool-icon { width: 36px; height: 36px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══ LEFT NAV SIDEBAR ══ -->
+<!-- ══ LEFT NAV SIDEBAR (desktop) ══ -->
 <nav class="nav-sidebar">
   <div class="nav-logo">
     <div class="nav-logo-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <polygon points="5,3 19,12 5,21"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg>
     </div>
     <span class="nav-logo-text">AnimeBloom</span>
   </div>
-
   <div class="nav-items">
     <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);padding:12px 4px 6px">Content</div>
-
     <div class="nav-item active" onclick="sw('episodes')" id="nav-episodes">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/>
-      </svg>Episodes
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>Episodes
       <div class="nav-badge" id="nb-episodes">!</div>
     </div>
     <div class="nav-item" onclick="sw('config')" id="nav-config">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/>
-      </svg>Homepage
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Homepage
     </div>
     <div class="nav-item" onclick="sw('schedule')" id="nav-schedule">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>Schedule
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule
     </div>
     <div class="nav-item" onclick="sw('news')" id="nav-news">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
-      </svg>News
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>News
     </div>
-
     <div class="nav-divider"></div>
     <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);padding:6px 4px 6px">Utilities</div>
-
     <div class="nav-item" onclick="sw('tools')" id="nav-tools">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-      </svg>Tools
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Tools
     </div>
     <div class="nav-item" onclick="sw('push')" id="nav-push">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/>
-      </svg>Push to Site
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>Push to Site
     </div>
     <div class="nav-item" onclick="sw('preview')" id="nav-preview">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-      </svg>Site Preview
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Site Preview
     </div>
   </div>
-
   <div class="nav-bottom">
     <button class="nav-bottom-btn push-nav-btn" onclick="doPush()" id="sidebar-push-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-        <polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
       <span id="sidebar-push-label">Push to Site</span>
     </button>
-    <div style="display:flex;gap:6px;padding:2px 4px;align-items:center">
+    <div class="kb-shortcuts" style="display:flex;gap:6px;padding:2px 4px;align-items:center;flex-wrap:wrap">
       <span class="kbd" style="font-size:10px">Ctrl+S</span><span style="color:var(--muted);font-size:10.5px">push</span>
       <span class="kbd" style="font-size:10px;margin-left:6px">Ctrl+F</span><span style="color:var(--muted);font-size:10.5px">search</span>
-      <span class="kbd" style="font-size:10px;margin-left:6px">Ctrl+N</span><span style="color:var(--muted);font-size:10.5px">add</span>
     </div>
   </div>
 </nav>
@@ -395,12 +525,9 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <span class="topbar-title" id="topbar-page-title">Episodes</span>
       <span class="topbar-sub" id="topbar-page-sub"></span>
     </div>
-    <div class="upill" id="upill"><span></span>Unsaved changes</div>
-    <button class="btn btn-green btn-sm push-btn quick-push-wrap" id="quick-push-btn" onclick="doPush()" title="Push all changes to live site" style="position:relative;overflow:hidden">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
-        <polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-        <polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-      </svg>
+    <div class="upill" id="upill"><span></span>Unsaved</div>
+    <button class="btn btn-green btn-sm push-btn quick-push-wrap" id="quick-push-btn" onclick="doPush()" title="Push changes" style="position:relative;overflow:hidden">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polyline points="17,1 21,5 17,9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7,23 3,19 7,15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
       <span id="quick-push-label">Push</span>
       <div class="progress-bar" id="quick-progress"></div>
     </button>
@@ -417,32 +544,32 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <div id="autosave-ind"></div>
 
   <div class="layout">
-    <!-- ANIME LIBRARY SIDEBAR (only episodes tab) -->
-    <div class="sidebar" id="sidebar">
+    <!-- ANIME LIBRARY SIDEBAR -->
+    <div class="sidebar hidden" id="sidebar">
+      <!-- Mobile drag handle is added via ::before pseudo -->
       <div class="sb-head">
         <div class="sb-top">
           <span class="sb-lbl">Anime Library</span>
-          <span class="cbadge" id="acnt">0</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cbadge" id="acnt">0</span>
+            <!-- Mobile close button -->
+            <button id="sidebar-close-btn" onclick="closeMobileLibrary()" style="display:none;background:none;border:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:6px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
         </div>
         <div class="sw">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" class="si" placeholder="Search anime..." oninput="filterList(this.value)" id="sinput">
         </div>
         <div class="sw" style="margin-top:8px">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted);pointer-events:none">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--muted);pointer-events:none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
           <input type="text" class="si" placeholder="Jump to ID..." id="jump-input" oninput="jumpToId(this.value)" style="font-family:'Courier New',monospace;font-size:11.5px">
         </div>
       </div>
       <div class="alist" id="alist"></div>
       <button class="addbtn" onclick="openAddSM()" style="margin-bottom:12px">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-        </svg>Add New Anime
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add New Anime
       </button>
     </div>
 
@@ -452,11 +579,9 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <!-- EPISODES PANE -->
       <div class="pane active" id="pane-episodes">
         <div class="welcome" id="epw">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
           <h2>Select an anime</h2>
-          <p style="font-size:12.5px;color:var(--muted)">Pick from the sidebar or add new</p>
+          <p style="font-size:12.5px;color:var(--muted)">Tap the list button or pick from the sidebar</p>
         </div>
         <div id="epd"></div>
       </div>
@@ -466,7 +591,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
         <div class="cpage">
           <div style="margin-bottom:20px">
             <div style="font-size:18px;font-weight:700">Homepage Config</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:3px">Control which anime appear in each section — saved to config.js on push</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:3px">Control which anime appear in each section</div>
           </div>
           <div class="cgrid">
             <div class="ccard">
@@ -493,7 +618,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <div class="pane" id="pane-schedule">
         <div class="spage">
           <div class="flex gap8" style="margin-bottom:20px">
-            <div><div style="font-size:18px;font-weight:700">Airing Schedule</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Weekly schedule — saved to schedule-data.js on push</div></div>
+            <div><div style="font-size:18px;font-weight:700">Airing Schedule</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Weekly schedule</div></div>
             <div class="mla"><button class="btn btn-red btn-sm" onclick="openSM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Entry</button></div>
           </div>
           <div id="stbl"></div>
@@ -504,132 +629,73 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <div class="pane" id="pane-news">
         <div class="spage">
           <div class="flex gap8" style="margin-bottom:20px">
-            <div><div style="font-size:18px;font-weight:700">News &amp; Announcements</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Notices saved inside schedule-data.js on push</div></div>
+            <div><div style="font-size:18px;font-weight:700">News &amp; Announcements</div><div style="font-size:12px;color:var(--muted);margin-top:3px">Notices &amp; updates</div></div>
             <div class="mla"><button class="btn btn-red btn-sm" onclick="openNM()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add News</button></div>
           </div>
           <div id="nlst"></div>
         </div>
       </div>
 
-      <!-- ══ TOOLS PANE ══ -->
+      <!-- TOOLS PANE -->
       <div class="pane" id="pane-tools">
         <div class="tpage">
           <div class="tpage-header">
             <h1>Tools &amp; Diagnostics</h1>
-            <p>Run scans and utilities to keep your anime data clean and complete.</p>
+            <p>Run scans and utilities to keep your data clean.</p>
           </div>
-
-          <!-- STATS STRIP -->
           <div class="stats-strip">
-            <div class="stat-pill">
-              <div class="stat-pill-val" id="tool-stat-anime">–</div>
-              <div class="stat-pill-label">Total Anime</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-val" id="tool-stat-eps">–</div>
-              <div class="stat-pill-label">Total Episodes</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-val" id="tool-stat-airing">–</div>
-              <div class="stat-pill-label">Currently Airing</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-val" id="tool-stat-noep">–</div>
-              <div class="stat-pill-label">No Episodes Yet</div>
-            </div>
+            <div class="stat-pill"><div class="stat-pill-val" id="tool-stat-anime">–</div><div class="stat-pill-label">Total Anime</div></div>
+            <div class="stat-pill"><div class="stat-pill-val" id="tool-stat-eps">–</div><div class="stat-pill-label">Episodes</div></div>
+            <div class="stat-pill"><div class="stat-pill-val" id="tool-stat-airing">–</div><div class="stat-pill-label">Airing</div></div>
+            <div class="stat-pill"><div class="stat-pill-val" id="tool-stat-noep">–</div><div class="stat-pill-label">No Episodes</div></div>
           </div>
-
           <div class="tools-grid">
-            <!-- TOOL: Scan Duplicate Links -->
             <div class="tool-card">
               <div class="tool-card-head">
-                <div class="tool-icon red">
-                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <div class="tool-meta">
-                  <div class="tool-name">Scan Duplicate Links</div>
-                  <div class="tool-desc">Finds Telegram episode links that appear in more than one anime or episode slot — a common paste mistake.</div>
-                </div>
+                <div class="tool-icon red"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                <div class="tool-meta"><div class="tool-name">Scan Duplicate Links</div><div class="tool-desc">Finds Telegram episode links that appear in more than one slot.</div></div>
               </div>
               <div class="tool-card-body">
-                <button class="tool-run-btn tred" onclick="toolScanDupes()">
-                  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  Run Duplicate Scan
-                </button>
+                <button class="tool-run-btn tred" onclick="toolScanDupes()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Run Duplicate Scan</button>
                 <div class="tool-result" id="tool-result-dupes">Click to run scan.</div>
               </div>
             </div>
-
-            <!-- TOOL: Scan Missing Data -->
             <div class="tool-card">
               <div class="tool-card-head">
-                <div class="tool-icon blue">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                </div>
-                <div class="tool-meta">
-                  <div class="tool-name">Scan Missing Data</div>
-                  <div class="tool-desc">Detects anime missing thumbnails, descriptions, genres, episodes or with episode count gaps.</div>
-                </div>
+                <div class="tool-icon blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                <div class="tool-meta"><div class="tool-name">Scan Missing Data</div><div class="tool-desc">Detects anime missing thumbnails, descriptions, or episode gaps.</div></div>
               </div>
               <div class="tool-card-body">
-                <button class="tool-run-btn tblue" onclick="toolScanMissing()">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                  Run Missing Data Scan
-                </button>
+                <button class="tool-run-btn tblue" onclick="toolScanMissing()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Run Missing Data Scan</button>
                 <div class="tool-result" id="tool-result-missing">Click to run scan.</div>
               </div>
             </div>
-
-            <!-- TOOL: Status Audit -->
             <div class="tool-card">
               <div class="tool-card-head">
-                <div class="tool-icon amber">
-                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div class="tool-meta">
-                  <div class="tool-name">Status Audit</div>
-                  <div class="tool-desc">Checks for completed anime with missing episodes and airing anime with all episodes filled in.</div>
-                </div>
+                <div class="tool-icon amber"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="tool-meta"><div class="tool-name">Status Audit</div><div class="tool-desc">Checks completed anime with missing episodes and airing with all filled.</div></div>
               </div>
               <div class="tool-card-body">
-                <button class="tool-run-btn tamber" onclick="toolStatusAudit()">
-                  <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  Run Status Audit
-                </button>
+                <button class="tool-run-btn tamber" onclick="toolStatusAudit()"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Run Status Audit</button>
                 <div class="tool-result" id="tool-result-status">Click to run audit.</div>
               </div>
             </div>
-
-            <!-- TOOL: Config Orphan Check -->
             <div class="tool-card">
               <div class="tool-card-head">
-                <div class="tool-icon green">
-                  <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                </div>
-                <div class="tool-meta">
-                  <div class="tool-name">Config Orphan Check</div>
-                  <div class="tool-desc">Finds IDs in Hero, Newly Added, Recommended, or Trending lists that no longer exist in your anime data.</div>
-                </div>
+                <div class="tool-icon green"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                <div class="tool-meta"><div class="tool-name">Config Orphan Check</div><div class="tool-desc">Finds IDs in Hero/Trending/etc that no longer exist in data.</div></div>
               </div>
               <div class="tool-card-body">
-                <button class="tool-run-btn tgreen" onclick="toolOrphanCheck()">
-                  <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                  Run Orphan Check
-                </button>
+                <button class="tool-run-btn tgreen" onclick="toolOrphanCheck()"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Run Orphan Check</button>
                 <div class="tool-result" id="tool-result-orphan">Click to run check.</div>
               </div>
             </div>
           </div>
-
-          <!-- INLINE SCAN RESULTS -->
           <div id="tool-scan-results" style="display:none">
             <div class="scan-results-wrap" style="padding:0">
               <div class="scan-results-header">
                 <span class="scan-results-title" id="tool-scan-title"></span>
-                <button class="btn btn-ghost btn-sm" onclick="g('tool-scan-results').style.display='none'">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  Clear
-                </button>
+                <button class="btn btn-ghost btn-sm" onclick="g('tool-scan-results').style.display='none'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Clear</button>
               </div>
               <div class="scan-results-body" id="tool-scan-body"></div>
             </div>
@@ -637,32 +703,30 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
         </div>
       </div>
 
-      <!-- PUSH TO SITE PANE -->
+      <!-- PUSH PANE -->
       <div class="pane" id="pane-push">
         <div class="ppage">
           <div style="font-size:22px;font-weight:700;margin-bottom:6px">Push to Site</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7">Make your changes, then click the button below. All 4 files get pushed to GitHub and Vercel auto-deploys your site in about 30 seconds.</div>
-
+          <div style="font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.7">Make changes then push. All files go to GitHub and Vercel auto-deploys in ~30 seconds.</div>
           <div class="setup-card" id="setup-guide">
             <div class="setup-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Setup — Vercel Environment Variables</div>
             <div class="setup-steps">
-              <div class="setup-step"><div class="step-num">1</div><div class="step-text">Go to <strong>github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</strong> → Generate new token. Select scope: <code>repo</code>. Copy the token.</div></div>
-              <div class="setup-step"><div class="step-num">2</div><div class="step-text">Go to <strong>Vercel → Your Project → Settings → Environment Variables</strong> and add:<br><br><code>GITHUB_TOKEN</code> = your token<br><code>GITHUB_OWNER</code> = your exact GitHub username<br><code>GITHUB_REPO</code> = your exact repo name<br><code>GITHUB_BRANCH</code> = <code>main</code> or <code>master</code></div></div>
-              <div class="setup-step"><div class="step-num">3</div><div class="step-text">Redeploy once from Vercel dashboard so env vars take effect, then use <strong>Test Connection</strong> below to verify.</div></div>
+              <div class="setup-step"><div class="step-num">1</div><div class="step-text">GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate. Scope: <code>repo</code>. Copy token.</div></div>
+              <div class="setup-step"><div class="step-num">2</div><div class="step-text">Vercel → Project → Settings → Environment Variables: <code>GITHUB_TOKEN</code>, <code>GITHUB_OWNER</code>, <code>GITHUB_REPO</code>, <code>GITHUB_BRANCH</code>=<code>main</code></div></div>
+              <div class="setup-step"><div class="step-num">3</div><div class="step-text">Redeploy once from Vercel dashboard, then use Test Connection below.</div></div>
             </div>
           </div>
-
-          <!-- FREEIMAGE API KEY -->
+          <!-- Freeimage API Key -->
           <div style="background:var(--surface);border:1px solid rgba(77,166,255,.18);border-radius:12px;padding:18px 20px;margin-bottom:20px">
             <div style="font-size:14px;font-weight:700;margin-bottom:4px;color:var(--blue)">&#128247; Image Upload Settings</div>
             <div style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6">Get a free API key from <a href="https://freeimage.host/page/api" target="_blank" style="color:var(--blue)">freeimage.host/page/api</a></div>
-            <div style="display:flex;gap:10px;align-items:flex-end">
-              <div style="flex:1">
+            <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+              <div style="flex:1;min-width:200px">
                 <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted);display:block;margin-bottom:7px">freeimage.host API Key</label>
                 <input type="password" id="freeimg-key" placeholder="6fm_xxxxxxxxxxxxxxxx" style="font-family:'Courier New',monospace;font-size:13px">
               </div>
-              <button class="btn btn-ghost btn-sm" onclick="saveFreeimgKey()" style="flex-shrink:0;margin-bottom:1px">Save Key</button>
-              <button class="btn btn-ghost btn-sm" onclick="testFreeimgKey()" id="test-img-btn" style="flex-shrink:0;margin-bottom:1px">Test</button>
+              <button class="btn btn-ghost btn-sm" onclick="saveFreeimgKey()" style="flex-shrink:0">Save Key</button>
+              <button class="btn btn-ghost btn-sm" onclick="testFreeimgKey()" id="test-img-btn" style="flex-shrink:0">Test</button>
             </div>
             <div id="freeimg-key-status" style="margin-top:10px;font-size:12px;display:none"></div>
             <div style="margin-top:16px">
@@ -670,27 +734,23 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
                 <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">API Response Log</span>
                 <button class="btn btn-ghost btn-sm" onclick="g('img-json-log').innerHTML='';g('img-json-log').style.display='none'" style="padding:3px 8px;font-size:11px">Clear</button>
               </div>
-              <div id="img-json-log" style="display:none;background:#080910;border:1px solid var(--border);border-radius:8px;padding:14px;max-height:260px;overflow-y:auto;font-family:'Courier New',monospace"></div>
+              <div id="img-json-log" style="display:none;background:#080910;border:1px solid var(--border);border-radius:8px;padding:14px;max-height:200px;overflow-y:auto;font-family:'Courier New',monospace"></div>
             </div>
           </div>
-
-          <!-- CONNECTION TEST -->
+          <!-- Connection Test -->
           <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px">
-            <div class="flex gap8" style="margin-bottom:14px">
-              <div><div style="font-size:14px;font-weight:700">Test Connection</div><div style="font-size:12px;color:var(--muted);margin-top:2px">Verify your env vars are correct before pushing</div></div>
+            <div class="flex gap8" style="margin-bottom:14px;flex-wrap:wrap;gap:10px">
+              <div><div style="font-size:14px;font-weight:700">Test Connection</div><div style="font-size:12px;color:var(--muted);margin-top:2px">Verify env vars before pushing</div></div>
               <div class="mla"><button class="btn btn-ghost btn-sm" id="test-btn" onclick="testConnection()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>Test Connection</button></div>
             </div>
             <div id="test-results" style="display:flex;flex-direction:column;gap:8px"></div>
           </div>
-
-          <!-- FILE LIST -->
+          <!-- File List -->
           <div class="push-card">
             <div class="push-card-title">Files that will be updated</div>
-            <div class="push-card-sub">All 4 files are pushed in a single operation. Vercel detects the GitHub commit and auto-deploys.</div>
-
+            <div class="push-card-sub">All selected files push in one operation. Vercel auto-deploys on commit.</div>
             <div id="newly-added-preview" style="display:none;background:rgba(34,224,122,.07);border:1px solid rgba(34,224,122,.2);border-radius:8px;padding:12px 14px;margin-bottom:14px;color:var(--green)"></div>
-
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding:0 4px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;padding:0 4px;flex-wrap:wrap;gap:6px">
               <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:var(--muted);font-weight:500">
                 <input type="checkbox" id="chk-all" checked onchange="toggleAllFiles(this.checked)" style="width:auto;accent-color:var(--red)"> Select / Deselect All
               </label>
@@ -700,31 +760,30 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
               <label class="file-row" style="cursor:pointer">
                 <input type="checkbox" id="chk-data" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
                 <div class="file-icon" style="background:rgba(255,59,59,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-                <div class="file-info"><div class="file-name">data.js</div><div class="file-desc">All anime entries + episode download links</div></div>
+                <div class="file-info"><div class="file-name">data.js</div><div class="file-desc">All anime + episode links</div></div>
                 <div class="file-status fs-pending" id="fs-data">—</div>
               </label>
               <label class="file-row" style="cursor:pointer">
                 <input type="checkbox" id="chk-config" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
                 <div class="file-icon" style="background:rgba(77,166,255,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-                <div class="file-info"><div class="file-name">config.js</div><div class="file-desc">Hero slider, newly added, recommended, trending</div></div>
+                <div class="file-info"><div class="file-name">config.js</div><div class="file-desc">Hero, newly added, trending</div></div>
                 <div class="file-status fs-pending" id="fs-config">—</div>
               </label>
               <label class="file-row" style="cursor:pointer">
                 <input type="checkbox" id="chk-sched" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
                 <div class="file-icon" style="background:rgba(245,166,35,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-                <div class="file-info"><div class="file-name">schedule-data.js</div><div class="file-desc">Weekly schedule + news announcements</div></div>
+                <div class="file-info"><div class="file-name">schedule-data.js</div><div class="file-desc">Schedule + news</div></div>
                 <div class="file-status fs-pending" id="fs-sched">—</div>
               </label>
               <label class="file-row" style="cursor:pointer">
                 <input type="checkbox" id="chk-meta" checked style="width:auto;accent-color:var(--red);flex-shrink:0" onchange="updateSelectedCount()">
                 <div class="file-icon" style="background:rgba(34,224,122,.1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-                <div class="file-info"><div class="file-name">anime-meta.json</div><div class="file-desc">SEO metadata — auto-generated from data.js</div></div>
+                <div class="file-info"><div class="file-name">anime-meta.json</div><div class="file-desc">SEO metadata (auto-generated)</div></div>
                 <div class="file-status fs-pending" id="fs-meta">—</div>
               </label>
             </div>
-
             <div style="margin-bottom:14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:6px">
                 <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Commit Message</label>
                 <div style="display:flex;align-items:center;gap:8px">
                   <span style="font-size:11px;color:var(--muted)" id="commit-char-count">0 chars</span>
@@ -732,9 +791,7 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
                 </div>
               </div>
               <textarea id="commit-preview" style="min-height:54px;font-size:12px;font-family:'Courier New',monospace;line-height:1.5;resize:none;color:var(--text);border-color:rgba(77,166,255,.3)" placeholder="Make some changes and the message will auto-generate..."></textarea>
-              <div style="font-size:11px;color:var(--muted);margin-top:5px">&#128712; Auto-generated from your changes — you can edit it before pushing</div>
             </div>
-
             <button class="big-push-btn" id="push-btn" onclick="doPush()">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
               <span id="push-btn-label">Push All Changes to Site</span>
@@ -742,55 +799,76 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
             </button>
             <div class="log-box" id="log-box"></div>
           </div>
-
-          <!-- BACKUP & RESTORE -->
+          <!-- Backup -->
           <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px">
             <div style="font-size:14px;font-weight:700;margin-bottom:4px">&#128190; Backup &amp; Restore</div>
-            <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6">Save a full snapshot of all your data locally. Restore it anytime if something goes wrong.</div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6">Save a full snapshot locally. Restore anytime.</div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-              <button class="btn btn-ghost btn-sm" onclick="doBackup()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Backup
-              </button>
-              <label class="btn btn-ghost btn-sm" style="cursor:pointer">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Restore from Backup
-                <input type="file" accept=".json" onchange="doRestore(event)" style="display:none">
-              </label>
+              <button class="btn btn-ghost btn-sm" onclick="doBackup()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Backup</button>
+              <label class="btn btn-ghost btn-sm" style="cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Restore<input type="file" accept=".json" onchange="doRestore(event)" style="display:none"></label>
               <span style="font-size:11px;color:var(--muted)" id="last-backup-time"></span>
             </div>
             <div id="restore-preview" style="display:none;margin-top:14px;padding:12px 14px;background:var(--surface2);border:1px solid rgba(245,166,35,.3);border-radius:8px;font-size:12px;color:var(--amber);line-height:1.7"></div>
           </div>
-          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:12.5px;color:var(--muted);line-height:1.7">
-            <strong style="color:var(--text)">After pushing:</strong> Vercel usually deploys in 20–40 seconds. Visit your site and do a hard refresh (<code style="background:var(--surface3);padding:1px 6px;border-radius:4px">Ctrl+Shift+R</code>) to see the changes.
-          </div>
         </div>
       </div>
+
     </div><!-- /panel -->
   </div><!-- /layout -->
 </div><!-- /admin-body -->
 
+<!-- ══ MOBILE BOTTOM NAV ══ -->
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-item active" id="mnav-episodes" onclick="sw('episodes');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+    <span>Episodes</span>
+    <div class="mobile-unsaved-dot" id="mob-unsaved-episodes"></div>
+  </button>
+  <button class="mobile-nav-item" id="mnav-config" onclick="sw('config');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    <span>Homepage</span>
+  </button>
+  <button class="mobile-nav-item" id="mnav-schedule" onclick="sw('schedule');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span>Schedule</span>
+  </button>
+  <button class="mobile-nav-item" id="mnav-tools" onclick="sw('tools');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    <span>Tools</span>
+  </button>
+  <button class="mobile-nav-item" id="mnav-push" onclick="sw('push');setMobileActive(this)">
+    <svg viewBox="0 0 24 24"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
+    <span>Push</span>
+    <div class="mobile-unsaved-dot" id="mob-unsaved-push" style="display:none"></div>
+  </button>
+</nav>
+
+<!-- MOBILE LIBRARY FAB -->
+<button class="mobile-lib-fab" id="mobile-lib-fab" onclick="toggleMobileLibrary()" title="Anime Library">
+  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+  <div class="fab-count" id="fab-count">0</div>
+</button>
+
+<!-- MOBILE LIBRARY BACKDROP -->
+<div class="mobile-lib-backdrop" id="mobile-lib-backdrop" onclick="closeMobileLibrary()"></div>
+
 <!-- SITE PREVIEW OVERLAY -->
 <div id="preview-overlay" style="display:none;position:fixed;inset:0;z-index:300;background:var(--bg);flex-direction:column">
-  <div style="height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0">
-    <div style="font-size:13px;font-weight:600">Site Preview</div>
-    <div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:4px 10px;flex:1;max-width:500px">
+  <div style="height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;gap:8px;flex-shrink:0;overflow:hidden">
+    <div style="font-size:13px;font-weight:600;flex-shrink:0">Preview</div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:4px 10px;flex:1;min-width:0">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       <span id="preview-url-display" style="font-size:12px;color:var(--muted);font-family:'Courier New',monospace;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
     </div>
-    <div style="display:flex;gap:6px;margin-left:auto">
-      <button class="btn btn-ghost btn-sm" onclick="reloadPreview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="23,4 23,11 16,11"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 11"/></svg>Reload</button>
-      <button class="btn btn-ghost btn-sm" onclick="openInTab()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>New Tab</button>
-      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('mobile')" id="btn-mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></button>
-      <button class="btn btn-ghost btn-sm" onclick="toggleDevice('desktop')" id="btn-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></button>
-      <button class="btn btn-danger btn-sm" onclick="closePreview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
-    </div>
+    <button class="btn btn-ghost btn-sm" onclick="openInTab()" style="flex-shrink:0;padding:4px 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+    <button class="btn btn-danger btn-sm" onclick="closePreview()" style="flex-shrink:0;padding:4px 8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
   <div style="flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1a1a2e;padding:0" id="preview-frame-wrap">
-    <iframe id="preview-iframe" style="border:none;transition:all .3s;box-shadow:0 20px 60px rgba(0,0,0,.5)" allow="same-origin"></iframe>
+    <iframe id="preview-iframe" style="border:none;width:100%;height:100%" allow="same-origin"></iframe>
   </div>
 </div>
 
 <!-- MODALS -->
-<!-- Add/Edit Anime Modal -->
 <div class="overlay" id="smx"><div class="modal">
   <div class="mh"><span class="mt" id="smxt">Add New Anime</span><button class="xbtn" onclick="cm('smx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="smei">
@@ -809,12 +887,12 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
       <div class="fg full"><label class="fl">Genres (comma separated)</label><input type="text" id="smg" placeholder="Action, Fantasy, Adventure"></div>
       <div class="fg full">
         <label class="fl" style="display:flex;align-items:center;justify-content:space-between">Thumbnail<span id="smth-upload-status" style="font-size:10.5px;color:var(--muted)"></span></label>
-        <div style="display:flex;gap:8px;align-items:flex-start">
-          <div style="flex:1;display:flex;flex-direction:column;gap:6px">
-            <input type="url" id="smth" placeholder="https://... (paste URL or upload below)" oninput="previewThumb('smth','smth-preview')">
-            <div id="smth-preview" style="display:none;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border);flex-shrink:0"><img id="smth-preview-img" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px">
+            <input type="url" id="smth" placeholder="https://... or upload →" oninput="previewThumb('smth','smth-preview')">
+            <div id="smth-preview" style="display:none;width:80px;height:52px;border-radius:6px;overflow:hidden;border:1px solid var(--border)"><img id="smth-preview-img" style="width:100%;height:100%;object-fit:cover"></div>
           </div>
-          <label id="smth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0;margin-top:1px" title="Upload image to freeimage.host">
+          <label id="smth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0;margin-top:1px" title="Upload image">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             <span id="smth-upload-label">Upload</span>
             <input type="file" accept="image/*" onchange="uploadThumb(event,'smth','smth-upload-btn','smth-upload-label','smth-upload-status','smth-preview','smth-preview-img')" style="display:none">
@@ -828,7 +906,6 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <div class="mf"><button class="btn btn-ghost" onclick="cm('smx')">Cancel</button><button class="btn btn-red" onclick="saveSeries()">Save Anime</button></div>
 </div></div>
 
-<!-- Schedule Modal -->
 <div class="overlay" id="scmx"><div class="modal" style="max-width:460px">
   <div class="mh"><span class="mt" id="scmxt">Add Schedule Entry</span><button class="xbtn" onclick="cm('scmx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="scei">
@@ -844,7 +921,6 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
   <div class="mf"><button class="btn btn-ghost" onclick="cm('scmx')">Cancel</button><button class="btn btn-red" onclick="saveSched()">Save Entry</button></div>
 </div></div>
 
-<!-- News Modal -->
 <div class="overlay" id="nmx"><div class="modal" style="max-width:500px">
   <div class="mh"><span class="mt" id="nmxt">Add News</span><button class="xbtn" onclick="cm('nmx')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="mb"><input type="hidden" id="nei">
@@ -852,8 +928,8 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
     <div class="fg"><label class="fl">Description *</label><textarea id="nd" style="min-height:100px" placeholder="Announcement details..."></textarea></div>
     <div class="fg">
       <label class="fl" style="display:flex;align-items:center;justify-content:space-between">Thumbnail URL<span id="nth-upload-status" style="font-size:10.5px;color:var(--muted)"></span></label>
-      <div style="display:flex;gap:8px">
-        <input type="url" id="nth" placeholder="https://... or upload →" style="flex:1" oninput="previewThumb('nth','nth-preview')">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="url" id="nth" placeholder="https://... or upload →" style="flex:1;min-width:180px" oninput="previewThumb('nth','nth-preview')">
         <label id="nth-upload-btn" class="btn btn-ghost btn-sm" style="cursor:pointer;flex-shrink:0" title="Upload to freeimage.host">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           <span id="nth-upload-label">Upload</span>
@@ -873,30 +949,42 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
 let DB=[],cfg={h:[],n:[],r:[],t:[]},sched=[],news=[],cidx=null,editRow=null,_pendingRestore=null;
 let changelog=[];
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const isMobile=()=>window.innerWidth<=768;
 
-// ══ PAGE TITLES MAP ══
-const PAGE_TITLES = {
-  episodes:  {title:'Episodes', sub:'Manage anime & episode links'},
-  config:    {title:'Homepage Config', sub:'Hero, Newly Added, Recommended, Trending'},
-  schedule:  {title:'Airing Schedule', sub:'Weekly release schedule'},
-  news:      {title:'News & Announcements', sub:'Notices & updates'},
-  tools:     {title:'Tools & Diagnostics', sub:'Scans, audits & utilities'},
-  push:      {title:'Push to Site', sub:'Deploy to GitHub → Vercel'},
-  preview:   {title:'Site Preview', sub:'Live preview'}
-};
+const PAGE_TITLES={episodes:{title:'Episodes',sub:'Manage anime & episode links'},config:{title:'Homepage Config',sub:'Hero, Newly Added, Trending'},schedule:{title:'Airing Schedule',sub:'Weekly release schedule'},news:{title:'News & Announcements',sub:'Notices & updates'},tools:{title:'Tools & Diagnostics',sub:'Scans & audits'},push:{title:'Push to Site',sub:'Deploy to GitHub → Vercel'},preview:{title:'Site Preview',sub:'Live preview'}};
+
+// ══ MOBILE NAV ══
+function setMobileActive(el){
+  document.querySelectorAll('.mobile-nav-item').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function toggleMobileLibrary(){
+  const sb=g('sidebar');const bd=g('mobile-lib-backdrop');const fab=g('mobile-lib-fab');
+  const isOpen=sb.classList.contains('mobile-open');
+  if(isOpen){closeMobileLibrary();}
+  else{
+    sb.classList.remove('hidden');
+    sb.classList.add('mobile-open');
+    bd.classList.add('show');
+    g('sidebar-close-btn').style.display='flex';
+    fab.style.background='rgba(255,59,59,.7)';
+    setTimeout(()=>g('sinput').focus(),400);
+  }
+}
+function closeMobileLibrary(){
+  const sb=g('sidebar');const bd=g('mobile-lib-backdrop');const fab=g('mobile-lib-fab');
+  sb.classList.remove('mobile-open');
+  bd.classList.remove('show');
+  g('sidebar-close-btn').style.display='none';
+  fab.style.background='var(--red)';
+}
+
+function updateFabCount(){const el=g('fab-count');if(el)el.textContent=DB.length;}
 
 // ══ CHANGELOG & COMMIT ══
-function logChange(msg){
-  changelog.push(msg);
-  updateCommitPreview();
-  showNewlyAddedPreview();
-}
-function updateCommitPreview(){
-  const el=g('commit-preview');if(!el)return;
-  const msg=buildCommitMsg();
-  el.value=msg;
-  const cc=g('commit-char-count');if(cc)cc.textContent=msg.length+' chars';
-}
+function logChange(msg){changelog.push(msg);updateCommitPreview();showNewlyAddedPreview();}
+function updateCommitPreview(){const el=g('commit-preview');if(!el)return;const msg=buildCommitMsg();el.value=msg;const cc=g('commit-char-count');if(cc)cc.textContent=msg.length+' chars';}
 function buildCommitMsg(){
   if(changelog.length===0)return '[AnimeBloom Admin] update files';
   const epAdded=changelog.filter(c=>c.startsWith('EP+')).map(c=>c.slice(3));
@@ -907,66 +995,61 @@ function buildCommitMsg(){
   const animeDeleted=changelog.filter(c=>c.startsWith('A-')).map(c=>c.slice(2));
   const schedChg=changelog.filter(c=>c.startsWith('SC')).length;
   const newsChg=changelog.filter(c=>c.startsWith('NW')).length;
-  const cfgChg=changelog.filter(c=>c.startsWith('CF')).length;
   const parts=[];
   if(epAdded.length)parts.push('Add EP: '+[...new Set(epAdded)].slice(0,3).join(', ')+(epAdded.length>3?` +${epAdded.length-3} more`:''));
-  if(epEdited.length)parts.push('Edit EP: '+[...new Set(epEdited)].slice(0,2).join(', ')+(epEdited.length>2?` +${epEdited.length-2} more`:''));
+  if(epEdited.length)parts.push('Edit EP: '+[...new Set(epEdited)].slice(0,2).join(', '));
   if(epDeleted.length)parts.push('Del EP: '+[...new Set(epDeleted)].slice(0,2).join(', '));
-  if(animeAdded.length)parts.push('Add anime: '+animeAdded.slice(0,2).join(', '));
-  if(animeEdited.length)parts.push('Edit anime: '+animeEdited.slice(0,2).join(', '));
-  if(animeDeleted.length)parts.push('Del anime: '+animeDeleted.slice(0,2).join(', '));
+  if(animeAdded.length)parts.push('Add: '+animeAdded.slice(0,2).join(', '));
+  if(animeEdited.length)parts.push('Edit: '+animeEdited.slice(0,2).join(', '));
+  if(animeDeleted.length)parts.push('Del: '+animeDeleted.slice(0,2).join(', '));
   if(schedChg)parts.push('Schedule: '+schedChg+' change'+(schedChg>1?'s':''));
   if(newsChg)parts.push('News: '+newsChg+' change'+(newsChg>1?'s':''));
-  if(cfgChg)parts.push('Homepage config updated');
   return '[AnimeBloom Admin] '+parts.join(' · ');
 }
 
 // ══ INIT ══
 function init(){
-  if(typeof animeData!=='undefined') DB=JSON.parse(JSON.stringify(animeData));
-  else{toast('data.js not found — open admin.html from your site folder','err');return;}
-  if(typeof heroSliderIds!=='undefined') cfg.h=[...heroSliderIds];
-  if(typeof newlyAddedIds!=='undefined') cfg.n=[...newlyAddedIds];
-  if(typeof recommendedIds!=='undefined') cfg.r=[...recommendedIds];
-  if(typeof trendingIds!=='undefined') cfg.t=[...trendingIds];
-  if(typeof scheduleData!=='undefined') sched=JSON.parse(JSON.stringify(scheduleData));
-  if(typeof newsData!=='undefined') news=JSON.parse(JSON.stringify(newsData));
+  if(typeof animeData!=='undefined')DB=JSON.parse(JSON.stringify(animeData));
+  else{toast('data.js not found','err');return;}
+  if(typeof heroSliderIds!=='undefined')cfg.h=[...heroSliderIds];
+  if(typeof newlyAddedIds!=='undefined')cfg.n=[...newlyAddedIds];
+  if(typeof recommendedIds!=='undefined')cfg.r=[...recommendedIds];
+  if(typeof trendingIds!=='undefined')cfg.t=[...trendingIds];
+  if(typeof scheduleData!=='undefined')sched=JSON.parse(JSON.stringify(scheduleData));
+  if(typeof newsData!=='undefined')news=JSON.parse(JSON.stringify(newsData));
   rSidebar();rConfig();rSched();rNews();
-  g('smn').addEventListener('input',e=>{
-    if(!g('smei').value)
-      g('smid').value=e.target.value.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();
-  });
-  updateCommitPreview();
-  updateBackupTime();
-  loadFreeimgKey();
-  initPreviewUrl();
-  checkUrlHash();
-  checkAutosaveRestore();
-  startAutosave();
-  updateToolStats();
+  g('smn').addEventListener('input',e=>{if(!g('smei').value)g('smid').value=e.target.value.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();});
+  updateCommitPreview();updateBackupTime();loadFreeimgKey();initPreviewUrl();checkUrlHash();checkAutosaveRestore();startAutosave();updateToolStats();updateFabCount();
+  // Apply mobile-specific initial state
+  if(isMobile()){
+    g('sidebar').classList.add('hidden');
+  } else {
+    g('sidebar').classList.remove('hidden');
+    g('mobile-lib-fab').style.display='none';
+  }
   toast('Loaded '+DB.length+' anime · ready','ok');
 }
 
 // ══ TAB SWITCHING ══
 function sw(tab){
-  // Update nav items
   document.querySelectorAll('.nav-item').forEach(t=>t.classList.remove('active'));
-  const navEl = g('nav-'+tab);
-  if(navEl) navEl.classList.add('active');
-
-  // Update panes
+  const navEl=g('nav-'+tab);if(navEl)navEl.classList.add('active');
   document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
-  const paneEl=g('pane-'+tab);
-  if(paneEl)paneEl.classList.add('active');
-
-  // Show/hide anime library sidebar
-  g('sidebar').classList.toggle('hidden',tab!=='episodes');
-
-  // Update top bar title
-  const info = PAGE_TITLES[tab] || {title:tab, sub:''};
-  g('topbar-page-title').textContent = info.title;
-  g('topbar-page-sub').textContent = info.sub;
-
+  const paneEl=g('pane-'+tab);if(paneEl)paneEl.classList.add('active');
+  const info=PAGE_TITLES[tab]||{title:tab,sub:''};
+  g('topbar-page-title').textContent=info.title;
+  g('topbar-page-sub').textContent=info.sub;
+  // Desktop: show/hide sidebar
+  if(!isMobile()){
+    if(tab==='episodes'){g('sidebar').classList.remove('hidden');}
+    else{g('sidebar').classList.add('hidden');}
+  } else {
+    // Mobile: always close library sheet when switching tabs
+    closeMobileLibrary();
+    // Only show FAB on episodes tab
+    const fab=g('mobile-lib-fab');
+    if(fab)fab.style.display=tab==='episodes'?'flex':'none';
+  }
   if(tab==='push')showNewlyAddedPreview();
   if(tab==='tools')updateToolStats();
   if(tab==='preview'){openPreview();return;}
@@ -977,57 +1060,45 @@ function rSidebar(f=''){
   const lo=f.toLowerCase();
   const fi=DB.map((a,i)=>({a,i})).filter(({a})=>!f||a.name.toLowerCase().includes(lo));
   g('acnt').textContent=DB.length;
+  updateFabCount();
   if(!fi.length){g('alist').innerHTML='<div style="padding:24px;text-align:center;color:var(--muted);font-size:12px">No results</div>';return;}
   g('alist').innerHTML=fi.map(({a,i})=>{
-    const ep=(a.downloadLinks||[]).length;
-    const total=a.episodes||0;
+    const ep=(a.downloadLinks||[]).length;const total=a.episodes||0;
     const pct=total>0?Math.min(100,Math.round((ep/total)*100)):0;
     const barColor=pct===100?'var(--green)':pct>50?'var(--amber)':'var(--red)';
     const dc=a.status==='airing'?'da':a.status==='upcoming'?'du':'dc';
     const th=a.thumbnail?`<img class="ath" src="${esc(a.thumbnail)}" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:'';
-    const progressBar=total>0?`
-      <div class="ep-progress-wrap"><div class="ep-progress-fill" style="width:${pct}%;background:${barColor}"></div></div>
-      <div class="ep-progress-label">${ep}/${total} eps${pct===100?' ✓':''}</div>`:'';
+    const progressBar=total>0?`<div class="ep-progress-wrap"><div class="ep-progress-fill" style="width:${pct}%;background:${barColor}"></div></div><div class="ep-progress-label">${ep}/${total} eps${pct===100?' ✓':''}</div>`:'';
     return `<div class="aitem${cidx===i?' active':''}" onclick="selA(${i})">${th}
-      <div class="athp" style="${a.thumbnail?'display:none':''}">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-      </div>
+      <div class="athp" style="${a.thumbnail?'display:none':''}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
       <div class="ainf">
         <div class="aname">${esc(a.name)}</div>
         <div class="ameta"><span class="sdot ${dc}"></span><span class="eptag">${ep} ep</span><span class="ltag">${(a.language||'?').split(' ')[0]}</span></div>
         ${progressBar}
-      </div>
-    </div>`;
+      </div></div>`;
   }).join('');
 }
 function filterList(v){rSidebar(v);}
 
-// ══ JUMP TO ID ══
 function jumpToId(val){
-  const v=val.trim().toLowerCase();
-  const inp=g('jump-input');
+  const v=val.trim().toLowerCase();const inp=g('jump-input');
   if(!v){inp.className='si';return;}
   const idx=DB.findIndex(a=>a.id.toLowerCase()===v||a.id.toLowerCase().includes(v));
   if(idx===-1){inp.classList.remove('jump-valid');inp.classList.add('jump-invalid');return;}
   inp.classList.remove('jump-invalid');inp.classList.add('jump-valid');
-  g('sinput').value='';
-  selA(idx);sw('episodes');
+  g('sinput').value='';selA(idx);sw('episodes');
   setTimeout(()=>{const items=g('alist').querySelectorAll('.aitem');if(items[idx])items[idx].scrollIntoView({behavior:'smooth',block:'center'});},100);
 }
-function checkUrlHash(){
-  const hash=window.location.hash.slice(1);
-  if(!hash)return;
-  const idx=DB.findIndex(a=>a.id===hash);
-  if(idx!==-1){selA(idx);sw('episodes');}
-}
+function checkUrlHash(){const hash=window.location.hash.slice(1);if(!hash)return;const idx=DB.findIndex(a=>a.id===hash);if(idx!==-1){selA(idx);sw('episodes');}}
 
-// ══ SELECT ANIME ══
 function selA(idx){
   cidx=idx;editRow=null;
   window.location.hash=DB[idx].id;
   g('epw').style.display='none';
   rSidebar(g('sinput').value);
   rEpD(idx);
+  // On mobile, close the library sheet
+  if(isMobile())closeMobileLibrary();
 }
 
 // ══ EPISODE DETAIL ══
@@ -1035,7 +1106,7 @@ function rEpD(idx){
   const a=DB[idx];const ep=(a.downloadLinks||[]).length;
   const statusLabel={airing:'Airing',completed:'Completed',upcoming:'Upcoming',aired:'Aired'};
   const statusCls={airing:'st-airing',completed:'st-completed',upcoming:'st-upcoming',aired:'st-aired'};
-  const sb=`<button class="status-toggle ${statusCls[a.status||'airing']}" onclick="quickToggleStatus(${idx})" title="Click to change status">
+  const sb=`<button class="status-toggle ${statusCls[a.status||'airing']}" onclick="quickToggleStatus(${idx})">
     <span style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
     ${statusLabel[a.status||'airing']}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="10" height="10"><polyline points="6,9 12,15 18,9"/></svg>
@@ -1047,15 +1118,15 @@ function rEpD(idx){
     :(a.downloadLinks||[]).sort((a,b)=>a.episode-b.episode).map(dl=>`<tr id="epr-${dl.episode}">
       <td style="text-align:center;width:36px"><input type="checkbox" class="ep-chk" data-ep="${dl.episode}" style="width:auto;accent-color:var(--red)" onchange="updateBulkBar(${idx})"></td>
       <td><span class="epnum">EP ${dl.episode}</span></td>
-      <td style="max-width:320px">
+      <td style="max-width:280px">
         <span class="eplp" id="prev-${dl.episode}">${esc(dl.link)}</span>
         <input type="text" class="epli" id="inp-${dl.episode}" value="${esc(dl.link)}">
       </td>
       <td><div class="ra">
-        <button class="ib ibe" id="be-${dl.episode}" onclick="eRow(${idx},${dl.episode})" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        <button class="ib ibs" id="bs-${dl.episode}" onclick="svRow(${idx},${dl.episode})" title="Save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></button>
-        <button class="ib ibc" id="bc-${dl.episode}" onclick="cxRow(${idx},${dl.episode})" title="Cancel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-        <button class="ib ibd" onclick="delEp(${idx},${dl.episode})" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button>
+        <button class="ib ibe" id="be-${dl.episode}" onclick="eRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="ib ibs" id="bs-${dl.episode}" onclick="svRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg></button>
+        <button class="ib ibc" id="bc-${dl.episode}" onclick="cxRow(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        <button class="ib ibd" onclick="delEp(${idx},${dl.episode})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button>
       </div></td>
     </tr>`).join('');
 
@@ -1063,11 +1134,11 @@ function rEpD(idx){
     <div class="dh">
       ${th}
       <div class="dcovp" style="${a.thumbnail?'display:none':''}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
-      <div>
+      <div style="flex:1;min-width:0">
         <div class="dname">${esc(a.name)}</div>
         <div class="dbadges">${sb}<span class="badge b-blue">${esc(a.language||'')}</span><span class="badge b-gray">S${esc(a.season||'?')}</span>${genres}</div>
         <div class="dact">
-          <button class="btn btn-ghost btn-sm" onclick="openEditSM(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit Info</button>
+          <button class="btn btn-ghost btn-sm" onclick="openEditSM(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit</button>
           <button class="btn btn-danger btn-sm" onclick="delSeries(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>Delete</button>
         </div>
       </div>
@@ -1075,15 +1146,15 @@ function rEpD(idx){
     <div class="sec">
       <div class="sech">
         <span class="seclbl">Download Episodes</span>
-        <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span class="cbadge">${ep} / ${a.episodes||'?'}</span>
           <button class="btn btn-ghost btn-sm" onclick="toggleAllEp(true)" style="padding:3px 8px;font-size:11px">Select All</button>
         </div>
       </div>
-      <div style="overflow-x:auto">
+      <div class="table-scroll-wrap">
         <table class="epta">
           <thead><tr>
-            <th width="36"><input type="checkbox" id="chk-all-ep" onchange="toggleAllEp(this.checked)" style="width:auto;accent-color:var(--red)" title="Select all"></th>
+            <th width="36"><input type="checkbox" id="chk-all-ep" onchange="toggleAllEp(this.checked)" style="width:auto;accent-color:var(--red)"></th>
             <th width="70">Episode</th><th>Telegram Link</th><th width="120">Actions</th>
           </tr></thead>
           <tbody id="eptb">${rows}</tbody>
@@ -1091,22 +1162,22 @@ function rEpD(idx){
       </div>
       <div class="bulk-bar" id="bulk-bar">
         <span id="bulk-count" style="font-size:12.5px;font-weight:600;color:var(--red)">0 selected</span>
-        <div style="margin-left:auto;display:flex;gap:8px">
-          <button class="btn btn-ghost btn-sm" onclick="clearEpSel()">Deselect All</button>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-ghost btn-sm" onclick="clearEpSel()">Deselect</button>
           <button class="btn btn-danger btn-sm" onclick="bulkDeleteEp(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg>Delete Selected</button>
         </div>
       </div>
       <div class="aef">
-        <div class="fg"><label class="fl">Episode #</label><input type="number" id="nen" value="${ep+1}" min="1" oninput="checkDupNum(${idx})"></div>
+        <div class="fg"><label class="fl">Ep #</label><input type="number" id="nen" value="${ep+1}" min="1" oninput="checkDupNum(${idx})"></div>
         <div class="fg"><label class="fl">Telegram Link</label><input type="url" id="nel" placeholder="https://t.me/AnimeBloom_Bot?start=..." oninput="checkDupLink(${idx})"></div>
-        <button class="btn btn-red" onclick="addEp(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add</button>
+        <button class="btn btn-red" onclick="addEp(${idx})" style="margin-top:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add</button>
       </div>
       <div class="dup-warn" id="dup-warn-num"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="dup-warn-msg"></span></div>
       <div class="dup-warn" id="dup-warn-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="dup-warn-link-msg"></span></div>
       <details style="margin-top:14px">
         <summary><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>Bulk Add Episodes</summary>
         <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">
-          <div class="fg"><label class="fl">Starting Episode #</label><input type="number" id="bst" placeholder="10" style="width:130px" min="1"></div>
+          <div class="fg"><label class="fl">Starting Episode #</label><input type="number" id="bst" placeholder="10" style="max-width:130px" min="1"></div>
           <div class="fg"><label class="fl">Paste links — one per line</label><textarea id="blk" placeholder="https://t.me/AnimeBloom_Bot?start=ABC&#10;https://t.me/AnimeBloom_Bot?start=DEF&#10;..." style="min-height:100px;font-size:12px;font-family:'Courier New',monospace"></textarea></div>
           <button class="btn btn-ghost btn-sm" onclick="bulkAdd(${idx})" style="align-self:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7,16 3,12 7,8"/><polyline points="17,8 21,12 17,16"/><line x1="3" y1="12" x2="21" y2="12"/></svg>Add All Episodes</button>
         </div>
@@ -1115,224 +1186,84 @@ function rEpD(idx){
   </div>`;
 }
 
-// ══ TOOLS PAGE FUNCTIONS ══
+// ══ TOOLS ══
 function updateToolStats(){
-  const totalAnime=DB.length;
-  const totalEps=DB.reduce((s,a)=>(a.downloadLinks||[]).length+s,0);
-  const airing=DB.filter(a=>a.status==='airing').length;
-  const noEp=DB.filter(a=>!(a.downloadLinks||[]).length).length;
-  const fmt=(n)=>{
-    const el=document.createElement('span');
-    el.textContent=n;
-    return el.textContent;
-  };
-  const setVal=(id,v,red=false)=>{
-    const el=g(id);if(!el)return;
-    el.innerHTML=v+(red?'<span style="color:var(--red)">!</span>':'');
-  };
-  setVal('tool-stat-anime',totalAnime);
-  setVal('tool-stat-eps',totalEps);
-  setVal('tool-stat-airing',airing);
-  setVal('tool-stat-noep',noEp, noEp>0);
+  const totalAnime=DB.length;const totalEps=DB.reduce((s,a)=>(a.downloadLinks||[]).length+s,0);
+  const airing=DB.filter(a=>a.status==='airing').length;const noEp=DB.filter(a=>!(a.downloadLinks||[]).length).length;
+  const s=(id,v,red=false)=>{const el=g(id);if(!el)return;el.innerHTML=v+(red?'<span style="color:var(--red)">!</span>':'');};
+  s('tool-stat-anime',totalAnime);s('tool-stat-eps',totalEps);s('tool-stat-airing',airing);s('tool-stat-noep',noEp,noEp>0);
 }
-
 function toolScanDupes(){
-  const res=g('tool-result-dupes');
-  res.className='tool-result show';
-  res.textContent='Scanning...';
+  const res=g('tool-result-dupes');res.className='tool-result show';res.textContent='Scanning...';
   setTimeout(()=>{
-    const groups={};
-    DB.forEach((a,ai)=>{
-      (a.downloadLinks||[]).forEach(dl=>{
-        if(!dl.link)return;
-        if(!groups[dl.link])groups[dl.link]=[];
-        groups[dl.link].push({animeIdx:ai,name:a.name,episode:dl.episode});
-      });
-    });
+    const groups={};DB.forEach((a,ai)=>{(a.downloadLinks||[]).forEach(dl=>{if(!dl.link)return;if(!groups[dl.link])groups[dl.link]=[];groups[dl.link].push({animeIdx:ai,name:a.name,episode:dl.episode});});});
     const dups=Object.entries(groups).filter(([,arr])=>arr.length>1);
-    if(!dups.length){
-      res.className='tool-result show ok';
-      res.textContent='✓ No duplicate links found across '+DB.length+' anime!';
-      g('tool-scan-results').style.display='none';
-      return;
-    }
-    res.className='tool-result show err';
-    res.innerHTML='⚠ Found '+dups.length+' duplicate link group'+(dups.length>1?'s':'')+' — see details below.';
-    
-    const body=g('tool-scan-body');
-    g('tool-scan-title').textContent=dups.length+' Duplicate Link Group'+(dups.length>1?'s':'')+' Found';
-    body.innerHTML=dups.map(([link,entries])=>`
-      <div class="scan-result-item">
-        <div style="font-size:10.5px;color:var(--muted);font-family:'Courier New',monospace;word-break:break-all;margin-bottom:10px;padding:7px 10px;background:var(--surface2);border-radius:6px;border:1px solid var(--border)">${esc(link.slice(0,100))}${link.length>100?'...':''}</div>
-        ${entries.map(e=>`<div class="scan-entry">
-          <span class="epnum">EP ${e.episode}</span>
-          <span style="font-size:12px;flex:1">${esc(e.name)}</span>
-          <button class="btn btn-ghost btn-sm" onclick="selA(${e.animeIdx});sw('episodes')" style="padding:2px 8px;font-size:11px">Go →</button>
-        </div>`).join('')}
-      </div>`).join('');
-    g('tool-scan-results').style.display='block';
-    g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});
-    toast(dups.length+' duplicate group(s) found','err');
+    if(!dups.length){res.className='tool-result show ok';res.textContent='✓ No duplicate links found!';g('tool-scan-results').style.display='none';return;}
+    res.className='tool-result show err';res.innerHTML='⚠ Found '+dups.length+' duplicate group(s) — see below.';
+    g('tool-scan-title').textContent=dups.length+' Duplicate Link Group(s)';
+    g('tool-scan-body').innerHTML=dups.map(([link,entries])=>`<div class="scan-result-item"><div style="font-size:10.5px;color:var(--muted);font-family:'Courier New',monospace;word-break:break-all;margin-bottom:10px;padding:7px 10px;background:var(--surface2);border-radius:6px;border:1px solid var(--border)">${esc(link.slice(0,80))}...</div>${entries.map(e=>`<div class="scan-entry"><span class="epnum">EP ${e.episode}</span><span style="font-size:12px;flex:1">${esc(e.name)}</span><button class="btn btn-ghost btn-sm" onclick="selA(${e.animeIdx});sw('episodes');setMobileActive(g('mnav-episodes'))" style="padding:2px 8px;font-size:11px">Go →</button></div>`).join('')}</div>`).join('');
+    g('tool-scan-results').style.display='block';g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});toast(dups.length+' duplicate(s) found','err');
   },300);
 }
-
 function toolScanMissing(){
-  const res=g('tool-result-missing');
-  res.className='tool-result show';
-  res.textContent='Scanning...';
+  const res=g('tool-result-missing');res.className='tool-result show';res.textContent='Scanning...';
   setTimeout(()=>{
-    const issues=[];
-    DB.forEach((a,i)=>{
-      const probs=[];
-      if(!a.thumbnail)probs.push('No thumbnail');
-      if(!a.description||a.description.length<20)probs.push('Missing/short description');
-      if(!a.genres||a.genres.length===0)probs.push('No genres');
-      if(!a.downloadLinks||a.downloadLinks.length===0)probs.push('No episodes added yet');
-      if(a.episodes&&a.downloadLinks&&a.downloadLinks.length<a.episodes&&a.status==='completed'){
-        probs.push(`Incomplete: ${a.downloadLinks.length}/${a.episodes} eps but marked Completed`);
-      }
-      if(a.downloadLinks&&a.downloadLinks.length>1){
-        const nums=a.downloadLinks.map(d=>d.episode).sort((x,y)=>x-y);
-        const gaps=[];
-        for(let j=1;j<nums.length;j++){if(nums[j]-nums[j-1]>1)gaps.push(nums[j-1]+1);}
-        if(gaps.length)probs.push('Episode gaps after: EP'+gaps.slice(0,3).join(', EP')+(gaps.length>3?'...':''));
-      }
-      if(probs.length)issues.push({idx:i,name:a.name,probs});
-    });
-    if(!issues.length){
-      res.className='tool-result show ok';
-      res.textContent='✓ All '+DB.length+' anime have complete data!';
-      g('tool-scan-results').style.display='none';
-      return;
-    }
-    res.className='tool-result show warn';
-    res.innerHTML='⚠ '+issues.length+' anime have missing data — see details below.';
-    const body=g('tool-scan-body');
+    const issues=[];DB.forEach((a,i)=>{const probs=[];if(!a.thumbnail)probs.push('No thumbnail');if(!a.description||a.description.length<20)probs.push('Missing description');if(!a.genres||a.genres.length===0)probs.push('No genres');if(!a.downloadLinks||a.downloadLinks.length===0)probs.push('No episodes yet');if(a.episodes&&a.downloadLinks&&a.downloadLinks.length<a.episodes&&a.status==='completed')probs.push(`Incomplete: ${a.downloadLinks.length}/${a.episodes} eps`);if(a.downloadLinks&&a.downloadLinks.length>1){const nums=a.downloadLinks.map(d=>d.episode).sort((x,y)=>x-y);const gaps=[];for(let j=1;j<nums.length;j++)if(nums[j]-nums[j-1]>1)gaps.push(nums[j-1]+1);if(gaps.length)probs.push('Gaps after: EP'+gaps.slice(0,3).join(', EP'));}if(probs.length)issues.push({idx:i,name:a.name,probs});});
+    if(!issues.length){res.className='tool-result show ok';res.textContent='✓ All '+DB.length+' anime have complete data!';g('tool-scan-results').style.display='none';return;}
+    res.className='tool-result show warn';res.innerHTML='⚠ '+issues.length+' anime have issues.';
     g('tool-scan-title').textContent=issues.length+' Anime with Missing Data';
-    body.innerHTML=issues.map(item=>`
-      <div class="scan-result-item">
-        <div class="scan-result-item-head">
-          <span class="scan-result-name">${esc(item.name)}</span>
-          <button class="btn btn-ghost btn-sm" onclick="selA(${item.idx});sw('episodes')" style="margin-left:auto;padding:2px 8px;font-size:11px">Fix →</button>
-        </div>
-        ${item.probs.map(p=>`<div class="scan-entry"><span style="color:var(--amber);font-size:13px">⚠</span><span>${esc(p)}</span></div>`).join('')}
-      </div>`).join('');
-    g('tool-scan-results').style.display='block';
-    g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});
-    toast(issues.length+' anime have issues','err');
+    g('tool-scan-body').innerHTML=issues.map(item=>`<div class="scan-result-item"><div class="scan-result-item-head"><span class="scan-result-name">${esc(item.name)}</span><button class="btn btn-ghost btn-sm" onclick="selA(${item.idx});sw('episodes');setMobileActive(g('mnav-episodes'))" style="margin-left:auto;padding:2px 8px;font-size:11px">Fix →</button></div>${item.probs.map(p=>`<div class="scan-entry"><span style="color:var(--amber);font-size:13px">⚠</span><span>${esc(p)}</span></div>`).join('')}</div>`).join('');
+    g('tool-scan-results').style.display='block';g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});toast(issues.length+' issues found','err');
   },300);
 }
-
 function toolStatusAudit(){
-  const res=g('tool-result-status');
-  res.className='tool-result show';
-  res.textContent='Auditing...';
+  const res=g('tool-result-status');res.className='tool-result show';res.textContent='Auditing...';
   setTimeout(()=>{
-    const issues=[];
-    DB.forEach((a,i)=>{
-      const ep=(a.downloadLinks||[]).length;
-      const total=a.episodes||0;
-      if(a.status==='completed'&&ep<total&&total>0){
-        issues.push({idx:i,name:a.name,msg:`Marked "Completed" but only ${ep}/${total} episodes uploaded`});
-      }
-      if(a.status==='airing'&&total>0&&ep>=total){
-        issues.push({idx:i,name:a.name,msg:`All ${ep}/${total} episodes uploaded but status is still "Airing"`});
-      }
-      if(a.status==='upcoming'&&ep>0){
-        issues.push({idx:i,name:a.name,msg:`Status is "Upcoming" but has ${ep} episode(s) already`});
-      }
-    });
-    if(!issues.length){
-      res.className='tool-result show ok';
-      res.textContent='✓ All statuses look correct!';
-      g('tool-scan-results').style.display='none';
-      return;
-    }
-    res.className='tool-result show warn';
-    res.innerHTML='⚠ '+issues.length+' status mismatch'+(issues.length>1?'es':'')+' found.';
-    const body=g('tool-scan-body');
-    g('tool-scan-title').textContent=issues.length+' Status Mismatch'+(issues.length>1?'es':'');
-    body.innerHTML=issues.map(item=>`
-      <div class="scan-result-item">
-        <div class="scan-result-item-head">
-          <span class="scan-result-name">${esc(item.name)}</span>
-          <button class="btn btn-ghost btn-sm" onclick="selA(${item.idx});sw('episodes')" style="margin-left:auto;padding:2px 8px;font-size:11px">Fix →</button>
-        </div>
-        <div class="scan-entry"><span style="color:var(--amber);font-size:13px">⚠</span><span>${esc(item.msg)}</span></div>
-      </div>`).join('');
-    g('tool-scan-results').style.display='block';
-    g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});
-    toast(issues.length+' status issues found','err');
+    const issues=[];DB.forEach((a,i)=>{const ep=(a.downloadLinks||[]).length;const total=a.episodes||0;if(a.status==='completed'&&ep<total&&total>0)issues.push({idx:i,name:a.name,msg:`Marked Completed but only ${ep}/${total} episodes`});if(a.status==='airing'&&total>0&&ep>=total)issues.push({idx:i,name:a.name,msg:`All ${ep}/${total} eps uploaded but still Airing`});if(a.status==='upcoming'&&ep>0)issues.push({idx:i,name:a.name,msg:`Status Upcoming but has ${ep} episode(s)`});});
+    if(!issues.length){res.className='tool-result show ok';res.textContent='✓ All statuses look correct!';g('tool-scan-results').style.display='none';return;}
+    res.className='tool-result show warn';res.innerHTML='⚠ '+issues.length+' status mismatch(es).';
+    g('tool-scan-title').textContent=issues.length+' Status Mismatch(es)';
+    g('tool-scan-body').innerHTML=issues.map(item=>`<div class="scan-result-item"><div class="scan-result-item-head"><span class="scan-result-name">${esc(item.name)}</span><button class="btn btn-ghost btn-sm" onclick="selA(${item.idx});sw('episodes');setMobileActive(g('mnav-episodes'))" style="margin-left:auto;padding:2px 8px;font-size:11px">Fix →</button></div><div class="scan-entry"><span style="color:var(--amber);font-size:13px">⚠</span><span>${esc(item.msg)}</span></div></div>`).join('');
+    g('tool-scan-results').style.display='block';toast(issues.length+' status issues','err');
   },300);
 }
-
 function toolOrphanCheck(){
-  const res=g('tool-result-orphan');
-  res.className='tool-result show';
-  res.textContent='Checking...';
+  const res=g('tool-result-orphan');res.className='tool-result show';res.textContent='Checking...';
   setTimeout(()=>{
-    const ids=new Set(DB.map(a=>a.id));
-    const lists={hero:cfg.h,newly:cfg.n,recommended:cfg.r,trending:cfg.t};
-    const orphans=[];
-    Object.entries(lists).forEach(([listName,arr])=>{
-      arr.forEach(id=>{
-        if(!ids.has(id))orphans.push({list:listName,id});
-      });
-    });
-    if(!orphans.length){
-      res.className='tool-result show ok';
-      res.textContent='✓ All config IDs exist in your anime data!';
-      g('tool-scan-results').style.display='none';
-      return;
-    }
-    res.className='tool-result show err';
-    res.innerHTML='⚠ '+orphans.length+' orphan ID'+(orphans.length>1?'s':'')+' found in config lists.';
-    const body=g('tool-scan-body');
-    g('tool-scan-title').textContent=orphans.length+' Orphan Config ID'+(orphans.length>1?'s':'');
-    body.innerHTML=`<div class="scan-result-item">
-      <div class="scan-result-item-head">
-        <span class="scan-result-name">IDs not found in data.js</span>
-        <button class="btn btn-ghost btn-sm" onclick="sw('config')" style="margin-left:auto;padding:2px 8px;font-size:11px">Go to Config →</button>
-      </div>
-      ${orphans.map(o=>`<div class="scan-entry">
-        <span style="background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,166,35,.3);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:600;text-transform:capitalize">${esc(o.list)}</span>
-        <span style="font-family:'Courier New',monospace;font-size:11.5px">${esc(o.id)}</span>
-      </div>`).join('')}
-    </div>`;
-    g('tool-scan-results').style.display='block';
-    g('tool-scan-results').scrollIntoView({behavior:'smooth',block:'start'});
-    toast(orphans.length+' orphan IDs found','err');
+    const ids=new Set(DB.map(a=>a.id));const lists={hero:cfg.h,newly:cfg.n,recommended:cfg.r,trending:cfg.t};const orphans=[];
+    Object.entries(lists).forEach(([listName,arr])=>{arr.forEach(id=>{if(!ids.has(id))orphans.push({list:listName,id});});});
+    if(!orphans.length){res.className='tool-result show ok';res.textContent='✓ All config IDs exist!';g('tool-scan-results').style.display='none';return;}
+    res.className='tool-result show err';res.innerHTML='⚠ '+orphans.length+' orphan ID(s) found.';
+    g('tool-scan-title').textContent=orphans.length+' Orphan Config ID(s)';
+    g('tool-scan-body').innerHTML=`<div class="scan-result-item"><div class="scan-result-item-head"><span class="scan-result-name">IDs not in data.js</span><button class="btn btn-ghost btn-sm" onclick="sw('config');setMobileActive(g('mnav-config'))" style="margin-left:auto;padding:2px 8px;font-size:11px">Config →</button></div>${orphans.map(o=>`<div class="scan-entry"><span style="background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,166,35,.3);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:600;text-transform:capitalize">${esc(o.list)}</span><span style="font-family:'Courier New',monospace;font-size:11px;word-break:break-all">${esc(o.id)}</span></div>`).join('')}</div>`;
+    g('tool-scan-results').style.display='block';toast(orphans.length+' orphan IDs','err');
   },300);
 }
 
 // ══ EPISODE ROW EDIT ══
 function eRow(ai,en){if(editRow!==null)cxRow(ai,editRow);editRow=en;g(`prev-${en}`).style.display='none';g(`inp-${en}`).style.display='block';g(`inp-${en}`).focus();g(`be-${en}`).style.display='none';g(`bs-${en}`).style.display='flex';g(`bc-${en}`).style.display='flex';}
-function svRow(ai,en){const l=g(`inp-${en}`).value.trim();if(!l){toast('Empty link','err');return;}const dups=findDupLink(l,ai,en);if(dups.length){const m=dups.map(d=>d.same?'Already used for Episode '+d.episode+' of this anime':'Already in "'+d.name+'" Episode '+d.episode).join('\n');if(!confirm('Duplicate link detected:\n'+m+'\n\nSave anyway?'))return;}const ep=DB[ai].downloadLinks.find(e=>e.episode===en);if(ep)ep.link=l;logChange('EP~EP'+en+' '+DB[ai].name);editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');}
+function svRow(ai,en){const l=g(`inp-${en}`).value.trim();if(!l){toast('Empty link','err');return;}const dups=findDupLink(l,ai,en);if(dups.length){const m=dups.map(d=>d.same?'Already EP'+d.episode+' of this anime':'Already in "'+d.name+'" EP'+d.episode).join('\n');if(!confirm('Duplicate link:\n'+m+'\n\nSave anyway?'))return;}const ep=DB[ai].downloadLinks.find(e=>e.episode===en);if(ep)ep.link=l;logChange('EP~EP'+en+' '+DB[ai].name);editRow=null;mu();rEpD(ai);toast(`EP ${en} updated`,'ok');}
 function cxRow(ai,en){editRow=null;g(`prev-${en}`).style.display='block';g(`inp-${en}`).style.display='none';g(`be-${en}`).style.display='flex';g(`bs-${en}`).style.display='none';g(`bc-${en}`).style.display='none';}
 function delEp(ai,en){if(!confirm(`Delete Episode ${en}?`))return;logChange('EP-EP'+en+' '+DB[ai].name);DB[ai].downloadLinks=DB[ai].downloadLinks.filter(e=>e.episode!==en);mu();rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${en} deleted`,'ok');}
-function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists — edit it in the table`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
+function addEp(ai){const n=parseInt(g('nen').value),l=g('nel').value.trim();if(!n||n<1){toast('Enter episode number','err');return;}if(!l){toast('Paste the link','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];if(DB[ai].downloadLinks.find(e=>e.episode===n)){toast(`EP ${n} exists — edit it above`,'err');return;}DB[ai].downloadLinks.push({episode:n,link:l});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);logChange('EP+EP'+n+' '+DB[ai].name);mu();g('nel').value='';g('nen').value=DB[ai].downloadLinks.length+1;rEpD(ai);rSidebar(g('sinput').value);toast(`EP ${n} added!`,'ok');}
 
-// ══ BULK DELETE EPISODES ══
+// ══ BULK EPISODE OPS ══
 function toggleAllEp(checked){document.querySelectorAll('.ep-chk').forEach(c=>c.checked=checked);if(cidx!==null)updateBulkBar(cidx);}
 function updateBulkBar(ai){const checked=document.querySelectorAll('.ep-chk:checked');const bar=g('bulk-bar');const cnt=g('bulk-count');if(!bar)return;if(checked.length>0){bar.classList.add('show');cnt.textContent=checked.length+' episode'+(checked.length>1?'s':'')+' selected';}else{bar.classList.remove('show');}const allChk=g('chk-all-ep');const total=document.querySelectorAll('.ep-chk').length;if(allChk){allChk.indeterminate=checked.length>0&&checked.length<total;allChk.checked=checked.length===total&&total>0;}}
 function clearEpSel(){document.querySelectorAll('.ep-chk').forEach(c=>c.checked=false);if(cidx!==null)updateBulkBar(cidx);}
-function bulkDeleteEp(ai){const checked=[...document.querySelectorAll('.ep-chk:checked')];if(!checked.length)return;const nums=checked.map(c=>parseInt(c.dataset.ep)).sort((a,b)=>a-b);if(!confirm(`Delete ${nums.length} episode(s)?\nEP: ${nums.join(', ')}`))return;DB[ai].downloadLinks=DB[ai].downloadLinks.filter(dl=>!nums.includes(dl.episode));logChange('EP-'+nums.length+' episodes from '+DB[ai].name);mu();rEpD(ai);rSidebar(g('sinput').value);toast(nums.length+' episodes deleted','ok');}
-
-// ══ BULK ADD EPISODES ══
-function bulkAdd(ai){const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);if(!st||st<1){toast('Enter starting episode','err');return;}if(!ls.length){toast('Paste links','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];let ad=0,sk=0,xd=[];ls.forEach((lk,i)=>{const n=st+i;if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}const dups=findDupLink(lk,ai,null);dups.forEach(d=>{const label=d.same?'EP'+n+': link already used by EP'+d.episode+' of this anime':'EP'+n+': already in "'+d.name+'" EP'+d.episode;xd.push(label);});DB[ai].downloadLinks.push({episode:n,link:lk});ad++;});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);if(ad>0)logChange('EP+'+ad+' episodes for '+DB[ai].name);mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);if(xd.length){toast('Added '+ad+' — '+xd.length+' duplicate(s) found!','err');setTimeout(()=>alert('Duplicate links:\n\n'+xd.join('\n')+'\n\nCheck these carefully.'),300);}else{toast('Added '+ad+(sk?', skipped '+sk+' dupes':''),'ok');}}
+function bulkDeleteEp(ai){const checked=[...document.querySelectorAll('.ep-chk:checked')];if(!checked.length)return;const nums=checked.map(c=>parseInt(c.dataset.ep)).sort((a,b)=>a-b);if(!confirm(`Delete ${nums.length} episode(s)?`))return;DB[ai].downloadLinks=DB[ai].downloadLinks.filter(dl=>!nums.includes(dl.episode));logChange('EP-'+nums.length+' episodes from '+DB[ai].name);mu();rEpD(ai);rSidebar(g('sinput').value);toast(nums.length+' episodes deleted','ok');}
+function bulkAdd(ai){const st=parseInt(g('bst').value),ls=g('blk').value.split('\n').map(l=>l.trim()).filter(Boolean);if(!st||st<1){toast('Enter starting episode','err');return;}if(!ls.length){toast('Paste links','err');return;}if(!DB[ai].downloadLinks)DB[ai].downloadLinks=[];let ad=0,sk=0,xd=[];ls.forEach((lk,i)=>{const n=st+i;if(DB[ai].downloadLinks.find(e=>e.episode===n)){sk++;return;}const dups=findDupLink(lk,ai,null);dups.forEach(d=>{const label=d.same?'EP'+n+': already EP'+d.episode:'EP'+n+': in "'+d.name+'" EP'+d.episode;xd.push(label);});DB[ai].downloadLinks.push({episode:n,link:lk});ad++;});DB[ai].downloadLinks.sort((a,b)=>a.episode-b.episode);if(ad>0)logChange('EP+'+ad+' eps for '+DB[ai].name);mu();g('blk').value='';rEpD(ai);rSidebar(g('sinput').value);if(xd.length){toast('Added '+ad+' — '+xd.length+' duplicate(s)!','err');}else{toast('Added '+ad+(sk?', skipped '+sk:''),'ok');}}
 
 // ══ DUPLICATE DETECTION ══
 function findDupLink(link,ai,skipEp){if(!link||link.length<5)return[];const results=[];for(let i=0;i<DB.length;i++){const a=DB[i];if(!a.downloadLinks)continue;for(const dl of a.downloadLinks){if(dl.link===link&&!(i===ai&&dl.episode===skipEp)){results.push({animeIdx:i,name:a.name,episode:dl.episode,same:i===ai});}}}return results;}
-function checkDupNum(ai){const n=parseInt(g('nen')?.value);const warn=g('dup-warn-num');const msg=g('dup-warn-msg');if(!warn||!msg)return;if(!n||n<1){warn.classList.remove('show');return;}const exists=DB[ai]?.downloadLinks?.find(e=>e.episode===n);if(exists){msg.textContent='Episode '+n+' already has a link — edit it in the table above instead.';warn.classList.add('show');}else{warn.classList.remove('show');}}
-function checkDupLink(ai){const link=g('nel')?.value?.trim();const warn=g('dup-warn-link');const msg=g('dup-warn-link-msg');if(!warn||!msg)return;if(!link||link.length<5){warn.classList.remove('show');return;}const dups=findDupLink(link,ai,null);if(dups.length){const crossAnime=dups.filter(d=>!d.same);const sameAnime=dups.filter(d=>d.same);let text='';if(crossAnime.length){text='WARNING: Used in '+crossAnime.map(d=>'"'+d.name+'" EP'+d.episode).join(', ')+' — likely a paste mistake!';}else{text='Already used for EP'+sameAnime.map(d=>d.episode).join(', ')+' of this anime.';}msg.textContent=text;warn.classList.add('show');warn.style.borderColor=crossAnime.length?'rgba(255,59,59,.45)':'rgba(245,166,35,.35)';warn.style.background=crossAnime.length?'rgba(255,59,59,.12)':'rgba(245,166,35,.08)';warn.style.color=crossAnime.length?'var(--red)':'var(--amber)';}else{warn.classList.remove('show');warn.style.cssText='';}}
+function checkDupNum(ai){const n=parseInt(g('nen')?.value);const warn=g('dup-warn-num');const msg=g('dup-warn-msg');if(!warn||!msg)return;if(!n||n<1){warn.classList.remove('show');return;}const exists=DB[ai]?.downloadLinks?.find(e=>e.episode===n);if(exists){msg.textContent='EP '+n+' already exists — edit it in the table.';warn.classList.add('show');}else{warn.classList.remove('show');}}
+function checkDupLink(ai){const link=g('nel')?.value?.trim();const warn=g('dup-warn-link');const msg=g('dup-warn-link-msg');if(!warn||!msg)return;if(!link||link.length<5){warn.classList.remove('show');return;}const dups=findDupLink(link,ai,null);if(dups.length){const crossAnime=dups.filter(d=>!d.same);const sameAnime=dups.filter(d=>d.same);let text='';if(crossAnime.length){text='WARNING: Used in '+crossAnime.map(d=>'"'+d.name+'" EP'+d.episode).join(', ')+'!';}else{text='Already used for EP'+sameAnime.map(d=>d.episode).join(', ')+' of this anime.';}msg.textContent=text;warn.classList.add('show');}else{warn.classList.remove('show');}}
 
 // ══ SERIES MODAL ══
 function openAddSM(){g('smei').value='';g('smxt').textContent='Add New Anime';['smn','smid','sms','smy','sme','smth','smde','smg','smr'].forEach(i=>g(i).value='');g('smd').value='24m';g('smq').value='HD 1080p';g('sml').value='Hindi Dubbed';g('smst').value='airing';g('smcat').value='action';g('smrec').checked=false;om('smx');}
 function openEditSM(idx){const a=DB[idx];g('smei').value=idx;g('smxt').textContent='Edit Anime Info';g('smn').value=a.name||'';g('smid').value=a.id||'';g('sms').value=a.season||'';g('smy').value=a.releaseYear||'';g('sme').value=a.episodes||'';g('smd').value=a.duration||'24m';g('smq').value=a.quality||'HD 1080p';g('smr').value=a.rating||'';g('sml').value=a.language||'Hindi Dubbed';g('smst').value=a.status||'airing';g('smcat').value=a.category||'action';g('smg').value=(a.genres||[]).join(', ');g('smth').value=a.thumbnail||'';g('smde').value=a.description||'';g('smrec').checked=!!a.recommended;om('smx');setTimeout(()=>previewThumb('smth','smth-preview'),50);}
-function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;if(ei===''){const idExists=DB.find(a=>a.id===sid);if(idExists){toast('ID "'+sid+'" already exists — change the slug','err');return;}}const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
+function saveSeries(){const nm=g('smn').value.trim(),sid=g('smid').value.trim();if(!nm){toast('Title required','err');return;}if(!sid){toast('ID required','err');return;}const ei=g('smei').value;if(ei===''){const idExists=DB.find(a=>a.id===sid);if(idExists){toast('ID "'+sid+'" already exists','err');return;}}const obj={id:sid,name:nm,status:g('smst').value,releaseYear:parseInt(g('smy').value)||new Date().getFullYear(),duration:g('smd').value||'24m',episodes:parseInt(g('sme').value)||12,season:g('sms').value||'1',quality:g('smq').value||'HD 1080p',rating:g('smr').value.trim(),genres:g('smg').value.split(',').map(x=>x.trim()).filter(Boolean),language:g('sml').value,description:g('smde').value.trim(),thumbnail:g('smth').value.trim(),category:g('smcat').value};if(g('smrec').checked)obj.recommended=true;if(ei!==''){const i=parseInt(ei);obj.downloadLinks=DB[i].downloadLinks||[];DB[i]=obj;cidx=i;logChange('A~'+nm);toast('Updated!','ok');}else{obj.downloadLinks=[];DB.unshift(obj);cidx=0;logChange('A+'+nm);toast('Added!','ok');}mu();cm('smx');rSidebar(g('sinput').value);rEpD(cidx);g('epw').style.display='none';rfCSel();}
 function delSeries(idx){if(!confirm(`Delete "${DB[idx].name}" + all episodes?`))return;logChange('A-'+DB[idx].name);DB.splice(idx,1);cidx=null;mu();rSidebar('');g('epd').innerHTML='';g('epw').style.display='flex';rfCSel();window.location.hash='';toast('Deleted','err');}
-
-// ══ STATUS QUICK TOGGLE ══
 function quickToggleStatus(idx){const cycle={airing:'completed',completed:'upcoming',upcoming:'airing',aired:'airing'};const a=DB[idx];a.status=cycle[a.status||'airing']||'airing';mu();logChange('A~'+a.name+' status:'+a.status);rEpD(idx);rSidebar(g('sinput').value);toast(a.name+' → '+a.status,'ok');}
 
 // ══ CONFIG ══
@@ -1344,7 +1275,7 @@ function addL(k){const v=g(CMAP[k].sel).value;if(!v){toast('Select anime first',
 function rmL(k,i){cfg[k].splice(i,1);mu();rCList(k);}
 
 // ══ SCHEDULE ══
-function rSched(){const wrap=g('stbl');if(!sched.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No entries yet</div>';return;}wrap.innerHTML=DAYS.map(day=>{const ents=sched.filter(s=>s.day===day);if(!ents.length)return'';const rows=ents.map(s=>{const gi=sched.indexOf(s);const an=DB.find(x=>x.id===s.animeId);return`<tr><td style="font-weight:500">${esc(an?an.name:s.animeId)}</td><td><span class="epnum">EP ${s.episode}</span></td><td><span class="tbadge">${esc(s.airTimeDisplay||s.airTime)}</span></td><td style="color:var(--muted);font-size:12px">${s.releaseDate||'—'}</td><td><div class="ra"><button class="ib ibe" onclick="openSM(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="ib ibd" onclick="delSched(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button></div></td></tr>`;}).join('');return`<div class="dgrp"><div class="dlbl">${day}</div><table class="sta"><thead><tr><th>Anime</th><th>Episode</th><th>Time</th><th>Date</th><th width="80">Actions</th></tr></thead><tbody>${rows}</tbody></table></div>`;}).join('');}
+function rSched(){const wrap=g('stbl');if(!sched.length){wrap.innerHTML='<div style="color:var(--muted);font-size:13px;padding:24px">No entries yet</div>';return;}wrap.innerHTML=DAYS.map(day=>{const ents=sched.filter(s=>s.day===day);if(!ents.length)return'';const rows=ents.map(s=>{const gi=sched.indexOf(s);const an=DB.find(x=>x.id===s.animeId);return`<tr><td style="font-weight:500">${esc(an?an.name:s.animeId)}</td><td><span class="epnum">EP ${s.episode}</span></td><td><span class="tbadge">${esc(s.airTimeDisplay||s.airTime)}</span></td><td style="color:var(--muted);font-size:12px">${s.releaseDate||'—'}</td><td><div class="ra"><button class="ib ibe" onclick="openSM(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="ib ibd" onclick="delSched(${gi})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14a2,2,0,0,1-2,2H8a2,2,0,0,1-2-2L5,6"/></svg></button></div></td></tr>`;}).join('');return`<div class="dgrp"><div class="dlbl">${day}</div><div class="sched-table-wrap"><table class="sta"><thead><tr><th>Anime</th><th>Episode</th><th>Time</th><th>Date</th><th width="80">Actions</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;}).join('');}
 function openSM(ei=null){g('scei').value=ei!==null?ei:'';g('scmxt').textContent=ei!==null?'Edit Entry':'Add Schedule Entry';if(ei!==null){const s=sched[ei];g('scday').value=s.day;g('scep').value=s.episode;g('scan').value=s.animeId;g('scat').value=s.airTime||'22:00';g('scatd').value=s.airTimeDisplay||'';g('scrd').value=s.releaseDate||'';}else{g('scday').value='Monday';g('scep').value='';g('scan').value='';g('scat').value='22:00';g('scatd').value='';g('scrd').value='';}om('scmx');}
 function saveSched(){const aid=g('scan').value,ep=parseInt(g('scep').value);if(!aid){toast('Select anime','err');return;}if(!ep||ep<1){toast('Enter episode number','err');return;}const obj={day:g('scday').value,animeId:aid,episode:ep,airTime:g('scat').value,releaseDate:g('scrd').value,airTimeDisplay:g('scatd').value};const ei=g('scei').value;if(ei!==''){sched[parseInt(ei)]=obj;logChange('SC edited');toast('Updated','ok');}else{sched.push(obj);logChange('SC added '+obj.day);toast('Added','ok');}mu();cm('scmx');rSched();}
 function delSched(i){if(!confirm('Delete entry?'))return;sched.splice(i,1);mu();rSched();toast('Deleted','ok');}
@@ -1359,9 +1290,9 @@ function delNews(i){if(!confirm('Delete?'))return;news.splice(i,1);mu();rNews();
 const AUTOSAVE_KEY='animebloom_autosave';let autosaveTimer=null;
 function startAutosave(){if(autosaveTimer)clearInterval(autosaveTimer);autosaveTimer=setInterval(doAutosave,30000);}
 function doAutosave(){try{const snap={timestamp:Date.now(),anime:DB,config:cfg,schedule:sched,news:news};localStorage.setItem(AUTOSAVE_KEY,JSON.stringify(snap));showAutosaveIndicator();}catch(e){console.warn('Autosave failed:',e);}}
-function showAutosaveIndicator(){const ind=g('autosave-ind');if(!ind)return;ind.textContent='✓ Auto-saved '+new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit',second:'2-digit'});ind.style.opacity='1';setTimeout(()=>{ind.style.opacity='0';},2000);}
-function checkAutosaveRestore(){try{const raw=localStorage.getItem(AUTOSAVE_KEY);if(!raw)return;const snap=JSON.parse(raw);if(!snap||!snap.anime||snap.anime.length===0)return;const age=Date.now()-snap.timestamp;const mins=Math.round(age/60000);const timeStr=mins<1?'just now':mins+' min ago';const banner=document.createElement('div');banner.id='autosave-banner';banner.style.cssText='position:fixed;top:52px;left:var(--nav-w);right:0;z-index:200;background:#1a1400;border-bottom:1px solid rgba(245,166,35,.4);padding:10px 20px;display:flex;align-items:center;gap:12px;font-size:12.5px';banner.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span style="color:var(--amber);font-weight:600">Unsaved session found</span><span style="color:var(--muted)">${snap.anime.length} anime · saved ${timeStr}</span><div style="margin-left:auto;display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="restoreAutosave()" style="border-color:rgba(245,166,35,.4);color:var(--amber)">Restore Session</button><button class="btn btn-ghost btn-sm" onclick="discardAutosave()">Discard</button></div>`;document.body.appendChild(banner);}catch(e){localStorage.removeItem(AUTOSAVE_KEY);}}
-function restoreAutosave(){try{const snap=JSON.parse(localStorage.getItem(AUTOSAVE_KEY));DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];rSidebar();rConfig();rSched();rNews();rfCSel();mu();toast('Session restored — '+DB.length+' anime loaded','ok');}catch(e){toast('Restore failed','err');}removeAutosaveBanner();}
+function showAutosaveIndicator(){const ind=g('autosave-ind');if(!ind)return;ind.textContent='✓ Auto-saved '+new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});ind.style.opacity='1';setTimeout(()=>{ind.style.opacity='0';},2000);}
+function checkAutosaveRestore(){try{const raw=localStorage.getItem(AUTOSAVE_KEY);if(!raw)return;const snap=JSON.parse(raw);if(!snap||!snap.anime||snap.anime.length===0)return;const age=Date.now()-snap.timestamp;const mins=Math.round(age/60000);const timeStr=mins<1?'just now':mins+' min ago';const banner=document.createElement('div');banner.id='autosave-banner';banner.style.cssText='position:fixed;top:48px;left:0;right:0;z-index:400;background:#1a1400;border-bottom:1px solid rgba(245,166,35,.4);padding:10px 16px;display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap';banner.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span style="color:var(--amber);font-weight:600">Unsaved session found</span><span style="color:var(--muted)">${snap.anime.length} anime · ${timeStr}</span><div style="margin-left:auto;display:flex;gap:6px"><button class="btn btn-ghost btn-sm" onclick="restoreAutosave()" style="border-color:rgba(245,166,35,.4);color:var(--amber)">Restore</button><button class="btn btn-ghost btn-sm" onclick="discardAutosave()">Discard</button></div>`;document.body.appendChild(banner);}catch(e){localStorage.removeItem(AUTOSAVE_KEY);}}
+function restoreAutosave(){try{const snap=JSON.parse(localStorage.getItem(AUTOSAVE_KEY));DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];rSidebar();rConfig();rSched();rNews();rfCSel();mu();toast('Session restored — '+DB.length+' anime','ok');}catch(e){toast('Restore failed','err');}removeAutosaveBanner();}
 function discardAutosave(){localStorage.removeItem(AUTOSAVE_KEY);removeAutosaveBanner();toast('Autosave discarded','ok');}
 function removeAutosaveBanner(){const b=g('autosave-banner');if(b)b.remove();}
 function clearAutosave(){localStorage.removeItem(AUTOSAVE_KEY);}
@@ -1376,11 +1307,11 @@ function genMeta(){return JSON.stringify(DB.map(a=>({id:a.id,name:a.name,thumbna
 function toggleAllFiles(checked){['chk-data','chk-config','chk-sched','chk-meta'].forEach(id=>{const el=g(id);if(el)el.checked=checked;});updateSelectedCount();}
 function updateSelectedCount(){const total=['chk-data','chk-config','chk-sched','chk-meta'].filter(id=>g(id)?.checked).length;const el=g('selected-count');if(el)el.textContent=total===0?'None selected':`${total} file${total>1?'s':''} selected`;const allChk=g('chk-all');if(allChk){allChk.indeterminate=total>0&&total<4;allChk.checked=total===4;}}
 
-// ══ AUTO-UPDATE NEWLY ADDED ══
+// ══ NEWLY ADDED AUTO-UPDATE ══
 const NEWLY_ADDED_MAX=9;
-function getEpisodeUpdatedIds(){const ids=new Set();changelog.forEach(entry=>{if(!entry.startsWith('EP+')&&!entry.startsWith('EP~'))return;const nameFragment=entry.startsWith('EP+EP')||entry.startsWith('EP~EP')?entry.replace(/^EP[+~]EP\d+\s+/,'').trim():entry.replace(/^EP\+\d+ episodes for /,'').trim();const match=DB.find(a=>a.name===nameFragment||a.name.startsWith(nameFragment.slice(0,15)));if(match)ids.add(match.id);});changelog.forEach(entry=>{if(!entry.startsWith('A+'))return;const name=entry.slice(2);const match=DB.find(a=>a.name===name);if(match)ids.add(match.id);});return[...ids];}
+function getEpisodeUpdatedIds(){const ids=new Set();changelog.forEach(entry=>{if(!entry.startsWith('EP+')&&!entry.startsWith('EP~'))return;const nameFragment=entry.replace(/^EP[+~]EP\d+\s+/,'').replace(/^EP\+\d+ episodes for /,'').trim();const match=DB.find(a=>a.name===nameFragment||a.name.startsWith(nameFragment.slice(0,15)));if(match)ids.add(match.id);});changelog.forEach(entry=>{if(!entry.startsWith('A+'))return;const name=entry.slice(2);const match=DB.find(a=>a.name===name);if(match)ids.add(match.id);});return[...ids];}
 function autoUpdateNewlyAdded(){const changedIds=getEpisodeUpdatedIds();if(changedIds.length===0)return{updated:false,added:[],removed:[]};const added=[];const removed=[];changedIds.forEach(id=>{const existingIdx=cfg.n.indexOf(id);if(existingIdx>-1)cfg.n.splice(existingIdx,1);cfg.n.unshift(id);if(existingIdx===-1)added.push(id);});while(cfg.n.length>NEWLY_ADDED_MAX){const trimmed=cfg.n.pop();removed.push(trimmed);}rCList('n');return{updated:true,added,removed,changedIds};}
-function showNewlyAddedPreview(){const el=g('newly-added-preview');if(!el)return;const changedIds=getEpisodeUpdatedIds();if(changedIds.length===0){el.style.display='none';return;}const names=changedIds.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;});el.style.display='block';el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span style="font-weight:600;font-size:12.5px">Newly Added will auto-update on push:</span></div>${names.map(n=>`<div style="display:flex;align-items:center;gap:7px;font-size:12px;padding:3px 0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 0 2-2h7"/></svg><span>${esc(n)} <span style="color:var(--muted)">→ moved to top of Newly Added</span></span></div>`).join('')}<div style="margin-top:8px;font-size:11px;color:var(--muted)">Max ${NEWLY_ADDED_MAX} items kept · oldest entries dropped if over limit</div>`;}
+function showNewlyAddedPreview(){const el=g('newly-added-preview');if(!el)return;const changedIds=getEpisodeUpdatedIds();if(changedIds.length===0){el.style.display='none';return;}const names=changedIds.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;});el.style.display='block';el.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span style="font-weight:600;font-size:12.5px">Newly Added auto-updates on push:</span></div>${names.map(n=>`<div style="display:flex;align-items:center;gap:7px;font-size:12px;padding:3px 0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 0 2-2h7"/></svg><span>${esc(n)}</span></div>`).join('')}`;}
 
 // ══ PUSH TO GITHUB ══
 let isPushing=false;
@@ -1388,33 +1319,30 @@ async function doPush(){
   if(isPushing)return;
   const FILE_MAP={'data.js':{chk:'chk-data',gen:genData,statusEl:'fs-data'},'config.js':{chk:'chk-config',gen:genCfg,statusEl:'fs-config'},'schedule-data.js':{chk:'chk-sched',gen:genSched,statusEl:'fs-sched'},'anime-meta.json':{chk:'chk-meta',gen:genMeta,statusEl:'fs-meta'}};
   const selected=Object.entries(FILE_MAP).filter(([,f])=>g(f.chk)?.checked);
-  if(selected.length===0){toast('Select at least one file to push','err');return;}
+  if(selected.length===0){toast('Select at least one file','err');return;}
   isPushing=true;
   const naResult=autoUpdateNewlyAdded();
-  if(naResult.updated){addLog('info','Auto-updated Newly Added: '+naResult.changedIds.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;}).join(', '));if(naResult.removed.length)addLog('info','Dropped from Newly Added: '+naResult.removed.map(id=>{const a=DB.find(x=>x.id===id);return a?a.name:id;}).join(', '));const cfgChk=g('chk-config');if(cfgChk&&!cfgChk.checked){cfgChk.checked=true;updateSelectedCount();addLog('info','config.js auto-selected because Newly Added was updated');}}
+  if(naResult.updated){addLog('info','Auto-updated Newly Added');const cfgChk=g('chk-config');if(cfgChk&&!cfgChk.checked){cfgChk.checked=true;updateSelectedCount();}}
   Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'pending','—'));
   selected.forEach(([,f])=>setFileStatus(f.statusEl,'pending','Queued'));
-  clearLog();setPushBtnState('pushing');showBanner('pushing',`Pushing ${selected.length} file(s) to GitHub...`);setProgress(0);
+  clearLog();setPushBtnState('pushing');showBanner('pushing',`Pushing ${selected.length} file(s)...`);setProgress(0);
   addLog('info',`Pushing ${selected.length} file(s): ${selected.map(([n])=>n).join(', ')}`);setProgress(10);
   const files={};for(const[name,f]of selected){files[name]=f.gen();setFileStatus(f.statusEl,'pushing','Pushing...');}
   setProgress(30);addLog('info','Sending to /api/push...');
   try{
     const res=await fetch('/api/push',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({files,commitMsg:g('commit-preview')?.value?.trim()||''})});
     setProgress(80);const data=await res.json();
-    if(res.ok&&data.success){data.results.forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,'ok',r.commit?`✓ ${r.commit}`:'✓ Done');addLog('ok',`${r.file} → committed ${r.commit||''}`);});setProgress(100);setPushBtnState('success');showBanner('success',`${data.results.length} file(s) pushed! Vercel deploying — live in ~30 seconds.`);g('upill').classList.remove('show');changelog=[];updateCommitPreview();clearAutosave();localStorage.setItem('last_push',new Date().toLocaleString());toast('Pushed to GitHub! Vercel deploying...','ok');addLog('ok','All done! Check your site in 30–40 seconds.');}
-    else{(data.results||[]).forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,r.ok?'ok':'err',r.ok?'✓ Done':'✗ Failed');addLog(r.ok?'ok':'err',`${r.file}: ${r.ok?'OK':r.error}`);});if(!data.results)addLog('err',data.error||'Unknown error');setPushBtnState('error');showBanner('error',data.message||'Push failed — check the log below.');toast(data.message||'Push failed','err');setProgress(0);}
-  }catch(err){addLog('err','Network error: '+err.message);addLog('warn','Make sure api/push.js is deployed and env vars are set in Vercel.');setPushBtnState('error');showBanner('error','Connection error — is api/push.js deployed?');Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'err','✗ Error'));toast('Connection error','err');setProgress(0);}
-  isPushing=false;
-  setTimeout(()=>{setPushBtnState('idle');hideBanner();},8000);
+    if(res.ok&&data.success){data.results.forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,'ok',r.commit?`✓ ${r.commit}`:'✓ Done');addLog('ok',`${r.file} → ${r.commit||'committed'}`);});setProgress(100);setPushBtnState('success');showBanner('success',`${data.results.length} file(s) pushed! Deploying in ~30s.`);g('upill').classList.remove('show');changelog=[];updateCommitPreview();clearAutosave();toast('Pushed! Vercel deploying...','ok');}
+    else{(data.results||[]).forEach(r=>{const f=FILE_MAP[r.file];if(f)setFileStatus(f.statusEl,r.ok?'ok':'err',r.ok?'✓':'✗');addLog(r.ok?'ok':'err',`${r.file}: ${r.ok?'OK':r.error}`);});if(!data.results)addLog('err',data.error||'Unknown error');setPushBtnState('error');showBanner('error',data.message||'Push failed');toast(data.message||'Push failed','err');setProgress(0);}
+  }catch(err){addLog('err','Network error: '+err.message);setPushBtnState('error');showBanner('error','Connection error — is api/push.js deployed?');Object.values(FILE_MAP).forEach(f=>setFileStatus(f.statusEl,'err','✗'));toast('Connection error','err');setProgress(0);}
+  isPushing=false;setTimeout(()=>{setPushBtnState('idle');hideBanner();},8000);
 }
 function setPushBtnState(state){
-  const btn=g('push-btn');const lbl=g('push-btn-label');
-  const qbtn=g('quick-push-btn');const qlbl=g('quick-push-label');
-  const sbtn=g('sidebar-push-btn');const slbl=g('sidebar-push-label');
+  const btn=g('push-btn');const lbl=g('push-btn-label');const qbtn=g('quick-push-btn');const qlbl=g('quick-push-label');const sbtn=g('sidebar-push-btn');const slbl=g('sidebar-push-label');
   if(!btn)return;btn.disabled=state==='pushing';if(qbtn)qbtn.disabled=state==='pushing';if(sbtn)sbtn.disabled=state==='pushing';
-  const states={idle:{label:'Push All Changes to Site',qlabel:'Push',slabel:'Push to Site',cls:''},pushing:{label:'Pushing to GitHub...',qlabel:'...',slabel:'Pushing...',cls:'pushing'},success:{label:'✓ Successfully Pushed!',qlabel:'✓ Done',slabel:'✓ Pushed!',cls:'success'},error:{label:'✗ Push Failed — Check Log',qlabel:'✗ Failed',slabel:'✗ Failed',cls:'error'}};
+  const states={idle:{label:'Push All Changes to Site',qlabel:'Push',slabel:'Push to Site',cls:''},pushing:{label:'Pushing...',qlabel:'...',slabel:'Pushing...',cls:'pushing'},success:{label:'✓ Pushed!',qlabel:'✓',slabel:'✓',cls:'success'},error:{label:'✗ Failed',qlabel:'✗',slabel:'✗',cls:'error'}};
   const s=states[state]||states.idle;
-  lbl.textContent=s.label;qlbl.textContent=s.qlabel;if(slbl)slbl.textContent=s.slabel;btn.className=`big-push-btn ${s.cls}`;
+  lbl.textContent=s.label;if(qlbl)qlbl.textContent=s.qlabel;if(slbl)slbl.textContent=s.slabel;btn.className=`big-push-btn ${s.cls}`;
 }
 function setFileStatus(elId,state,text){const el=g(elId);if(!el)return;const classes={pending:'fs-pending',pushing:'fs-pushing',ok:'fs-ok',err:'fs-err'};el.className=`file-status ${classes[state]||'fs-pending'}`;el.innerHTML=state==='pushing'?`<div class="dp-spin" style="width:10px;height:10px;border-width:1.5px"></div> ${text}`:text;}
 function setProgress(pct){const bar=g('push-progress');const qbar=g('quick-progress');if(bar)bar.style.width=pct+'%';if(qbar)qbar.style.width=pct+'%';}
@@ -1424,33 +1352,31 @@ function addLog(type,msg){const box=g('log-box');if(!box)return;box.classList.ad
 function clearLog(){const b=g('log-box');if(b){b.innerHTML='';b.classList.remove('show');}}
 
 // ══ CONNECTION TEST ══
-async function testConnection(){const btn=g('test-btn');const results=g('test-results');btn.disabled=true;btn.innerHTML='<div class="dp-spin" style="width:12px;height:12px;border-width:1.5px"></div> Testing...';results.innerHTML='<div style="color:var(--muted);font-size:12.5px">Running checks...</div>';try{const res=await fetch('/api/github-test');const data=await res.json();results.innerHTML=data.checks.map(c=>`<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid ${c.ok?'rgba(34,224,122,.2)':'rgba(255,59,59,.2)'};border-radius:8px"><span style="font-size:15px;flex-shrink:0;margin-top:1px">${c.ok?'✅':'❌'}</span><div><div style="font-size:12.5px;font-weight:600;color:${c.ok?'var(--green)':'var(--red)'}">${esc(c.name)}</div><div style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5">${esc(c.detail)}</div></div></div>`).join('');if(data.ok)toast('All checks passed — ready to push!','ok');else{const failed=data.checks.find(c=>!c.ok);toast('Fix: '+(failed?.detail||'Check the results'),'err');}}catch(e){results.innerHTML=`<div style="padding:12px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;color:var(--red);font-size:12.5px">❌ <strong>api/github-test.js not found</strong></div>`;toast('Test endpoint not found','err');}btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Test Again';}
+async function testConnection(){const btn=g('test-btn');const results=g('test-results');btn.disabled=true;btn.innerHTML='<div class="dp-spin" style="width:12px;height:12px;border-width:1.5px"></div> Testing...';results.innerHTML='<div style="color:var(--muted);font-size:12.5px">Running checks...</div>';try{const res=await fetch('/api/github-test');const data=await res.json();results.innerHTML=data.checks.map(c=>`<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:var(--surface2);border:1px solid ${c.ok?'rgba(34,224,122,.2)':'rgba(255,59,59,.2)'};border-radius:8px"><span style="font-size:15px;flex-shrink:0;margin-top:1px">${c.ok?'✅':'❌'}</span><div><div style="font-size:12.5px;font-weight:600;color:${c.ok?'var(--green)':'var(--red)'}">${esc(c.name)}</div><div style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;word-break:break-word">${esc(c.detail)}</div></div></div>`).join('');if(data.ok)toast('All checks passed!','ok');else{const failed=data.checks.find(c=>!c.ok);toast('Fix: '+(failed?.detail||'See results'),'err');}}catch(e){results.innerHTML=`<div style="padding:12px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;color:var(--red);font-size:12.5px">❌ api/github-test.js not found</div>`;}btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Test Again';}
 
 // ══ BACKUP & RESTORE ══
-function doBackup(){const snap={version:2,timestamp:new Date().toISOString(),anime:DB,config:cfg,schedule:sched,news:news};const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);const ts=new Date().toISOString().slice(0,10);a.download=`animebloom-backup-${ts}.json`;a.click();localStorage.setItem('last_backup',new Date().toLocaleString());updateBackupTime();toast('Backup downloaded!','ok');}
-function updateBackupTime(){const el=g('last-backup-time');const t=localStorage.getItem('last_backup');if(el&&t)el.textContent='Last backup: '+t;}
-function doRestore(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const snap=JSON.parse(e.target.result);if(!snap.anime||!Array.isArray(snap.anime))throw new Error('Invalid backup — missing anime data');_pendingRestore=snap;const prev=g('restore-preview');prev.style.display='block';prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${esc(snap.timestamp||'unknown')}</strong><br>Anime: <strong>${snap.anime.length}</strong> &nbsp;|&nbsp; Schedule: <strong>${(snap.schedule||[]).length} entries</strong> &nbsp;|&nbsp; News: <strong>${(snap.news||[]).length} items</strong><br><br><button class="btn btn-danger btn-sm" onclick="confirmRestore()">⚠ Confirm Restore</button><button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none';_pendingRestore=null;" style="margin-left:8px">Cancel</button>`;}catch(err){toast('Invalid backup file: '+err.message,'err');}};reader.readAsText(file);event.target.value='';}
-function confirmRestore(){const snap=_pendingRestore;if(!snap){toast('No backup loaded','err');return;}DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];_pendingRestore=null;changelog=[];g('restore-preview').style.display='none';rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();toast('Restored! '+DB.length+' anime loaded. Push to apply to your site.','ok');}
+function doBackup(){const snap={version:2,timestamp:new Date().toISOString(),anime:DB,config:cfg,schedule:sched,news:news};const blob=new Blob([JSON.stringify(snap,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`animebloom-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();localStorage.setItem('last_backup',new Date().toLocaleString());updateBackupTime();toast('Backup downloaded!','ok');}
+function updateBackupTime(){const el=g('last-backup-time');const t=localStorage.getItem('last_backup');if(el&&t)el.textContent='Last: '+t;}
+function doRestore(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const snap=JSON.parse(e.target.result);if(!snap.anime||!Array.isArray(snap.anime))throw new Error('Invalid backup');_pendingRestore=snap;const prev=g('restore-preview');prev.style.display='block';prev.innerHTML=`⚠ Restoring will replace all current data.<br>Backup from: <strong>${esc(snap.timestamp||'unknown')}</strong><br>Anime: <strong>${snap.anime.length}</strong><br><br><button class="btn btn-danger btn-sm" onclick="confirmRestore()">⚠ Confirm Restore</button> <button class="btn btn-ghost btn-sm" onclick="g('restore-preview').style.display='none';_pendingRestore=null;">Cancel</button>`;}catch(err){toast('Invalid backup: '+err.message,'err');}};reader.readAsText(file);event.target.value='';}
+function confirmRestore(){const snap=_pendingRestore;if(!snap)return;DB=snap.anime||[];cfg=snap.config||{h:[],n:[],r:[],t:[]};sched=snap.schedule||[];news=snap.news||[];_pendingRestore=null;changelog=[];g('restore-preview').style.display='none';rSidebar();rConfig();rSched();rNews();rfCSel();updateCommitPreview();mu();toast('Restored! '+DB.length+' anime loaded','ok');}
 
 // ══ IMAGE UPLOAD ══
-function saveFreeimgKey(){const k=g('freeimg-key').value.trim();if(!k){toast('Paste your API key first','err');return;}localStorage.setItem('freeimg_key',k);showKeyStatus('✓ Key saved in browser','var(--green)');toast('API key saved','ok');}
-function loadFreeimgKey(){const k=localStorage.getItem('freeimg_key')||'';const el=g('freeimg-key');if(el&&k){el.value=k;showKeyStatus('Key loaded from browser storage','var(--muted)');}}
+function saveFreeimgKey(){const k=g('freeimg-key').value.trim();if(!k){toast('Paste key first','err');return;}localStorage.setItem('freeimg_key',k);showKeyStatus('✓ Key saved','var(--green)');toast('API key saved','ok');}
+function loadFreeimgKey(){const k=localStorage.getItem('freeimg_key')||'';const el=g('freeimg-key');if(el&&k){el.value=k;showKeyStatus('Key loaded','var(--muted)');}}
 function showKeyStatus(msg,color){const el=g('freeimg-key-status');if(!el)return;el.style.display='block';el.style.color=color||'var(--muted)';el.textContent=msg;}
 function imgLog(data,label){const box=g('img-json-log');if(!box)return;box.style.display='block';const ts=new Date().toLocaleTimeString('en',{hour12:false});const entry=document.createElement('div');entry.style.cssText='margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:12px';entry.innerHTML='<div style="color:var(--muted);font-size:11px;margin-bottom:6px">['+ts+'] '+esc(label)+'</div><pre style="color:#7ecfff;font-size:11px;line-height:1.6;white-space:pre-wrap;word-break:break-all">'+esc(JSON.stringify(data,null,2))+'</pre>';box.insertBefore(entry,box.firstChild);}
 async function callImgAPI(base64,key){const res=await fetch('/api/imgupload',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:base64,key})});return await res.json();}
-async function testFreeimgKey(){const key=localStorage.getItem('freeimg_key');if(!key){toast('Save your API key first','err');return;}const btn=g('test-img-btn');btn.disabled=true;btn.textContent='Testing...';showKeyStatus('Testing via /api/imgupload...','var(--amber)');const tiny='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';try{const d=await callImgAPI(tiny,key);imgLog(d,'Test upload (1x1 pixel PNG)');if(d.url||d.parsed?.status_code===200){showKeyStatus('✅ API key is valid and working!','var(--green)');toast('API key works!','ok');}else{const err=d.parsed?.status_txt||d.error||d.raw||'Unknown error';showKeyStatus('❌ '+err,'var(--red)');toast('Key test failed: '+err,'err');}}catch(e){showKeyStatus('❌ '+e.message,'var(--red)');imgLog({error:e.message},'Test failed');toast(e.message,'err');}btn.disabled=false;btn.textContent='Test';}
-async function uploadThumb(event,urlFieldId,btnId,labelId,statusId,previewId,previewImgId){const file=event.target.files[0];if(!file)return;const key=localStorage.getItem('freeimg_key');if(!key){toast('Add your freeimage.host API key first — go to Push to Site tab','err');event.target.value='';return;}if(file.size>10*1024*1024){toast('Image too large — max 10MB','err');event.target.value='';return;}const btn=g(btnId),lbl=g(labelId),status=g(statusId);if(btn)btn.style.opacity='0.7';if(lbl)lbl.textContent='Uploading...';if(status){status.textContent='Uploading...';status.style.color='var(--amber)';}const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});try{const d=await callImgAPI(b64,key);imgLog(d,'Upload: '+file.name+' ('+Math.round(file.size/1024)+'KB)');const url=d.url||d.parsed?.image?.url||d.parsed?.image?.display_url||'';if(url){const inp=g(urlFieldId);if(inp)inp.value=url;previewThumb(urlFieldId,previewId);if(status){status.textContent='✓ Uploaded!';status.style.color='var(--green)';}toast('Image uploaded!','ok');setTimeout(()=>{if(status)status.textContent='';},3000);}else{throw new Error(d.parsed?.status_txt||d.error||'No URL in response');}}catch(e){if(status){status.textContent='✗ '+e.message;status.style.color='var(--red)';}toast('Upload failed: '+e.message,'err');}if(btn)btn.style.opacity='1';if(lbl)lbl.textContent='Upload';event.target.value='';}
+async function testFreeimgKey(){const key=localStorage.getItem('freeimg_key');if(!key){toast('Save your API key first','err');return;}const btn=g('test-img-btn');btn.disabled=true;btn.textContent='Testing...';showKeyStatus('Testing...','var(--amber)');const tiny='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';try{const d=await callImgAPI(tiny,key);imgLog(d,'Test upload (1x1 PNG)');if(d.url||d.parsed?.status_code===200){showKeyStatus('✅ API key is valid!','var(--green)');toast('API key works!','ok');}else{const err=d.parsed?.status_txt||d.error||'Unknown error';showKeyStatus('❌ '+err,'var(--red)');toast('Key test failed: '+err,'err');}}catch(e){showKeyStatus('❌ '+e.message,'var(--red)');toast(e.message,'err');}btn.disabled=false;btn.textContent='Test';}
+async function uploadThumb(event,urlFieldId,btnId,labelId,statusId,previewId,previewImgId){const file=event.target.files[0];if(!file)return;const key=localStorage.getItem('freeimg_key');if(!key){toast('Add API key in Push tab first','err');event.target.value='';return;}if(file.size>10*1024*1024){toast('Image too large — max 10MB','err');event.target.value='';return;}const btn=g(btnId),lbl=g(labelId),status=g(statusId);if(btn)btn.style.opacity='0.7';if(lbl)lbl.textContent='Uploading...';if(status){status.textContent='Uploading...';status.style.color='var(--amber)';}const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});try{const d=await callImgAPI(b64,key);imgLog(d,'Upload: '+file.name);const url=d.url||d.parsed?.image?.url||d.parsed?.image?.display_url||'';if(url){const inp=g(urlFieldId);if(inp)inp.value=url;previewThumb(urlFieldId,previewId);if(status){status.textContent='✓ Uploaded!';status.style.color='var(--green)';}toast('Image uploaded!','ok');setTimeout(()=>{if(status)status.textContent='';},3000);}else{throw new Error(d.parsed?.status_txt||d.error||'No URL in response');}}catch(e){if(status){status.textContent='✗ '+e.message;status.style.color='var(--red)';}toast('Upload failed: '+e.message,'err');}if(btn)btn.style.opacity='1';if(lbl)lbl.textContent='Upload';event.target.value='';}
 function previewThumb(urlFieldId,previewId){const url=g(urlFieldId)?.value?.trim();const wrap=g(previewId);if(!wrap)return;if(url){const img=wrap.querySelector('img');if(img){img.src=url;img.onerror=()=>{wrap.style.display='none';};}wrap.style.display='block';}else{wrap.style.display='none';}}
 
 // ══ SITE PREVIEW ══
-let previewDevice='desktop';let previewSiteUrl='';
+let previewSiteUrl='';
 function openPreview(){const overlay=g('preview-overlay');overlay.style.display='flex';if(!previewSiteUrl)promptPreviewUrl();else loadPreview(previewSiteUrl);}
-function promptPreviewUrl(){const url=prompt('Enter your site URL (e.g. https://animebloom.vercel.app):',previewSiteUrl||'https://');if(url&&url.startsWith('http')){previewSiteUrl=url.replace(/\/$/,'');localStorage.setItem('preview_url',previewSiteUrl);loadPreview(previewSiteUrl);}}
-function loadPreview(url){const iframe=g('preview-iframe');const urlDisplay=g('preview-url-display');iframe.src=url;if(urlDisplay)urlDisplay.textContent=url;toggleDevice(previewDevice);}
-function reloadPreview(){const iframe=g('preview-iframe');if(iframe.src)iframe.src=iframe.src;}
+function promptPreviewUrl(){const url=prompt('Enter your site URL:',previewSiteUrl||'https://');if(url&&url.startsWith('http')){previewSiteUrl=url.replace(/\/$/,'');localStorage.setItem('preview_url',previewSiteUrl);loadPreview(previewSiteUrl);}}
+function loadPreview(url){const iframe=g('preview-iframe');const urlDisplay=g('preview-url-display');iframe.src=url;if(urlDisplay)urlDisplay.textContent=url;}
 function openInTab(){if(previewSiteUrl)window.open(previewSiteUrl,'_blank');}
 function closePreview(){g('preview-overlay').style.display='none';}
-function toggleDevice(mode){previewDevice=mode;const iframe=g('preview-iframe');const wrap=g('preview-frame-wrap');const btnM=g('btn-mobile');const btnD=g('btn-desktop');if(mode==='mobile'){iframe.style.width='390px';iframe.style.height='844px';wrap.style.padding='20px';if(btnM)btnM.style.color='var(--red)';if(btnD)btnD.style.color='';}else{iframe.style.width='100%';iframe.style.height='100%';wrap.style.padding='0';if(btnD)btnD.style.color='var(--red)';if(btnM)btnM.style.color='';}}
 function initPreviewUrl(){previewSiteUrl=localStorage.getItem('preview_url')||'';}
 
 // ══ DRAG TO REORDER ══
@@ -1464,16 +1390,16 @@ function dragEnd(e){e.currentTarget.classList.remove('dragging');document.queryS
 // ══ KEYBOARD SHORTCUTS ══
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();doPush();}
-  if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();sw('episodes');g('sinput').focus();g('sinput').select();}
-  if((e.ctrlKey||e.metaKey)&&e.key==='n'){e.preventDefault();openAddSM();}
-  if(e.key==='Escape'){document.querySelectorAll('.overlay.show').forEach(m=>m.classList.remove('show'));}
-  if(e.key==='ArrowDown'&&e.altKey&&cidx!==null){e.preventDefault();const next=Math.min(cidx+1,DB.length-1);selA(next);}
-  if(e.key==='ArrowUp'&&e.altKey&&cidx!==null){e.preventDefault();const prev=Math.max(cidx-1,0);selA(prev);}
+  if((e.ctrlKey||e.metaKey)&&e.key==='f'&&!isMobile()){e.preventDefault();sw('episodes');g('sinput').focus();g('sinput').select();}
+  if((e.ctrlKey||e.metaKey)&&e.key==='n'&&!isMobile()){e.preventDefault();openAddSM();}
+  if(e.key==='Escape'){document.querySelectorAll('.overlay.show').forEach(m=>m.classList.remove('show'));if(isMobile())closeMobileLibrary();}
 });
 
 // ══ UTILS ══
 function mu(){
   g('upill').classList.add('show');
+  // Show unsaved dot on push nav item (mobile)
+  const dot=g('mob-unsaved-push');if(dot)dot.style.display='block';
   clearTimeout(window._muSaveTimer);
   window._muSaveTimer=setTimeout(doAutosave,2000);
 }
@@ -1483,6 +1409,21 @@ function e2(s){return String(s||'').replace(/\\/g,'\\\\').replace(/"/g,'\\"').re
 function om(i){g(i).classList.add('show');}
 function cm(i){g(i).classList.remove('show');}
 function toast(msg,type='ok'){const t=g('toast');t.textContent=msg;t.className=`toast show t${type}`;clearTimeout(t._t);t._t=setTimeout(()=>t.className='toast',2800);}
+
+// ══ HANDLE RESIZE ══
+window.addEventListener('resize',()=>{
+  if(!isMobile()){
+    closeMobileLibrary();
+    const currentTab=document.querySelector('.nav-item.active')?.id?.replace('nav-','');
+    if(currentTab==='episodes'){g('sidebar').classList.remove('hidden');}
+    else{g('sidebar').classList.add('hidden');}
+    g('mobile-lib-fab').style.display='none';
+  } else {
+    const mnav=document.querySelector('.mobile-nav-item.active');
+    const activeTab=mnav?.id?.replace('mnav-','');
+    g('mobile-lib-fab').style.display=activeTab==='episodes'?'flex':'none';
+  }
+});
 
 document.addEventListener('DOMContentLoaded',init);
 </script>
