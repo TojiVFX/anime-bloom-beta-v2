@@ -4,13 +4,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
-  if (!OPENAI_API_KEY) {
+  if (!OPENROUTER_API_KEY) {
     return res.status(200).json({
       success: false,
-      error: 'Missing OpenAI API Key',
-      message: 'To use AI Insights, please add OPENAI_API_KEY to your Vercel environment variables.'
+      error: 'Missing OpenRouter API Key',
+      message: 'To use AI Insights, please add OPENROUTER_API_KEY to your Vercel environment variables.'
     });
   }
 
@@ -76,14 +76,16 @@ export default async function handler(req, res) {
   `;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://anime-bloom.vercel.app',
+        'X-Title': 'AnimeBloom Admin',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'openai/gpt-4o-mini',
         messages: [
           { role: 'system', content: 'You are a helpful assistant that provides site improvement ideas in JSON format.' },
           { role: 'user', content: prompt }
