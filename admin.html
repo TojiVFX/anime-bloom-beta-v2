@@ -734,7 +734,13 @@ details summary{cursor:pointer;font-size:12px;color:var(--muted);padding:8px 0;l
                   <div class="ccard-t" style="color:var(--blue)">✨ AI Recommended Anime</div>
                   <div class="ccard-s">Based on newest additions and content quality</div>
                 </div>
-                <button class="btn btn-blue btn-sm" id="btn-apply-ai-rec" style="background:var(--blue-dim);color:var(--blue);border:1px solid rgba(77,166,255,.3)">Review & Apply</button>
+                <div style="display:flex;gap:8px">
+                  <button class="btn btn-ghost btn-sm" onclick="generateAIInsights(aiLastResult?._isDemo : false)" title="Regenerate only recommendations">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    Re-generate
+                  </button>
+                  <button class="btn btn-blue btn-sm" id="btn-apply-ai-rec" style="background:var(--blue-dim);color:var(--blue);border:1px solid rgba(77,166,255,.3)">Review & Apply</button>
+                </div>
               </div>
               <div class="ccard-b">
                 <div id="ai-rec-list" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));gap:10px"></div>
@@ -1232,6 +1238,7 @@ async function generateAIInsights(demo = false) {
     }
 
     aiLastResult = data.insights;
+    aiLastResult._isDemo = demo; // Store for re-generate button
     addAdminLog('ok', `Generated AI Insights (mode: ${demo?'demo':'live'})`);
     renderAIInsights(data.insights);
 

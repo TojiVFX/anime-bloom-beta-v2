@@ -45,7 +45,7 @@ export default async function handler(req, res) {
           "Add a breadcrumb navigation for easier browsing.",
           "Implement a faster 'Jump to Episode' dropdown."
         ],
-        recommended_ids: (animeData || []).slice(0, 8).map(a => a.id)
+        recommended_ids: (animeData || []).slice(0, 10).map(a => a.id)
       }
     });
   }
@@ -70,7 +70,7 @@ export default async function handler(req, res) {
     4. "features": 2-3 new feature ideas for the site.
     5. "performance": 2-3 tips to improve site speed and efficiency.
     6. "user_experience": 2-3 ideas to make navigation easier for fans.
-    7. "recommended_ids": An array of exactly 8 anime IDs from the list above that should be in the "Recommended" section. Prioritize newest editions (highest releaseYear) and popular/high-quality looking titles. Return ONLY the IDs.
+    7. "recommended_ids": An array of exactly 10 anime IDs from the list above that should be in the "Recommended" section. Prioritize newest editions (highest releaseYear) and popular/high-quality looking titles. Return ONLY the IDs.
 
     Respond ONLY with the JSON object.
   `;
