@@ -2,25 +2,17 @@ var scheduleData = [
     {
         day: "Tuesday",
         animeId: "scum-of-the-brave-season-1-hindi-dubbed",
-        episode: 8,
+        episode: 9,
         airTime: "22:00",
-        releaseDate: "2026-04-21",
+        releaseDate: "2026-04-28",
         airTimeDisplay: "10:00 PM IST"
-    },
-    {
-        day: "Tuesday",
-        animeId: "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
-        episode: 13,
-        airTime: "22:30",
-        releaseDate: "2026-04-21",
-        airTimeDisplay: "10:30 PM IST"
     },
     {
         day: "Wednesday",
         animeId: "easygoing-territory-defense-by-the-optimistic-lord-season-1-hindi-dubbed",
-        episode: 7,
+        episode: 9,
         airTime: "20:00",
-        releaseDate: "2026-04-22",
+        releaseDate: "2026-04-29",
         airTimeDisplay: "08:00 PM IST"
     },
     {
@@ -42,9 +34,9 @@ var scheduleData = [
     {
         day: "Monday",
         animeId: "release-that-witch-season-1-hindi-dubbed",
-        episode: 5,
+        episode: 6,
         airTime: "23:30",
-        releaseDate: "2026-04-20",
+        releaseDate: "2026-04-27",
         airTimeDisplay: "11:30 PM IST"
     },
     {
@@ -54,14 +46,6 @@ var scheduleData = [
         airTime: "22:30",
         releaseDate: "2026-04-25",
         airTimeDisplay: "11:00 PM IST"
-    },
-    {
-        day: "Saturday",
-        animeId: "bofuri-i-dont-want-to-get-hurt-so-ill-max-out-my-defense-season-2-hindi-dubbed",
-        episode: 8,
-        airTime: "23:30",
-        releaseDate: "2026-04-25",
-        airTimeDisplay: "11:30 PM IST"
     },
     {
         day: "Sunday",
@@ -82,9 +66,9 @@ var scheduleData = [
     {
         day: "Wednesday",
         animeId: "grand-blue-dreaming-season-1-hindi-dubbed",
-        episode: 7,
+        episode: 9,
         airTime: "20:00",
-        releaseDate: "2026-04-22",
+        releaseDate: "2026-04-29",
         airTimeDisplay: "08:00 PM IST"
     },
     {
@@ -93,6 +77,94 @@ var scheduleData = [
         episode: 2,
         airTime: "22:00",
         releaseDate: "2026-04-25",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Wednesday",
+        animeId: "reborn-as-a-vending-machine-i-now-wander-the-dungeon-season-3-hindi-dubbed",
+        episode: 2,
+        airTime: "22:30",
+        releaseDate: "2026-04-29",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "dorohedoro-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-23",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "the-beginning-after-the-end-season-2-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-23",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "23:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "11:30 PM IST"
+    },
+    {
+        day: "Friday",
+        animeId: "snowball-earth-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "23:30",
+        releaseDate: "2026-04-24",
+        airTimeDisplay: "11:30 PM IST"
+    },
+    {
+        day: "Monday",
+        animeId: "liar-game-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-27",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Wednesday",
+        animeId: "witch-hat-atelier-season-1-hindi-dubbed",
+        episode: 2,
+        airTime: "22:30",
+        releaseDate: "2026-04-29",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Tuesday",
+        animeId: "eren-the-southpaw-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:00",
+        releaseDate: "2026-04-28",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Tuesday",
+        animeId: "marriagetoxin-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:00",
+        releaseDate: "2026-04-28",
+        airTimeDisplay: "10:30 PM IST"
+    },
+    {
+        day: "Thursday",
+        animeId: "the-warrior-princess-and-the-barbaric-king-season-1-hindi-dubbed",
+        episode: 1,
+        airTime: "22:30",
+        releaseDate: "2026-04-30",
         airTimeDisplay: "10:30 PM IST"
     }
 ];

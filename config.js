@@ -4,35 +4,40 @@
  */
 
 const heroSliderIds = [
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "dorohedoro-season-1-hindi-dubbed",
+    "the-beginning-after-the-end-season-2-hindi-dubbed",
     "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
+    "witch-hat-atelier-season-1-hindi-dubbed",
     "release-that-witch-season-1-hindi-dubbed",
-    "grand-blue-dreaming-season-1-hindi-dubbed",
     "scum-of-the-brave-season-1-hindi-dubbed",
-    "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
     "agents-of-the-four-seasons-dance-of-spring-season-1-hindi-dubbed",
     "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed"
 ];
 
 const newlyAddedIds = [
-    "scum-of-the-brave-season-1-hindi-dubbed",
-    "there-was-a-cute-girl-in-the-heros-party-season-1-hindi-dubbed",
-    "release-that-witch-season-1-hindi-dubbed",
-    "wistoria-wand-and-sword-season-1-hindi-dubbed",
-    "naruto-shippuden-season-1-hindi-dubbed",
-    "bleach-season-1-hindi-dubbed",
-    "kunon-the-sorcerer-can-see-season-1-hindi-dubbed",
-    "nippon-sangoku-the-three-nations-of-the-crimson-sun-season-1-hindi-dubbed",
-    "bofuri-i-dont-want-to-get-hurt-so-ill-max-out-my-defense-season-2-hindi-dubbed"
+    "snowball-earth-season-1-hindi-dubbed",
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "an-observation-log-of-my-fiancee-who-calls-herself-a-villainess-season-1-hindi-dubbed",
+    "death-note-season-1-hindi-dubbed",
+    "chainsaw-man-the-movie-reze-arc-hindi-dubbed",
+    "the-ramparts-of-ice-season-1-hindi-dubbed",
+    "the-warrior-princess-and-the-barbaric-king-season-1-hindi-dubbed",
+    "dr-stone-season-4-hindi-dubbed",
+    "dorohedoro-season-1-hindi-dubbed"
 ];
 
 const recommendedIds = [
-    "jujutsu-kaisen-season-3-hindi-dubbed",
-    "release-that-witch-season-1-hindi-dubbed",
-    "sentenced-to-be-hero-season-1-hindi-dubbed",
-    "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
-    "the-ramparts-of-ice-season-1-hindi-dubbed",
-    "grand-blue-dreaming-season-1-hindi-dubbed",
-    "classroom-of-the-elite-season-3-hindi-dubbed"
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "the-warrior-princess-and-the-barbaric-king-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-2-hindi-dubbed",
+    "eren-the-southpaw-season-1-hindi-dubbed",
+    "marriagetoxin-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-1-hindi-dubbed",
+    "liar-game-season-1-hindi-dubbed",
+    "snowball-earth-season-1-hindi-dubbed",
+    "witch-hat-atelier-season-1-hindi-dubbed",
+    "the-beginning-after-the-end-season-2-hindi-dubbed"
 ];
 
 const trendingIds = [
