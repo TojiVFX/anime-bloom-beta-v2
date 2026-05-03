@@ -28,13 +28,16 @@ const newlyAddedIds = [
 ];
 
 const recommendedIds = [
-    "jujutsu-kaisen-season-3-hindi-dubbed",
-    "release-that-witch-season-1-hindi-dubbed",
-    "sentenced-to-be-hero-season-1-hindi-dubbed",
-    "daemons-of-the-shadow-realm-season-1-hindi-dubbed",
-    "the-ramparts-of-ice-season-1-hindi-dubbed",
-    "grand-blue-dreaming-season-1-hindi-dubbed",
-    "classroom-of-the-elite-season-3-hindi-dubbed"
+    "the-angel-next-door-spoils-me-rotten-season-2-hindi-dubbed",
+    "the-warrior-princess-and-the-barbaric-king-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-2-hindi-dubbed",
+    "eren-the-southpaw-season-1-hindi-dubbed",
+    "marriagetoxin-season-1-hindi-dubbed",
+    "rezero-starting-life-in-another-world-season-1-hindi-dubbed",
+    "liar-game-season-1-hindi-dubbed",
+    "snowball-earth-season-1-hindi-dubbed",
+    "witch-hat-atelier-season-1-hindi-dubbed",
+    "the-beginning-after-the-end-season-2-hindi-dubbed"
 ];
 
 const trendingIds = [
