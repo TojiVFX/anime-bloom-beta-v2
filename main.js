@@ -125,12 +125,26 @@ function initSkeletons() {
   }
 }
 
-/** Remove hero skeleton smoothly before the real slider renders */
-function removeHeroSkeleton() {
-  const s = document.getElementById('hero-skeleton');
-  if (!s) return;
-  s.classList.add('sk-fade-out');
-  setTimeout(() => s.remove(), 300);
+function createAnimeCard(anime) {
+    const card = document.createElement('div');
+    card.className = 'anime-card';
+    card.innerHTML = `
+        <div class="card-img-container">
+            <img src="${anime.thumbnail}" alt="${anime.name}" loading="lazy" width="300" height="420">
+            <div class="card-overlay">
+                <div class="quick-info">
+                    ${anime.quality || 'HD'} • ${anime.episodes} Episodes • ${anime.releaseYear} ${anime.rating ? `• ${anime.rating} Rating` : ''}
+                </div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h3>${anime.name}</h3>
+        </div>
+    `;
+    card.onclick = () => {
+        window.location.href = `/details?id=${anime.id}`;
+    };
+    return card;
 }
 
 /** Clear skeleton rows from a container with a brief fade */
@@ -850,7 +864,34 @@ function loadAnimeDetails() {
   const anime = animeData.find(a => a.id === animeId);
   if (!anime) { container.innerHTML = '<p>Anime not found.</p>'; return; }
 
-  document.title = `${anime.name} - Anime Bloom`;
+    container.innerHTML = `
+        <div class="details-backdrop" style="background-image: url('${anime.thumbnail}')"></div>
+        <div class="details-layout">
+            <div class="details-thumbnail">
+                <img src="${anime.thumbnail}" alt="${anime.name}" loading="lazy">
+            </div>
+            <div class="details-info">
+                <h1>${anime.name}</h1>
+                <div class="meta-info">
+                    ${anime.quality || 'HD'} • ${anime.episodes} Episodes • ${anime.releaseYear} ${anime.rating ? `• ${anime.rating} Rating` : ''}
+                </div>
+                <div class="info-item"><strong>Season:</strong> ${anime.season}</div>
+                <div class="info-item"><strong>Duration:</strong> ${anime.duration}</div>
+                <div class="info-item"><strong>Genres:</strong> ${anime.genres.join(', ')}</div>
+                <div class="info-item"><strong>Language:</strong> ${anime.language}</div>
+
+                <div class="description">
+                    <h3>Description</h3>
+                    <p>${anime.description}</p>
+                </div>
+            </div>
+            <div class="download-section">
+                <h3>Download Episodes</h3>
+                <div class="download-buttons">
+                    ${downloadButtonsHtml}
+                </div>
+            </div>
+        </div>
 
   let downloadButtonsHtml = '';
   if (anime.downloadLinks && anime.downloadLinks.length > 0) {

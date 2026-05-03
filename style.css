@@ -846,36 +846,20 @@ main {
 }
 
 .quick-info {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     color: var(--secondary-text);
     margin-top: 5px;
-    overflow: hidden;
+    display: block;
 }
 
-.quick-info span {
-    background: rgba(255,255,255,0.1);
-    padding: 2px 5px;
-    border-radius: 4px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.quality-badge {
+.meta-info {
     color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    flex-shrink: 0;
-}
-
-.rating-badge {
-    color: #f5c518;
-    border: 1px solid rgba(245,197,24,0.5);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
     display: flex;
-    align-items: center;
-    gap: 2px;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .section-title {
