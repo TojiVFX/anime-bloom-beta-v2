@@ -163,9 +163,11 @@ function createAnimeCard(anime) {
 
   const qualityText = anime.quality ? anime.quality.split(' ')[0] : 'HD';
 
+  const altText = anime.name ? `Watch ${anime.name} ${anime.language || ''} Online Free - Anime Bloom` : 'Anime Poster';
+
   card.innerHTML = [
     '<div class="card-img-container">',
-    '  <img src="' + (anime.thumbnail || '') + '" alt="' + (anime.name || '') + '" loading="lazy">',
+    '  <img src="' + (anime.thumbnail || '') + '" alt="' + altText + '" loading="lazy">',
     '  <div class="card-overlay">',
     '    <div class="quick-info">',
     '      <span class="quality-badge">' + qualityText + '</span>',
@@ -316,7 +318,12 @@ setTimeout(() => {
 
       sections.forEach(section => {
         const row = createAnimeRow(section.title, section.data, section.genre);
-        if (row) container.appendChild(row);
+        if (row) {
+          container.appendChild(row);
+          if (section.title === 'Newly Added') {
+            injectCollectionSchema('Newly Added Anime', section.data);
+          }
+        }
       });
 
       if (loadMoreContainer) loadMoreContainer.style.display = 'flex';
@@ -415,9 +422,10 @@ function initHeroSlider() {
           <h1>${anime.name}</h1>
           <p>${shortDesc}</p>
           <div class="hero-actions">
-            <a href="/details?id=${anime.id}" class="watch-btn">Watch Now</a>
+            <a href="/details?id=${anime.id}" class="watch-btn" aria-label="Watch ${anime.name} Now">Watch Now</a>
           </div>
         </div>
+        <img src="${anime.thumbnail}" alt="Stream ${anime.name} in HD - Anime Bloom" style="display:none">
       `;
 
       slide.onclick = (e) => {
@@ -787,6 +795,27 @@ function initLibrary() {
 
   // renderDiscovery() will clear the pre-rendered skeletons
   renderDiscovery();
+}
+
+/**
+ * Generate ItemList schema for an anime collection
+ */
+function injectCollectionSchema(title, animes) {
+  if (!animes.length) return;
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": title,
+    "itemListElement": animes.slice(0, 10).map((a, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://anime-bloom.vercel.app/details?id=${a.id}`,
+      "name": a.name
+    }))
+  });
+  document.head.appendChild(script);
 }
 
 // --- Genre Page Logic ---

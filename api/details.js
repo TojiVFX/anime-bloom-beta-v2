@@ -4,10 +4,10 @@ module.exports = (req, res) => {
     const id = req.query.id || '';
     const anime = animeData.find(a => a.id === id);
 
-    const title    = anime ? `${anime.name} - Anime Bloom` : 'Anime Bloom';
+    const title    = anime ? `Download ${anime.name} ${anime.language} HD 1080p - Anime Bloom` : 'Anime Bloom - Best Anime Download Hindi Dubbed & English Subbed';
     const desc     = anime
-        ? `Watch and download ${anime.name} ${anime.language} on Anime Bloom. Season ${anime.season}.${anime.rating ? ` Rating: ${anime.rating}.` : ''} Genres: ${anime.genres.join(', ')}.`
-        : 'Your ultimate destination for anime discovery. Search and download anime in Hindi and English dubbed.';
+        ? `Download and watch ${anime.name} in ${anime.language} online for free. Season ${anime.season}. Quality: ${anime.quality}.${anime.rating ? ` Rating: ${anime.rating}.` : ''} Explore ${anime.genres.join(', ')} and more on Anime Bloom.`
+        : 'Anime Bloom is your #1 destination for Hindi and English dubbed anime downloads. Stream the latest series, movies, and episodes in HD 1080p for free.';
     const image    = anime ? anime.thumbnail : 'https://anime-bloom.vercel.app/favicon.png';
     const pageUrl  = `https://anime-bloom.vercel.app/details?id=${encodeURIComponent(id)}`;
 
@@ -43,12 +43,40 @@ module.exports = (req, res) => {
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
     <script async src="/gtag.js"></script>
+    ${anime ? `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TVSeries",
+      "name": "${anime.name.replace(/"/g, '\\"')}",
+      "description": "${desc.replace(/"/g, '\\"')}",
+      "image": "${image}",
+      "genre": ${JSON.stringify(anime.genres)},
+      "numberOfEpisodes": ${anime.episodes},
+      "author": {
+        "@type": "Organization",
+        "name": "Anime Bloom"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Watch ${anime.name.replace(/"/g, '\\"')} Online",
+      "description": "Stream and download ${anime.name.replace(/"/g, '\\"')} in ${anime.language} on Anime Bloom.",
+      "thumbnailUrl": "${image}",
+      "uploadDate": "${new Date().toISOString()}",
+      "contentUrl": "${pageUrl}"
+    }
+    </script>
+    ` : ''}
 </head>
     <header>
         <nav>
             <div class="nav-container">
                 <a href="/" class="logo">
-                    <img src="/favicon.png" alt="Logo" class="header-logo">
+                    <img src="/favicon.png" alt="Anime Bloom Logo" class="header-logo">
                     Anime<span>Bloom</span>
                 </a>
                 <div class="menu-container">
@@ -72,7 +100,7 @@ module.exports = (req, res) => {
     <footer>
         <div class="footer-container">
             <div class="footer-logo">
-                <a href="/" class="logo"><img src="/favicon.png" alt="Logo" class="header-logo">Anime<span>Bloom</span></a>
+                <a href="/" class="logo"><img src="/favicon.png" alt="Anime Bloom" class="header-logo">Anime<span>Bloom</span></a>
                 <p>Your ultimate destination for anime discovery. Explore, watch and download your favorite series in high quality.</p>
             </div>
             <div class="footer-links">
