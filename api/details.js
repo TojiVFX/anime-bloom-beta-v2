@@ -18,8 +18,7 @@ module.exports = (req, res) => {
             const season  = anime.season   ? `Season ${anime.season}` : '';
             const year    = anime.releaseYear ? ` (${anime.releaseYear})` : '';
             const parts   = [season, eps].filter(Boolean).join(', ');
-            const snippet = (anime.description || '').slice(0, 120).trimEnd();
-            return `Download ${anime.name}${year} in ${anime.language} HD 1080p on Anime Bloom. ${parts}${rating}. Genre: ${genres}. ${snippet}…`;
+            return `Download ${anime.name}${year} in ${anime.language} HD 1080p on Anime Bloom. ${parts}${rating}. Genre: ${genres}. ${anime.description}`;
         })()
         : 'Anime Bloom is your #1 destination for Hindi and English dubbed anime downloads. Stream and download HD 1080p episodes for free.';
 
@@ -29,15 +28,21 @@ module.exports = (req, res) => {
             anime.name,
             `${anime.name} ${anime.language}`,
             `${anime.name} download`,
-            `${anime.name} HD`,
+            `${anime.name} HD 1080p`,
+            `${anime.name} watch online`,
+            `${anime.name} free stream`,
             `${anime.name} Season ${anime.season || '1'}`,
             ...(anime.genres || []).map(g => `${g} anime`),
             `${anime.language} anime`,
             'anime bloom',
             'hindi dubbed anime',
             'english dubbed anime',
+            'download anime in hindi',
+            'watch anime free online',
+            'anime hd download',
+            'latest anime episodes'
           ].join(', ')
-        : 'anime bloom, hindi dubbed anime, english dubbed anime, download anime HD 1080p free';
+        : 'anime bloom, hindi dubbed anime, english dubbed anime, download anime HD 1080p free, watch anime online, free anime streaming, latest anime episodes';
 
     const image   = anime ? anime.thumbnail : 'https://anime-bloom.vercel.app/favicon.png';
     const pageUrl = `https://anime-bloom.vercel.app/details?id=${encodeURIComponent(id)}`;
@@ -60,7 +65,7 @@ module.exports = (req, res) => {
     <!-- ── Open Graph (WhatsApp, Facebook, Telegram previews) ── -->
     <meta property="og:type"         content="video.tv_show">
     <meta property="og:title"        content="${title}">
-    <meta property="og:description"  content="${desc}">
+    <meta property="og:description"  content="${anime ? anime.description : desc}">
     <meta property="og:image"        content="${image}">
     <meta property="og:image:width"  content="1280">
     <meta property="og:image:height" content="720">
@@ -72,7 +77,7 @@ module.exports = (req, res) => {
     <!-- ── Twitter Card ── -->
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="${title}">
-    <meta name="twitter:description" content="${desc}">
+    <meta name="twitter:description" content="${anime ? anime.description : desc}">
     <meta name="twitter:image"       content="${image}">
 
     <link rel="icon" type="image/png" href="/favicon.png">

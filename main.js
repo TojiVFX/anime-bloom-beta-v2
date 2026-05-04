@@ -519,6 +519,7 @@ function initHome() {
       if (query.length > 0) {
         searchBtn.innerHTML = clearIcon;
         searchBtn.dataset.mode = 'clear';
+        document.title = `Search Results for "${query}" | Anime Bloom`;
       } else {
         searchBtn.innerHTML = searchIcon;
         searchBtn.dataset.mode = 'search';
@@ -587,8 +588,16 @@ function initHome() {
 
       const category = btn.getAttribute('data-category');
       if (category === 'all') {
+        document.title = "Anime Bloom — Download & Watch Anime in Hindi Dubbed & English Subbed Online Free";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', "Anime Bloom is your #1 destination for Hindi and English dubbed anime downloads. Stream the latest series, movies, and episodes in HD 1080p for free.");
         displayAnime(shuffleArray(animeData), false);
       } else {
+        const displayCategory = btn.textContent.trim();
+        document.title = `${displayCategory} Anime - Watch & Download Free | Anime Bloom`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', `Explore the best ${displayCategory} anime series on Anime Bloom. Download and stream ${displayCategory} anime in Hindi and English dubbed HD 1080p for free.`);
+
         const filtered = animeData.filter(anime => {
           const matchesCategory = anime.category === category;
           const matchesGenre = anime.genres && anime.genres.some(g => g.toLowerCase() === category.toLowerCase());
@@ -737,6 +746,10 @@ function initLibrary() {
   async function handleFilter() {
     const query = searchInput.value.trim();
 
+    if (query) {
+      document.title = `Search Results for "${query}" | Anime Bloom Library`;
+    }
+
     if (query === '' && currentCategory === 'all') {
       window.history.pushState({}, '', '/library');
       renderDiscovery();
@@ -783,6 +796,14 @@ function initLibrary() {
       categoryBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentCategory = btn.getAttribute('data-category');
+
+      if (currentCategory === 'all') {
+        document.title = "Anime Library - Download Full Series Hindi Dubbed | Anime Bloom";
+      } else {
+        const displayCategory = btn.textContent.trim();
+        document.title = `${displayCategory} Anime Library - Browse & Download | Anime Bloom`;
+      }
+
       handleFilter();
     };
   });
@@ -831,6 +852,10 @@ function initGenre() {
   if (!genreType) { window.location.href = '/'; return; }
 
   const displayGenre = genreType.charAt(0).toUpperCase() + genreType.slice(1);
+  document.title = `${displayGenre} Anime - Watch & Download Free | Anime Bloom`;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', `Explore the best ${displayGenre} anime series on Anime Bloom. Download and stream ${displayGenre} anime in Hindi and English dubbed HD 1080p for free.`);
+
   if (genreTitle) {
     genreTitle.innerHTML = '<span></span> Anime';
     genreTitle.querySelector('span').textContent = displayGenre;
