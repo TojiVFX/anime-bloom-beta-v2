@@ -4,12 +4,44 @@ module.exports = (req, res) => {
     const id = req.query.id || '';
     const anime = animeData.find(a => a.id === id);
 
-    const title    = anime ? `Download ${anime.name} ${anime.language} HD 1080p - Anime Bloom` : 'Anime Bloom - Best Anime Download Hindi Dubbed & English Subbed';
-    const desc     = anime
-        ? `Download and watch ${anime.name} in ${anime.language} online for free. Season ${anime.season}. Quality: ${anime.quality}.${anime.rating ? ` Rating: ${anime.rating}.` : ''} Explore ${anime.genres.join(', ')} and more on Anime Bloom.`
-        : 'Anime Bloom is your #1 destination for Hindi and English dubbed anime downloads. Stream the latest series, movies, and episodes in HD 1080p for free.';
-    const image    = anime ? anime.thumbnail : 'https://anime-bloom.vercel.app/favicon.png';
-    const pageUrl  = `https://anime-bloom.vercel.app/details?id=${encodeURIComponent(id)}`;
+    // ── Per-anime title: unique format with season, language, quality ──
+    const title = anime
+        ? `${anime.name} ${anime.language} Download HD 1080p – Anime Bloom`
+        : 'Anime Bloom – Download Anime Hindi Dubbed & English Subbed HD 1080p Free';
+
+    // ── Richer, unique description that uses every anime field ──
+    const desc = anime
+        ? (() => {
+            const genres  = (anime.genres || []).join(', ');
+            const eps     = anime.episodes ? `${anime.episodes} episodes` : '';
+            const rating  = anime.rating   ? ` · Rated ${anime.rating}/10` : '';
+            const season  = anime.season   ? `Season ${anime.season}` : '';
+            const year    = anime.releaseYear ? ` (${anime.releaseYear})` : '';
+            const parts   = [season, eps].filter(Boolean).join(', ');
+            const snippet = (anime.description || '').slice(0, 120).trimEnd();
+            return `Download ${anime.name}${year} in ${anime.language} HD 1080p on Anime Bloom. ${parts}${rating}. Genre: ${genres}. ${snippet}…`;
+        })()
+        : 'Anime Bloom is your #1 destination for Hindi and English dubbed anime downloads. Stream and download HD 1080p episodes for free.';
+
+    // ── Keywords: anime name variations + genres + language ──
+    const keywords = anime
+        ? [
+            anime.name,
+            `${anime.name} ${anime.language}`,
+            `${anime.name} download`,
+            `${anime.name} HD`,
+            `${anime.name} Season ${anime.season || '1'}`,
+            ...(anime.genres || []).map(g => `${g} anime`),
+            `${anime.language} anime`,
+            'anime bloom',
+            'hindi dubbed anime',
+            'english dubbed anime',
+          ].join(', ')
+        : 'anime bloom, hindi dubbed anime, english dubbed anime, download anime HD 1080p free';
+
+    const image   = anime ? anime.thumbnail : 'https://anime-bloom.vercel.app/favicon.png';
+    const pageUrl = `https://anime-bloom.vercel.app/details?id=${encodeURIComponent(id)}`;
+    const today   = new Date().toISOString().split('T')[0];
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.send(`<!DOCTYPE html>
@@ -17,33 +49,41 @@ module.exports = (req, res) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ── Primary SEO ── -->
     <title>${title}</title>
     <meta name="description" content="${desc}">
-    <meta name="robots" content="index, follow">
+    <meta name="keywords"    content="${keywords}">
+    <meta name="robots"      content="index, follow">
+    <link rel="canonical"    href="${pageUrl}">
 
-    <!-- Open Graph (WhatsApp, Facebook, Telegram previews) -->
-    <meta property="og:type"        content="video.tv_show">
-    <meta property="og:title"       content="${title}">
-    <meta property="og:description" content="${desc}">
-    <meta property="og:image"       content="${image}">
+    <!-- ── Open Graph (WhatsApp, Facebook, Telegram previews) ── -->
+    <meta property="og:type"         content="video.tv_show">
+    <meta property="og:title"        content="${title}">
+    <meta property="og:description"  content="${desc}">
+    <meta property="og:image"        content="${image}">
     <meta property="og:image:width"  content="1280">
     <meta property="og:image:height" content="720">
-    <meta property="og:url"         content="${pageUrl}">
-    <meta property="og:site_name"   content="Anime Bloom">
+    <meta property="og:url"          content="${pageUrl}">
+    <meta property="og:site_name"    content="Anime Bloom">
+    <meta property="og:updated_time" content="${today}">
+    ${anime ? `<meta property="video:series"      content="${anime.name}">` : ''}
 
-    <!-- Twitter Card -->
+    <!-- ── Twitter Card ── -->
     <meta name="twitter:card"        content="summary_large_image">
     <meta name="twitter:title"       content="${title}">
     <meta name="twitter:description" content="${desc}">
     <meta name="twitter:image"       content="${image}">
 
     <link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
     <script async src="/gtag.js"></script>
+
     ${anime ? `
+    <!-- ── Structured Data: TV Series ── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,23 +91,39 @@ module.exports = (req, res) => {
       "name": "${anime.name.replace(/"/g, '\\"')}",
       "description": "${desc.replace(/"/g, '\\"')}",
       "image": "${image}",
-      "genre": ${JSON.stringify(anime.genres)},
-      "numberOfEpisodes": ${anime.episodes},
-      "author": {
-        "@type": "Organization",
-        "name": "Anime Bloom"
-      }
+      "url": "${pageUrl}",
+      "genre": ${JSON.stringify(anime.genres || [])},
+      "numberOfEpisodes": ${anime.episodes || 0},
+      "inLanguage": "${anime.language || ''}",
+      "author": { "@type": "Organization", "name": "Anime Bloom" }
     }
     </script>
+
+    <!-- ── Structured Data: VideoObject ── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "VideoObject",
-      "name": "Watch ${anime.name.replace(/"/g, '\\"')} Online",
-      "description": "Stream and download ${anime.name.replace(/"/g, '\\"')} in ${anime.language} on Anime Bloom.",
+      "name": "Watch ${anime.name.replace(/"/g, '\\"')} ${anime.language || ''} Online Free",
+      "description": "Stream and download ${anime.name.replace(/"/g, '\\"')} in ${anime.language || ''} HD 1080p on Anime Bloom.",
       "thumbnailUrl": "${image}",
-      "uploadDate": "${new Date().toISOString()}",
-      "contentUrl": "${pageUrl}"
+      "uploadDate": "${today}",
+      "contentUrl": "${pageUrl}",
+      "embedUrl": "${pageUrl}",
+      "author": { "@type": "Organization", "name": "Anime Bloom", "url": "https://anime-bloom.vercel.app" }
+    }
+    </script>
+
+    <!-- ── Structured Data: BreadcrumbList ── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://anime-bloom.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Library", "item": "https://anime-bloom.vercel.app/library" },
+        { "@type": "ListItem", "position": 3, "name": "${anime.name.replace(/"/g, '\\"')}", "item": "${pageUrl}" }
+      ]
     }
     </script>
     ` : ''}
